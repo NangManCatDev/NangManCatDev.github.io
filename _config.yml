@@ -112,10 +112,10 @@ author:
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: "mailto:your.name@email.com"
-    - label: "Website"
+      # url: "mailto:mljk2013@naver.com"
+    - label: "Youtube"
       icon: "fas fa-fw fa-link"
-      # url: "https://your-website.com"
+      url: "https://www.youtube.com/@NangManCat07"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       # url: "https://twitter.com/"
@@ -124,7 +124,7 @@ author:
       # url: "https://facebook.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url: "https://github.com/"
+      url: "https://github.com/NangManCatDev"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
@@ -138,9 +138,12 @@ footer:
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
       # url:
+    - label: "Youtube"
+      icon: "fas fa-fw fa-link"
+      url: "https://www.youtube.com/@NangManCat07"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url:
+      url: "https://github.com/NangManCatDev"
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
       # url:
@@ -220,7 +223,7 @@ sass:
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: Asia/Seoul # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
 # Plugins (previously gems:)
