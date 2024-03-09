@@ -4,10 +4,11 @@ title: "Helicopter Animation made with Blender"
 categories: [3D, animation]
 tag: blender
 typora-root-url: ../
-toc: true   # 목차
 author_profile: false
-sidebar:
-    nav: "docs"
+# sidebar:
+#     nav: "docs"
+#redirect_from:
+#  - 이전 경로
 ---
 
 {% include video id="WM0uLn1rb90" provider="youtube" %}

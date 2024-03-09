@@ -4,10 +4,11 @@ title: "My first work using MagicaVoxel."
 categories: [3D, voxel]
 tag: magicavoxel
 typora-root-url: ../
-toc: true   # 목차
 author_profile: false
-sidebar:
-    nav: "docs"
+#sidebar:
+#    nav: "docs"
+#redirect_from:
+#  - 이전 경로
 ---
 
 

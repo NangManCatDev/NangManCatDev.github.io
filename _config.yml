@@ -114,7 +114,7 @@ author:
       icon: "fas fa-fw fa-envelope-square"
       # url: "mailto:mljk2013@naver.com"
     - label: "Youtube"
-      icon: "fas fa-fw fa-link"
+      icon: "fab fa-youtube"
       url: "https://www.youtube.com/@NangManCat07"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
@@ -139,7 +139,7 @@ footer:
       icon: "fab fa-fw fa-facebook-square"
       # url:
     - label: "Youtube"
-      icon: "fas fa-fw fa-link"
+      icon: "fab fa-youtube"
       url: "https://www.youtube.com/@NangManCat07"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
@@ -233,6 +233,7 @@ plugins:
   - jekyll-gist
   - jekyll-feed
   - jekyll-include-cache
+  - jekyll-redirect-from
 
 # mimic GitHub Pages with --safe
 whitelist:
@@ -241,6 +242,7 @@ whitelist:
   - jekyll-gist
   - jekyll-feed
   - jekyll-include-cache
+  - jekyll-redirect-from
 
 
 # Archives
@@ -294,5 +296,7 @@ defaults:
       share: true
       related: true
       show_date: true
+      toc: true   # 목차
+      toc_sticky: true
 
 date_format: "%Y-%m-%d"
