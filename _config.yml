@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "mint" # "air", "aqua", "contrast", "dark", "dirt", "
 
 # Site Settings
 locale                   : "ko-KR"
-title                    : "낭만고양이의 개인 블로그"
+title                    : "낭만고양이의 개일 블로그"
 title_separator          : "|"
 subtitle                 : "잡다한걸 올리는 블로그"
 name                     : "NangManCat"
