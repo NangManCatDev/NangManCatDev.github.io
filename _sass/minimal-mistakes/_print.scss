@@ -157,9 +157,9 @@
     page-break-inside: avoid;
   }
 
-  h1 + p,
-  h2 + p,
-  h3 + p {
+  h1+p,
+  h2+p,
+  h3+p {
     page-break-before: avoid;
   }
 
@@ -228,9 +228,9 @@
     }
   }
 
-/*
-   Hide the following elements on print
-   ========================================================================== */
+  /*
+     Hide the following elements on print
+     ========================================================================== */
 
   .masthead,
   .toc,
