@@ -1,8 +1,8 @@
 ---
 layout: single
 title: "Linux Programming 1주차"
-categories: linux
-tag: magicavoxel
+categories: Linux-report
+tag: Linux
 typora-root-url: ../
 author_profile: false
 #sidebar:
