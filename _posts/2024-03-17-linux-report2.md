@@ -13,7 +13,7 @@ author_profile: false
 
 <html>
 <head>
-  <title>2주차</title>
+  <title>Linux Programming 2주차</title>
   <style>
     
 :root {
