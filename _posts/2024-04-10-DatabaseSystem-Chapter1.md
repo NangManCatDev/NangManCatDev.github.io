@@ -1,8 +1,8 @@
 ---
 layout: single
 title: "데이터베이스시스템 Chapter.1"
-categories: Linux-report
-tag: Linux
+categories: Database
+tag: Database
 typora-root-url: ../
 author_profile: false
 #sidebar:
