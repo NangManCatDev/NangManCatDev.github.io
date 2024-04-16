@@ -72,7 +72,7 @@ author_profile: false
 
 # 4. 데이터베이스 시스템
 <hr>
-- <font color="#245bdb">**데이터베이스 시스템**</font> <br>
+- **<font color="#245bdb">데이터베이스 시스템</font>** <br>
 	\: 데이터베이스를 통하여 데이터를 저장하고 관리하기 위한 목적으로 사용되는 일체의 시스템
 - <u>데이터베이스 시스템에서 가장 중요한 역할</u>을 수행하는 것은 **<font color="#d83931">데이터베이스 관리 시스템(Database Management System, DBMS)</font>**이다.
 - <u>DBMS가 관리하는 데이터의 집합을 데이터베이스</u>라 한다.
@@ -123,9 +123,9 @@ author_profile: false
 	- SELECT(검색), INSERT(삽입), UPDATE(갱신), DELETE(삭제) 기능 제공
 	- 절차적 DML과 비절차적 DML
 		- **절차적 DML**
-			: 사용자가 <font color="#245bdb">무슨 데이터(what)</font>을 원하며 어떻게 접근해야 되는지 <font color="#245bdb">처리 방법(how)</font>을 기술, 호스트 프로그래밍 언어로 작성된 응용 프로그램 속에 내장(embedded)되어 사용
+			\: 사용자가 <font color="#245bdb">무슨 데이터(what)</font>을 원하며 어떻게 접근해야 되는지 <font color="#245bdb">처리 방법(how)</font>을 기술, 호스트 프로그래밍 언어로 작성된 응용 프로그램 속에 내장(embedded)되어 사용
 		- **비절차적 DML**
-			: 일반적인 질의어(query language)
+			\: 일반적인 질의어(query language)
 3. **<font color="#245bdb">데이터 제어어(Data Control Language, DCL)</font>**
 	- 데이터베이스 내의 데이터를 올바르고 정확하게 유지하기 위한 언어
 	- 보안(security), 무결성(integrity), 데이터 회복(recovery), 병행수행(concurrency) 등
