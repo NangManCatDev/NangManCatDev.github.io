@@ -27,12 +27,12 @@ author_profile: false
 
 ## 2. 기본개념
 ## 2.1 데이터 모델
-- <font color="#245bdb">**데이터 모델**</font><br>
+- **<font color="#245bdb">데이터 모델</font>**<br>
 	\: 데이터베이스를 구축할 때 체계화된 구조를 갖추는 것이 필요한데, 이때 <font color="#245bdb">데이터베이스 구조를 명시하기 위한 개념들의 집합</font>을
 	<img src="/images/2024-04-17-DatabaseSystem-Chapter3/Picture3.png" width="800"><br>
 
 ## 2.2 관계 데이터 모델
-- <font color="#245bdb">**관계 데이터 모델 vs 파일 시스템**</font>
+- **<font color="#245bdb">관계 데이터 모델 vs 파일 시스템</font>**
 	<img src="/images/2024-04-17-DatabaseSystem-Chapter3/Picture4.png" width="800"><br><br>
 
 
@@ -40,9 +40,9 @@ author_profile: false
 ## 2.1.1 릴레이션 구성
 - <font color="#d83931"><u>스킴(scheme)</u>은 스키마와 같은 의미로 사용한다.</font>
 - <font color="#d83931"><u>스키마(schema): 대략적인 계획이나 도식을 뜻함, 스킴은 구체적이고 확정된 것을 말함.</u></font><br>
-- <font color="#d83931">**릴레이션 스킴**</font>
+- **<font color="#d83931">릴레이션 스킴</font>**
 	- 릴레이션 이름(R)과 릴레이션을 구성하는 속성 이름(A1, A2, A3, ... An)들의 합으로 표현하며, R(A1, A2, A3, ... An)과 같이 표현한다.
-- <font color="#d83931">**릴레이션 인스턴스**</font>
+- **<font color="#d83931">릴레이션 인스턴스</font>**
 	- <u>어느 한 시점에 릴레이션 R에 포함되는 투플(tuple)의 집합을 의미하는 것으로 실제 값이라고도 함.</u>
 	<img src="/images/2024-04-17-DatabaseSystem-Chapter3/Picture5.png" width="800"><br>
 
@@ -65,20 +65,20 @@ $$예) 학생에 대한 정보를 테이블로 표현$$
 	\: <font color="#d83931">릴레이션에서 튜플을 유일하게 식별할 수 있는 속성이나 속성의 집합</font>을 말한다.<br>
 
 ## 2.1.2 릴레이션 특성
-- <font color="#d83931">**투플의 유일성**</font><br>
+- **<font color="#d83931">투플의 유일성</font>**<br>
 	\: <font color="#d83931">한 릴레이션에는 중복된 투플이 존재하지 않는다.</font>
-- <font color="#d83931">**투플의 무순서**</font><br>
+- **<font color="#d83931">투플의 무순서</font>**<br>
 	\: <font color="#d83931">한 릴레이션에 저장된 투플들 간에는 순서가 없다.</font>
-- <font color="#d83931">**속성의 무순서**</font><br>
+- **<font color="#d83931">속성의 무순서</font>**<br>
 	\: <font color="#d83931">한 릴레이션을 구성하는 속성들 간에는 순서가 없다.</font>
-- <font color="#d83931">**속성의 원자성**</font><br>
-	\: <font color="#d83931">모든 속성 값은 원자 값(atomic value)이다.</font><br>
+- **<font color="#d83931">속성의 원자성</font>**<br>
+	\: <font color="#d83931">모든 속성 값은 원자 값(atomic value)이다.</font><br><br>
 
 **원자 값** = 더이상 분해할 수 없는 하나의 값<br><br>
 
 
 # 2.2 속성
-- <font color="#d83931">**속성(attribute)**이란 릴레이션의 열(column)이며, 파일의 시스템 필드(field)에 해당</font>된다.
+- **<font color="#d83931">속성(attribute)</font>**이란 릴레이션의 열(column)이며, 파일의 시스템 필드(field)에 해당</font>된다.
 - **속성의 분류**
 	<img src="/images/2024-04-17-DatabaseSystem-Chapter3/Picture7.png" width="800"><br>
 
@@ -134,15 +134,15 @@ $$예) 학생에 대한 정보를 테이블로 표현$$
 	- <font color="#d83931">튜플은 유일하다(중복된 튜플이 존재하지 않음).</font>
 
 ## 2.4 관계 데이터 모델의 키 분류
-- <font color="#d83931">**수퍼키**</font><br>
+- **<font color="#d83931">수퍼키</font>**<br>
 	\: <u>유일성은 특성을 만족하는 속성 또는 속성들의 집합, 최소성은 만족시키지 못함.</u>
-- <font color="#d83931">**후보키**</font><br>
+- **<font color="#d83931">후보키</font>**<br>
 	\: <u>유일성과 최소성을 만족하는 속성 또는 속성들의 집합.</u>
-- <font color="#d83931">**기본키**</font><br>
+- **<font color="#d83931">기본키</font>**<br>
 	\: <u>후보키들 중 하나를 선정해 사용하는 것.</u>
-- <font color="#d83931">**대체키**</font><br>
+- **<font color="#d83931">대체키</font>**<br>
 	\: <u>후보키를 대체할 수 있는 키(키본키로 선택되지 못한 후보키).</u>
-- <font color="#d83931">**외래키**</font><br>
+- **<font color="#d83931">외래키</font>**<br>
 	\: <u>한 릴레이션(R1)에 속한 속성 또는 속성의 집합이 다른 릴레이션(R2)에서 기본 키로 이용되는 것(다른 릴레이션의 기본키를 그대로 참조).</u>
 	<img src="/images/2024-04-17-DatabaseSystem-Chapter3/Picture13.png" width="800"><br>
 	<img src="/images/2024-04-17-DatabaseSystem-Chapter3/Picture14.png" width="800"><br><br>
