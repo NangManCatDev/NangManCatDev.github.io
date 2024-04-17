@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "데이터베이스시스템 Chapter.4"
+title: "데이터베이스시스템 Chapter.3"
 categories: Database
 tag: Database
 typora-root-url: ../
