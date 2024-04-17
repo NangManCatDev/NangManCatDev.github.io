@@ -11,29 +11,56 @@ author_profile: false
 #  - 이전 경로
 ---
 <hr>
-# 관계 데이터 모델
+# 관계 데이터 연산
 <br>
 <br>
 
 # 1. 개요
 <hr>
 - **<font color="#245bdb">질의어(query language)</font>**
-	- <u>DBMS는 검색, 삽입, 삭제, 수정 등의 데이터 조작을 쉽게 하기 위해 질의어 제공</u>
+	- <u><font color="#d83931">DBMS</font>는 검색, 삽입, 삭제, 수정 등의 데이터 조작을 쉽게 하기 위해 <font color="#d83931">질의어 제공</font></u>
 	- 질의어는 <u>대체로 프로그래밍 언어보다 고급 수준</u>(사용자가 기술하고자 하는 내용을 보다 쉽고 간단한 방식으로 표현할 수 있다는 것을 의미)
-	- <font color="#245bdb">절차적 언어(procedural language)와 비절차적 언어(nonprocedural language)</font>
-	- 관계형 데이터베이스에서는 데이터에 대한 검색을 표현하기 위해 <font color="#245bdb">간결하고 형식적인 질의어인 관계대수(relational algebra)와 관계해석(relational calculus)을 제공</font>
+	- <font color="#d83931">절차적 언어(procedural language)와 비절차적 언어(nonprocedural language)</font>
+	- 관계형 데이터베이스에서는 데이터에 대한 검색을 표현하기 위해 <font color="#d83931">간결하고 형식적인 질의어인 관계대수(relational algebra)와 관계해석(relational calculus)을 제공</font>
 	- 관계대수: 절차적 언어, 관계해석: 비절차적 언어
 	- 이 언어들은 데이터베이스에서 사용하는 언어(SQL)에 대해 이론적 기반을 제공함
 	- 관계대수에 대해 주로 설명
 - **<font color="#245bdb">관계 데이터 연산</font>**
-	    \: 1970년 E.F.Codd가 발표한 관계 데이터 모델에 포함된 연산 방법으로, 관계 대수와 관계 해석은 관계 데이터베이스를 처리하는 기능과 능력 면에서 동등하다.
+	    \: 1970년 E.F.Codd가 발표한 관계 데이터 모델에 포함된 연산 방법으로, <u>관계 대수와 관계 해석은 관계 데이터베이스를 처리하는 기능과 능력 면에서 동등</u>하다.
 - **<font color="#245bdb">관계 대수</font>**: 관계 데이터베이스의 릴레이션을 조작하기 위하여 절차를 명시하는 절차 언어(procedural language)
 	1. <u>원하는 정보(what)와 그 정보를 어떻게 유도하는가(how)를 기술하는 절차적 특성</u>을 갖는다.
-	2. 집합과 관계연산에 기초를 두고 있다.
+	2. <u>집합과 관계연산에 기초</u>를 두고 있다.
 	3. 프로그래밍 언어와 유사
-	4. 관계 대수는 릴레이션을 처리하기 위한 연산의 집합으로 피연산자가 릴레이션이고 결과도 릴레이션이다.
-- **<font color="#245bdb">관계 해석</font>**: 릴레이션에 저장된 어떤 데이터룰 조작할 것인지를 명시하는 비절차적 언어(nonprocedural language)
+	4. 관계 대수는 릴레이션을 처리하기 위한 연산의 집합으로 <u>피연산자가 릴레이션이고 결과도 릴레이션</u>이다.
+- **<font color="#245bdb">관계 해석</font>**: <u>릴레이션에 저장된 어떤 데이터룰 조작할 것인지를 명시하는 비절차적 언어(nonprocedural language)</u>
 	1. 수학의 프레디킷 해석에 기반을 두고 있다.
-	2. 얻고자 하는 결과가 무엇(what)인가를 기술하는 비절차적 언어.
+	2. <font color="#245bdb">얻고자 하는 결과가 무엇(what)인가를 기술하는 비절차적 언어.</font>
 	3. 튜플 관계해석과 도메인 관계해석이 있다.
-    <img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture1.png" width="800"><br>
+    <img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture1.png" width="800"><br><br>
+
+
+
+# 2.1 일반 집합 연산
+ - <u>관계 대수의 일반 집합 연산자는 <font color="#245bdb">합집합(Union), 차집합(Difference), 교집합(Intersection), 카디션 프로덕트(Cartesian product)</font></u> 등이다.
+ - 이 중에서 <u>카티션 프로덕트를 제외한 나머지 3가지 연산자는 모두 피연산자인 두 개의 릴레이션이 모두 합병 가능(union-compatible)해야 한다.</u>
+ - <font color="#d83931">합병 가능한(Union-compatible) 릴레이션</font>
+	- <u>릴레이션 A와 B의 릴레이션 스킴이 동일</u>하다는 것.
+	- <u>A와 B는 릴레이션 차수가 동일하고, 각각 대응하는 속성의 도메인이 동일하다는 의미</u>
+	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture2.png" width="800"><br>
+
+## 2.1.1 합집합
+- <font color="#245bdb">합집합(Union)</font> 연산은 <u>합병 가능한 두 개의 릴레이션 A와 B의 합집합(A∪B)을 구하는 것</u>으로, 합집합 연산의 <u>결과는 <font color="#245bdb">릴레이션 A 또는 B에 속하는</font> 튜플들로 구성된 릴레이션</u>이다. 
+	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture3.png" width="800"><br>
+
+## 2.1.2 교집합
+- <font color="#245bdb">교집합(Intersection)</font> 연산은 <u>합병 가능한 두 개의 릴레이션 A와 B의 교집합(A∩B)을 구하는 것</u>으로, 교집합 연산의 <u>결과는 <font color="#245bdb">릴레이션 A와 B에 공통적으로</font> 속하는 튜플들로 구성된 릴레이션</u>이다.
+	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture4.png" width="800"><br>
+
+## 2.1.3 차집합
+- <font color="#245bdb">차집합(DIFFERENCE)</font> 연산은 <u>합병 가능한 두 개의 릴레이션 A와 B의 차집합(A B) 을 구하는 것</u>으로, 차집합(A B) 연산의 <u>결과는 <font color="#245bdb">릴레이션 A에만 있고 B에는 없는</font> 튜플들로 구성된 릴레이션</u>이다.
+	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture5.png" width="800"><br>
+
+## 2.1.4 카디션 프로덕트(교차곱)
+- <font color="#245bdb">카티션 프로덕트(CARTESIAN PRODUCT)</font> 연산은 <u>두 개의 릴레이션 A와 B의 카 티션 프로덕트(A B)를 구하는 것</u>으로, 카티션 프로덕트의 연산 <u>결과는 <font color="#245bdb">A에 속한 각 투플 a에 대하여 B에 속한 튜플 b를 모두 접속(concatenation : )시킨 튜플들(a b)</font> 로 구성된 릴레이션</u>이다.
+	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture6.png" width="800"><br>
+	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture7.png" width="800"><br>
