@@ -53,11 +53,11 @@ author_profile: false
 	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture4.png" width="800"><br>
 
 ## 2.1.2 교집합
-- **<font color="#245bdb">교집합(Intersection)</font>** 연산은 <u>합병 가능한 두 개의 릴레이션 A와 B의 교집합(A∩B)을 구하는 것</u>으로, 교집합 연산의 <u>결과는 <font color="#245bdb">릴레이션 A와 B에 공통적으로</font> 속하는 튜플들로 구성된 릴레이션</u>이다.
+- **<font color="#245bdb">교집합(Intersection)</font>** 연산은 <u>합병 가능한 두 개의 릴레이션 A와 B의 교집합(A∩B)을 구하는 것</u>으로, 교집합 연산의 <u>결과는 <font color="#245bdb">릴레이션 A와 B에 공통적으로</font> 속하는 튜플들로 구성된 릴레이션</u>이다.<br>
 	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture5.png" width="800"><br>
 
 ## 2.1.3 차집합
-- **<font color="#245bdb">차집합(DIFFERENCE)</font>** 연산은 <u>합병 가능한 두 개의 릴레이션 A와 B의 차집합(A B) 을 구하는 것</u>으로, 차집합(A B) 연산의 <u>결과는 <font color="#245bdb">릴레이션 A에만 있고 B에는 없는</font> 튜플들로 구성된 릴레이션</u>이다.
+- **<font color="#245bdb">차집합(DIFFERENCE)</font>** 연산은 <u>합병 가능한 두 개의 릴레이션 A와 B의 차집합(A B) 을 구하는 것</u>으로, 차집합(A B) 연산의 <u>결과는 <font color="#245bdb">릴레이션 A에만 있고 B에는 없는</font> 튜플들로 구성된 릴레이션</u>이다.<br>
 	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture6.png" width="800"><br>
 
 ## 2.1.4 카디션 프로덕트(교차곱)
