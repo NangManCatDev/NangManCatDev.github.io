@@ -37,8 +37,8 @@ author_profile: false
 	2. <font color="#245bdb">얻고자 하는 결과가 무엇(what)인가를 기술하는 비절차적 언어.</font>
 	3. 튜플 관계해석과 도메인 관계해석이 있다.
     <img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture1.png" width="800"><br><br>
-
-
+- **<font color="#d83931">관계 대수 연산자</font>**
+    <img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture2.png" width="800"><br><br>
 
 # 2.1 일반 집합 연산
  - <u>관계 대수의 일반 집합 연산자는 <font color="#245bdb">합집합(Union), 차집합(Difference), 교집합(Intersection), 카디션 프로덕트(Cartesian product)</font></u> 등이다.
@@ -46,21 +46,21 @@ author_profile: false
  - <font color="#d83931">합병 가능한(Union-compatible) 릴레이션</font>
 	- <u>릴레이션 A와 B의 릴레이션 스킴이 동일</u>하다는 것.
 	- <u>A와 B는 릴레이션 차수가 동일하고, 각각 대응하는 속성의 도메인이 동일하다는 의미</u>
-	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture2.png" width="800"><br>
+	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture3.png" width="300"><br>
 
 ## 2.1.1 합집합
 - <font color="#245bdb">합집합(Union)</font> 연산은 <u>합병 가능한 두 개의 릴레이션 A와 B의 합집합(A∪B)을 구하는 것</u>으로, 합집합 연산의 <u>결과는 <font color="#245bdb">릴레이션 A 또는 B에 속하는</font> 튜플들로 구성된 릴레이션</u>이다. 
-	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture3.png" width="800"><br>
+	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture4.png" width="800"><br>
 
 ## 2.1.2 교집합
 - <font color="#245bdb">교집합(Intersection)</font> 연산은 <u>합병 가능한 두 개의 릴레이션 A와 B의 교집합(A∩B)을 구하는 것</u>으로, 교집합 연산의 <u>결과는 <font color="#245bdb">릴레이션 A와 B에 공통적으로</font> 속하는 튜플들로 구성된 릴레이션</u>이다.
-	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture4.png" width="800"><br>
+	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture5.png" width="800"><br>
 
 ## 2.1.3 차집합
 - <font color="#245bdb">차집합(DIFFERENCE)</font> 연산은 <u>합병 가능한 두 개의 릴레이션 A와 B의 차집합(A B) 을 구하는 것</u>으로, 차집합(A B) 연산의 <u>결과는 <font color="#245bdb">릴레이션 A에만 있고 B에는 없는</font> 튜플들로 구성된 릴레이션</u>이다.
-	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture5.png" width="800"><br>
+	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture6.png" width="800"><br>
 
 ## 2.1.4 카디션 프로덕트(교차곱)
 - <font color="#245bdb">카티션 프로덕트(CARTESIAN PRODUCT)</font> 연산은 <u>두 개의 릴레이션 A와 B의 카 티션 프로덕트(A B)를 구하는 것</u>으로, 카티션 프로덕트의 연산 <u>결과는 <font color="#245bdb">A에 속한 각 투플 a에 대하여 B에 속한 튜플 b를 모두 접속(concatenation : )시킨 튜플들(a b)</font> 로 구성된 릴레이션</u>이다.
-	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture6.png" width="800"><br>
 	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture7.png" width="800"><br>
+	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture8.png" width="800"><br>
