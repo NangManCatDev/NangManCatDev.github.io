@@ -109,6 +109,8 @@ author_profile: false
     <img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture12.png" width="800"><br>
     <img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture13.png" width="800"><br>
     <img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture14.png" width="800"><br>
+    <img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture15.png" width="800"><br>
+    <img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture20.png" width="800"><br>
 
 - **<font color="#d83931">(7)조인(JOIN, ▷◁), 조인 연산</font>**
 	- 공통 속성을 중심으로 두 개의 릴레이션을 하나로 합쳐서 새로운 릴레이션
@@ -119,11 +121,10 @@ author_profile: false
 - **세미 조인**
 	- 조인 대상 릴레이션 중 하나를 프로젝트 연산을 수행한 후에 조인을 하는 것
 - **동등 조인(equi join) : 내부조인, 이퀴조인 동의어**
-	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture15.png" width="800"><br>
-- **자연 조인(natural join)**
 	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture16.png" width="800"><br>
-- **외부조인(outer join)**
+- **자연 조인(natural join)**
 	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture17.png" width="800"><br>
+- **외부조인(outer join)**
     <img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture18.png" width="800"><br>
     <img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture19.png" width="800"><br>
 
