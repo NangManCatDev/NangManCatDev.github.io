@@ -41,7 +41,7 @@ author_profile: false
     <img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture2.png" width="800"><br><br>
 
 # 2.1 일반 집합 연산
- - <u>관계 대수의 일반 집합 연산자는 <font color="#245bdb">합집합(Union), 차집합(Difference), 교집합(Intersection), 카디션 프로덕트(Cartesian product)</font></u> 등이다.
+ - 관계 대수의 <u>일반 집합 연산자는 <font color="#245bdb">합집합(Union), 차집합(Difference), 교집합(Intersection), 카디션 프로덕트(Cartesian product)</font></u> 등이다.
  - 이 중에서 <u>카티션 프로덕트를 제외한 나머지 3가지 연산자는 모두 피연산자인 두 개의 릴레이션이 모두 합병 가능(union-compatible)해야 한다.</u>
  - <font color="#d83931">합병 가능한(Union-compatible) 릴레이션</font>
 	- <u>릴레이션 A와 B의 릴레이션 스킴이 동일</u>하다는 것.
@@ -62,5 +62,26 @@ author_profile: false
 
 ## 2.1.4 카디션 프로덕트(교차곱)
 - <font color="#245bdb">카티션 프로덕트(CARTESIAN PRODUCT)</font> 연산은 <u>두 개의 릴레이션 A와 B의 카 티션 프로덕트(A B)를 구하는 것</u>으로, 카티션 프로덕트의 연산 <u>결과는 <font color="#245bdb">A에 속한 각 투플 a에 대하여 B에 속한 튜플 b를 모두 접속(concatenation : )시킨 튜플들(a b)</font> 로 구성된 릴레이션</u>이다.
+	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture21.png" width="800"><br>
+	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture22.png" width="800"><br><br>
+
+
+
+# 2.2 순수 관계 연산
+- 관계 대수의 <u>순수 관계 연산자는 <font color="#245bdb">셀렉트(SELECT), 프로젝트(PROJECT), 조인 (JOIN), 디비전(DIVISION)</font></u> 등이다
+
+## 2.2.1 셀렉트
+- <font color="#245bdb">셀렉트(SELECT)</font> 연산은 <font color="#d83931">릴레이션에서 주어진 조건을 만족하는 투플들을 검색</font>하는 것으로, <u>기호는 그리스 문자의 시그마(σ)</u>를 이용한다.
 	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture7.png" width="800"><br>
+
+## 2.2.2 프로덕트
+- <font color="#245bdb">프로젝트(PROJECT)</font> 연산은 <font color="#d83931">릴레이션에서 주어진 조건을 만족하는 속성들을 검색</font> 하는 것으로, <u>기호는 그리스 문자의 파이(π)</u>를 이용한다. 릴레이션에서 속성은 열(column)을 가리키므로 <font color="#d83931">프로젝트를 수직적 연산(vertical operation)</font>이라고도 한다
 	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture8.png" width="800"><br>
+
+## 2.2.3 조인
+- <font color="#245bdb">조인(JOIN)</font> 연산은 <font color="#d83931">두 개의 릴레이션 A와 B에서 공통된 속성을 연결하는 것</font>이다. 이와 같은 조인 연산은 <u>하나의 릴레이션으로는 원하는 결과를 얻을 수 없을 경우, 두 개이상의 릴레이션을 공통 속성으로 연결하여 원하는 결과를 포함한 릴레이션을 생성할 때 이용</u>한다.
+	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture9.png" width="800"><br>
+## 2.2.4 디비전
+- <u>두 개의 릴레이션 A와 B에 대한 <font color="#245bdb">디비전(DIVISION)</font> 연산인 A ÷ B의 결과는</u> 다음과 같다. <u>나누어지는 릴레이션인 A는 릴레이션 B의 모든 내용을 포함한 것이 결과 릴레이션이 된다.</u>
+- <font color="#d83931">A의 차수가 (m+n)이고 B의 차수가 n이면, A÷B의 차수는 m이 된다.</font>
+	<img src="/images/2024-04-17-DatabaseSystem-Chapter4/Picture10.png" width="800"><br>
