@@ -43,10 +43,10 @@ author_profile: false
 - **<font color="#d83931">릴레이션 스킴</font>**
 	- 릴레이션 이름(R)과 릴레이션을 구성하는 속성 이름(A1, A2, A3, ... An)들의 합으로 표현하며, R(A1, A2, A3, ... An)과 같이 표현한다.
 - **<font color="#d83931">릴레이션 인스턴스</font>**
-	- <u>어느 한 시점에 릴레이션 R에 포함되는 투플(tuple)의 집합을 의미하는 것으로 실제 값이라고도 함.</u>
+	- <u>어느 한 시점에 릴레이션 R에 포함되는 튜플(tuple)의 집합을 의미하는 것으로 실제 값이라고도 함.</u>
 	<img src="/images/2024-04-17-DatabaseSystem-Chapter3/Picture5.png" width="800"><br>
 
-- **관계형 데이터 모델(relational data model)**은 <font color="#d83931">테이블 형식을 이용하여 데이터를 정의하고 설명한 모델</font>
+- **관계 데이터 모델(relational data model)**은 <font color="#d83931">테이블 형식을 이용하여 데이터를 정의하고 설명한 모델</font>
 	<img src="/images/2024-04-17-DatabaseSystem-Chapter3/Picture6.png" width="800"><br>
 $$예) 학생에 대한 정보를 테이블로 표현$$
 1. **<font color="#d83931">속성(attribute)</font>**<br>
@@ -65,10 +65,10 @@ $$예) 학생에 대한 정보를 테이블로 표현$$
 	\: <font color="#245bdb">릴레이션에서 튜플을 유일하게 식별할 수 있는 속성이나 속성의 집합</font>을 말한다.<br>
 
 ## 2.1.2 릴레이션 특성
-- **<font color="#d83931">투플의 유일성</font>**<br>
-	\: <font color="#d83931">한 릴레이션에는 중복된 투플이 존재하지 않는다.</font>
-- **<font color="#d83931">투플의 무순서</font>**<br>
-	\: <font color="#d83931">한 릴레이션에 저장된 투플들 간에는 순서가 없다.</font>
+- **<font color="#d83931">튜플의 유일성</font>**<br>
+	\: <font color="#d83931">한 릴레이션에는 중복된 튜플이 존재하지 않는다.</font>
+- **<font color="#d83931">튜플의 무순서</font>**<br>
+	\: <font color="#d83931">한 릴레이션에 저장된 튜플들 간에는 순서가 없다.</font>
 - **<font color="#d83931">속성의 무순서</font>**<br>
 	\: <font color="#d83931">한 릴레이션을 구성하는 속성들 간에는 순서가 없다.</font>
 - **<font color="#d83931">속성의 원자성</font>**<br>
