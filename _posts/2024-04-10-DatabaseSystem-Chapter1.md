@@ -143,7 +143,7 @@ author_profile: false
 <br>
 
 ## 5.3 분산 데이터베이스 vs 분산처리
-<img src="/images/2024-04-10-DatabaseSystem-Chapter1/Picture7.png" width="800">
+<img src="/images/2024-04-10-DatabaseSystem-Chapter1/Picture7.png" width="800"><br>
 **<font color="#d83931">현재는 분산 데이터 베이스 시스템을 사용하는 추세로 가고 있다.</font>**
 - **분산 데이터베이스 적용 시 장단점**
 	- **<font color="#d83931">장점</font>**

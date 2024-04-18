@@ -19,7 +19,7 @@ author_profile: false
 <hr>
 데이터 베이스를 관점에 따라 3개 계층으로 분리하여 <font color="#245bdb">데이터베이스 사용자에게 내부적으로 복잡한 데이터베이스 구조를 단순화시킨 관점</font>을 제공하는 것.
 
-1. **<font color="#d83931">외부단계(external level) : 외부 스키마(external schema)** 또는 서브 스키마</font>**
+1. **<font color="#d83931">외부단계(external level) : 외부 스키마(external schema) 또는 서브 스키마</font>**
 	- <u>일반 사용자나 응용 프로그래머가 사용</u>하는 스키마로, <u>각각의 데이터베이스를 이용하는 각 개인의 관점 또는 사용자 뷰(user view)를 표현</u>하는 단계
 2. **<font color="#d83931">개념단계(conceptual level) : 개념 스키마 또는 단순히 스키마라고 함</font>**
 	- <u>전체적인 데이터 구조</u>로 <u>범 기관적인 관점에서 데이터베이스를 정의</u>한 것
