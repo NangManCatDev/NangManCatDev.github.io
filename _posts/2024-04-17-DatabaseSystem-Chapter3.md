@@ -78,7 +78,7 @@ $$예) 학생에 대한 정보를 테이블로 표현$$
 
 
 # 2.2 속성
-- **<font color="#245bdb">속성(attribute)</font>**이란 릴레이션의 열(column)이며, 파일의 시스템 필드(field)에 해당</font>된다.
+- **<font color="#245bdb">속성(attribute)</font>**이란 릴레이션의 열(column)이며, 파일의 시스템 필드(field)에 해당된다.
 - **속성의 분류**
 	<img src="/images/2024-04-17-DatabaseSystem-Chapter3/Picture7.png" width="800"><br>
 
@@ -135,7 +135,7 @@ $$예) 학생에 대한 정보를 테이블로 표현$$
 
 # 2.4 관계 데이터 모델의 키 분류
 - **<font color="#245bdb">수퍼키</font>**<br>
-	\: <u>유일성은 특성을 만족하는 속성 또는 속성들의 집합, 최소성은 만족시키지 못함.</u>
+	\: <u>유일성의 특성을 만족하는 속성 또는 속성들의 집합, 최소성은 만족시키지 못함.</u>
 - **<font color="#245bdb">후보키</font>**<br>
 	\: <u>유일성과 최소성을 만족하는 속성 또는 속성들의 집합.</u>
 - **<font color="#245bdb">기본키</font>**<br>
