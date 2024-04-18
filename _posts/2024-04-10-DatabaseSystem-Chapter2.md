@@ -143,7 +143,7 @@ author_profile: false
 	- 사용자 애플리케이션과 데이터베이스 간의 인터페이스 역할을 하는 프로그램
 - **<font color="#d83931">데이터베이스 관리 시스템의 필수기능</font>**
 	- **<font color="#d83931">정의 기능</font>** <br>
-		\: 외부 스키마, 개념 스키마, 내부 스키마 그리고 이들과 연관된 모든 사상이 가능하도록 <font color="#245bdb">DDL(Data Definition Language)를 지원하고, DLL 컴파일러를 가져야 함</font>
+		\: 외부 스키마, 개념 스키마, 내부 스키마 그리고 이들과 연관된 모든 사상이 가능하도록 <font color="#245bdb">DDL(Data Definition Language)를 지원하고, DDL 컴파일러를 가져야 함</font>
 	- **<font color="#d83931">조작 기능</font>** <br>
 		\: SELECT(검색), INSERT(삽입), DELETE(삭제), UPDATE(수정) 연산을 위해 <font color="#245bdb">DML(Data Manipulation Language)를 지원하며, DML 컴파일러를 가져야 함</font>
 	- **<font color="#d83931">제어 기능</font>** <br>
