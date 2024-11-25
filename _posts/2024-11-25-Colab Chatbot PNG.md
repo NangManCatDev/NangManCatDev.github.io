@@ -14,11 +14,7 @@ author_profile: false
 
 
 
-
-
-
-![RAG](/images/2024-11-25-Colab_Chatbot_PNG/RAG.jpg)
-![RAG2](/images/2024-11-25-Colab_Chatbot_PNG/RAG2.jpg)
-![RAG3](/images/2024-11-25-Colab_Chatbot_PNG/RAG3.jpg)
-
-2024-11-26 Posted
+<img src="/images/2024-11-25-Colab_Chatbot_PNG/RAG.jpg" width="900"><br><br>
+<img src="/images/2024-11-25-Colab_Chatbot_PNG/RAG2.jpg" width="900"><br><br>
+<img src="/images/2024-11-25-Colab_Chatbot_PNG/RAG3.jpg" width="900"><br><br>
+2024-11-25 Posted
