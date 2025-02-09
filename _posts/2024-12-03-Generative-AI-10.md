@@ -12,58 +12,26 @@ author_profile: false
 ---
 <br>
 
-# ✨ Prolog_LLM 통합 프로젝트 ✨
+# <font color="#336699">웹 서버와 FTP 서버</font>
+## <font color="#003366">APM의 개요와 설치</font>
+### <font color="#003366">리눅스의 웹 서버</font>
+리눅스를 많이 활용하는 분야 중 하나는 웹 서버 운영이다. 우분투에는 웹 서버 소프트웨어 중 가장 안정적이고 유명한 아파치(Apache) 웹 서버가 포함되어 있으며, 웹 프로그래밍 언어인 PHP와 MySQL 데이터베이스도 지원한다. 이 세 가지는 APM(Apache, PHP, MySQL)이라고 부르며, 리눅스 환경에서 사용할 때는 LAPM(Linux, Apache, PHP, MySQL)이라고 부른다.<br>
 
-## 🚀 사전 설치 (Linux 기준)
-```bash
-sudo apt install swi-prolog
-curl -fsSL https://ollama.com/install.sh | sh
-```
+#### <font color="#d83931">실습 13-1.</font> <b>apt-get 명령어로 웹 서버 설치하기</b>
+{% include video id="fYjRGJHVkHQ?si" provider="youtube" %}<br><br>
 
----
+## <font color="#003366">XE를 활용한 웹 사이트 구축</font>
+### <font color="#003366">XE 설치와 운영</font>
+APM을 설치했으니 회사나 기관의 웹 사이트를 구축해보자. 여기서는 XE(XpressEngine)를 활용하려 한다. XE는 게시판, 자료실은 물론이고 블로그, 카페, 회원 관리, 플래닛 등의 기능도 포함되어 있으므로 잘 활용하면 추가 비용을 들이지 않고도 웬만한 기능을 갖춘 고급 웹 사이트를 구축할 수 있다.<br>
 
-## 🔧 프로젝트 개요
-이 프로젝트는 Prolog와 **sLLM**을 통합하여 자연어 이해를 통해 논리적 추론 작업을 수행하는 것을 목표로 합니다. 프로젝트의 핵심 파일은 run.py이며, Prolog 및 sLLM과의 상호작용을 담당합니다. run.py에서 호출되는 주요 Python 스크립트와 함수들로 구성되어 있습니다.
+#### <font color="#d83931">실습 13-2.</font> <b>XE 설치하고 운영하기</b>
+{% include video id="BnapLmTg-kI?si" provider="youtube" %}<br><br>
 
----
+## <font color="#003366">FTP 서버 설치와 운영</font>
+### <font color="#003366">vsftpd, proftpd의 설치와 운영</font>
+파일 전송 서비스인 FTP(File Transfer Protocol)는 예전에는 널리 사용되었으나 FTP의 고유 기능인 파일 전송을 웹에서도 쉽게 할 수 있어 인기가 많이 떨어졌다. 하지만 성능이 매우 뛰어나 파일 전송이 목적인 사이트에서는 이 서비스를 많이 사용한다. 여기서는 우분투에서 기본적으로 제공하는 vsftpd(Very Secure FTPD)와 proftpd(Pro FTPD)를 설치하고 운영해본다.<br>
+vsftpd는 리눅스와 유닉스 완경에서 보안성과 성능이 우수한 FTP 서버로, 설치하고 운영하기가 쉬워 많이 이용된다. http://vsftpd.beasts.rog/에서 관련 내용을 참고하고 소스 파일을 다운로드 할 수 있다.<br>
+proftpd는 대형 사이트에서 오랫동안 인기가 많았던 FTP 서버이다. proftpd는 vsftpd와 동일한 역할을 하지만 설정 방법이 조금 다르다.
 
-## 🗂 프로젝트 구조
-### 현재 파일
-- **`run.py`**: Prolog-LLM 통합의 핵심 실행 파일로, 주요 논리 실행 및 데이터 처리를 담당.
-- **호출되는 스크립트 및 함수**:
-  - 📜 **`prolog_executor.py`**: Prolog 쿼리를 실행하고 결과를 반환.
-  - 🔧 **`query_to_prolog.py`**: 자연어 쿼리를 Prolog 형식으로 변환.
-  - 💿 **`vectorstore.py`**: 데이터 저장 및 관리.
-  - ♻️ **`vectorstore_to_prolog.py`**: 벡터 데이터를 Prolog 쿼리 형식으로 변환.
-  - ♻️ **`vectorstore_to_NEO.py`**: 벡터 데이터를 NEO 쿼리 형식으로 변환.
-
----
-
-## 🚀 진행 상황
-- **코드 구현**:
-  - Prolog-LLM 통합을 위해 `run.py`에서 기본 개발 구조 구현 완료.
-  - Prolog 쿼리 실행 및 결과 반환 기능 정상 동작 확인.
-  - NEO Knowledge Base 로도 변경(기존 Prolog KB를 NEO에서도 활용할 수 있는 데이터 구조 및 구현 방식 설계 및 구현) -> 현재 구현중
-- **데이터 관리**:
-  - 벡터 저장소와 Prolog 간의 데이터 변환 및 통합 완료.
-
----
-
-## 🔖 다음 단계
-1. **`run.py`** 와 관련 스크립트의 테스트 케이스 확장.
-2. **`ReadMe.md`** 파일에 run.py 사용법과 주요 기능 설명 추가.
-
----
-
-## 📺 구동 영상
-프로젝트의 실행 및 주요 기능을 확인하려면 아래의 YouTube 영상을 참고하세요:
-
-[![YouTube 구동 영상](https://img.youtube.com/vi/sl6UYa5MhHA/0.jpg)](https://youtu.be/sl6UYa5MhHA?si=3BhPHzA2u0EhexMp)
-- **링크:** [YouTube 구동 영상](https://youtu.be/sl6UYa5MhHA?si=3BhPHzA2u0EhexMp)
-
----
-
-## 📌 유지 관리자
-- **NangManCatDev**
-- **저장소:** [Prolog_llm](https://github.com/NangManCatDev/Prolog_llm)
-
+#### <font color="#d83931">실습 13-2.</font> <b>vsftpd, proftpd 설치하고 운영하기</b>
+{% include video id="1nXhJVU6wFM?si" provider="youtube" %}<br><br>
