@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "AI 프로젝트 개발일지"
+title: "AI 프로젝트 개발일지dd"
 categories: develop-diary
 tag: AI
 typora-root-url: ../
