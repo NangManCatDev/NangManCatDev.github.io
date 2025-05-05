@@ -1,0 +1,7 @@
+title: Nangman Research Log
+markdown: kramdown
+theme: minima
+collections:
+  pages:
+    output: true
+    permalink: /:name/
