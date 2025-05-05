@@ -5,68 +5,222 @@
   <meta charset="UTF-8" />
   <title>test1 | Nangman's Research Lab</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary-color: #6c77dd;
+      --secondary-color: #7895cb;
+      --accent-color: #a0bfe0;
+      --light-color: #c5dff8;
+      --dark-color: #121620;
+      --dark-color-alt: #162032;
+      --text-color: #e0e6f0;
+      --text-light: #a0aabf;
+      --bg-color: #0f1319;
+      --bg-gradient: linear-gradient(135deg, #0f1319 0%, #16202f 100%);
+      --card-bg: #1a212e;
+      --card-bg-gradient: linear-gradient(135deg, #191f2a 0%, #1e2534 100%);
+      --header-bg: rgba(15, 19, 25, 0.95);
+      --border-color: #2a3548;
+      --shadow-color: rgba(0, 0, 0, 0.4);
+      --hover-color: #232e42;
+      --header-height: 70px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      color: var(--text-color);
+      background: var(--bg-gradient);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: var(--light-color);
+    }
+
+    /* 헤더 및 네비게이션 */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(to right, rgba(15, 19, 25, 0.95), rgba(20, 30, 45, 0.95));
+      box-shadow: 0 2px 10px var(--shadow-color);
+      z-index: 1000;
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      padding: 0 2rem;
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* 스크롤에 따른 헤더 상태 변화 */
+    .site-header.shrink {
+      height: 50px;
+      background: linear-gradient(to right, rgba(10, 15, 20, 0.98), rgba(15, 25, 40, 0.98));
+    }
+
+    .site-header.hidden {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+
+    .site-header.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    .nav-menu {
+      margin-left: auto;
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-menu li {
+      margin-left: 1.5rem;
+    }
+
+    .nav-menu a {
+      color: var(--text-color);
+      font-weight: 500;
+      position: relative;
+    }
+
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary-color);
+      transition: width 0.3s;
+    }
+
+    .nav-menu a:hover::after {
+      width: 100%;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      cursor: pointer;
+      margin-left: auto;
+    }
+
+    .mobile-menu-btn span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px 0;
+      background-color: var(--primary-color);
+      transition: all 0.3s;
+    }
+
+    /* 히어로 섹션 */
     .hero {
       position: relative;
-      background: url('/assets/images/header-bg.jpg') center/cover no-repeat;
-      padding: 4rem 2rem 6rem;
+      background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/assets/images/header-bg.jpg') center/cover no-repeat;
+      padding: calc(4rem + var(--header-height)) 2rem 2rem;
       color: white;
       text-align: center;
     }
 
-    .hero h2 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
+    .hero-content {
+      margin-bottom: 3.5rem;
     }
 
+    .hero h2 {
+      font-size: 3.2rem;
+      margin-bottom: 1.2rem;
+      font-weight: 700;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero p {
+      font-size: 1.4rem;
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0.9;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    /* 캐러셀 스타일 */
     .carousel-container {
       position: relative;
       max-width: 1100px;
-      margin: 0 auto;
-      perspective: 1200px;
-      /* 3D 효과를 위한 원근감 추가 */
+      margin: 8rem auto 0;
+      perspective: 1500px;
       display: flex;
       justify-content: center;
+      overflow: visible;
+      z-index: 10;
+      height: 180px;
+      padding: 0 20px;
     }
 
     .carousel {
       position: relative;
       width: 100%;
-      max-width: 1200px;
-      height: 32vw;
-      max-height: 340px;
-      min-height: 200px;
+      max-width: 1100px;
+      height: 180px;
+      min-height: 160px;
       overflow: visible;
-      /* 원형 회전을 위해 overflow를 visible로 변경 */
       margin: 0 auto;
       box-sizing: border-box;
       display: flex;
       justify-content: center;
       align-items: center;
+      -webkit-perspective: 1500px;
+      perspective: 1500px;
     }
 
     .carousel-track {
       position: relative;
       width: 100%;
       height: 100%;
+      -webkit-transform-style: preserve-3d;
       transform-style: preserve-3d;
-      /* 3D 변환 유지 */
       display: flex;
       justify-content: center;
       align-items: center;
+      -webkit-perspective: 1500px;
+      perspective: 1500px;
     }
 
     .carousel-card {
       position: absolute;
-      width: calc(20% - 2vw);
-      /* 원래 크기로 복원 (16% → 20%) */
-      height: 90%;
-      margin: 0 1vw;
-      background: rgba(30, 30, 30, 0.85);
+      width: 120px;
+      height: 150px;
+      margin: 0 2px;
+      background: linear-gradient(145deg, var(--dark-color) 0%, var(--dark-color-alt) 100%);
       border-radius: 12px;
       overflow: hidden;
       color: white;
       text-decoration: none;
+      -webkit-transition:
+        transform 0.4s cubic-bezier(.4, 2.2, .2, 1),
+        opacity 0.4s,
+        filter 0.4s;
       transition:
         transform 0.4s cubic-bezier(.4, 2.2, .2, 1),
         opacity 0.4s,
@@ -75,91 +229,709 @@
       filter: blur(2px);
       transform-origin: center center;
       box-sizing: border-box;
+      -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
-      /* 성능 최적화 */
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+      box-shadow: 0 8px 30px var(--shadow-color);
+      border: 1px solid var(--border-color);
     }
 
     .carousel-card.active {
       opacity: 1;
-      transform: scale(1.1) translateZ(150px);
-      /* Z축으로 돌출 효과 */
+      -webkit-transform: scale(1.08) translateZ(60px);
+      transform: scale(1.08) translateZ(60px);
       filter: blur(0);
       z-index: 10;
+      border-color: rgba(100, 150, 255, 0.3);
     }
 
     .carousel-card img {
       width: 100%;
-      height: 55%;
+      height: 50%;
       object-fit: cover;
     }
 
     .carousel-card .text {
-      padding: 1rem;
+      padding: 0.6rem;
     }
 
     .carousel-card h3 {
-      margin: 0 0 0.5rem;
-      font-size: 1.1rem;
+      margin: 0 0 0.3rem;
+      font-size: 0.9rem;
     }
 
     .carousel-card small {
       color: #ccc;
+      font-size: 0.75rem;
     }
 
     .nav-btn {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(20, 20, 20, 0.5);
+      background: linear-gradient(145deg, rgba(30, 45, 70, 0.85), rgba(60, 90, 140, 0.85));
       color: white;
       border: none;
-      font-size: 2rem;
+      font-size: 1.8rem;
       cursor: pointer;
-      padding: 0 0.8rem;
-      z-index: 20;
+      padding: 0;
+      z-index: 30;
       border-radius: 50%;
-      /* 둥근 버튼 */
-      width: 50px;
-      height: 50px;
+      width: 42px;
+      height: 42px;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: all 0.3s;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(100, 150, 255, 0.3);
+    }
+
+    .nav-btn:hover {
+      background: linear-gradient(145deg, rgba(60, 90, 140, 0.9), rgba(100, 150, 200, 0.9));
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
     }
 
     .nav-btn.left {
-      left: 0;
+      left: -10px;
     }
 
     .nav-btn.right {
-      right: 0;
+      right: -10px;
+    }
+    
+    @media (max-width: 600px) {
+      .nav-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 1.6rem;
+      }
+      
+      .nav-btn.left {
+        left: -8px;
+      }
+      
+      .nav-btn.right {
+        right: -8px;
+      }
     }
 
+    /* 메인 콘텐츠 */
+    main {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 2rem;
+    }
+
+    /* 메인 콘텐츠 영역 */
+    .main-content {
+      width: 100%;
+    }
+
+    /* 사이드바 */
+    .sidebar {
+      width: 100%;
+    }
+
+    /* 프로필 카드 */
+    .profile-card {
+      background: var(--card-bg-gradient);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px var(--shadow-color);
+      margin-bottom: 2rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .profile-header {
+      background: linear-gradient(135deg, rgba(30, 40, 60, 0.7), rgba(50, 70, 100, 0.7));
+      padding: 1.5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .profile-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid var(--primary-color);
+      margin: 0 auto 0.8rem;
+      overflow: hidden;
+    }
+
+    .profile-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      color: var(--text-color);
+    }
+
+    .profile-title {
+      font-size: 0.9rem;
+      color: var(--accent-color);
+      margin-bottom: 0;
+    }
+
+    .profile-body {
+      padding: 1.5rem;
+    }
+
+    .profile-bio {
+      margin-bottom: 1.2rem;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--text-light);
+    }
+
+    .profile-stats {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-count {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 0.2rem;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+
+    .profile-links {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .profile-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .profile-links a {
+      display: flex;
+      align-items: center;
+      color: var(--text-color);
+      font-size: 0.95rem;
+      transition: all 0.3s;
+    }
+
+    .profile-links a:hover {
+      color: var(--primary-color);
+      transform: translateX(5px);
+    }
+
+    .profile-links a svg {
+      margin-right: 8px;
+      width: 18px;
+      height: 18px;
+    }
+
+    /* 최근 활동 섹션 */
+    .recent-activity {
+      background: var(--card-bg-gradient);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px var(--shadow-color);
+      border: 1px solid var(--border-color);
+    }
+
+    .recent-activity-header {
+      background: linear-gradient(135deg, rgba(30, 40, 60, 0.7), rgba(50, 70, 100, 0.7));
+      padding: 1rem 1.5rem;
+    }
+
+    .recent-activity-header h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: var(--text-color);
+    }
+
+    .activity-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .activity-item {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .activity-item:last-child {
+      border-bottom: none;
+    }
+
+    .activity-link {
+      display: block;
+      color: var(--text-color);
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+      transition: all 0.3s;
+    }
+
+    .activity-link:hover {
+      color: var(--primary-color);
+    }
+
+    .activity-meta {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+    }
+
+    .activity-date {
+      margin-right: 0.8rem;
+    }
+
+    .activity-type {
+      color: var(--accent-color);
+    }
+
+    /* 콘텐츠 섹션 스타일 */
+    .content-section {
+      margin-bottom: 4rem;
+    }
+
+    .content-box {
+      background: var(--card-bg-gradient);
+      border-radius: 16px;
+      box-shadow: 0 8px 30px var(--shadow-color);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .content-box:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid var(--accent-color);
+      display: inline-block;
+    }
+
+    /* 포스트 그리드 */
+    .post-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .post-card {
+      background: linear-gradient(145deg, var(--dark-color) 0%, var(--dark-color-alt) 100%);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px var(--shadow-color);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid var(--border-color);
+    }
+
+    .post-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px var(--shadow-color);
+      background: linear-gradient(145deg, #1a2233 0%, #222e45 100%);
+    }
+
+    .post-thumb {
+      height: 180px;
+      overflow: hidden;
+    }
+
+    .post-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .post-card:hover .post-thumb img {
+      transform: scale(1.05);
+    }
+
+    .post-content {
+      padding: 1.2rem;
+    }
+
+    .post-title {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--text-color);
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .post-meta .date {
+      margin-right: 1rem;
+    }
+
+    .post-excerpt {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .read-more {
+      display: inline-block;
+      color: var(--primary-color);
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    /* 푸터 */
+    .site-footer {
+      background: linear-gradient(to bottom, var(--dark-color) 0%, #0d121e 100%);
+      color: white;
+      padding: 1.5rem 0 1rem;
+      margin-top: 2rem;
+      position: relative;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .footer-section {
+      padding: 0.5rem 0;
+    }
+
+    .footer-logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-logo:before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+      background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+      border-radius: 50%;
+    }
+
+    .footer-section p {
+      font-size: 0.85rem;
+      line-height: 1.4;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .footer-section h3 {
+      color: var(--accent-color);
+      margin-bottom: 0.8rem;
+      font-size: 1rem;
+      position: relative;
+      padding-bottom: 0.4rem;
+    }
+
+    .footer-section h3:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 30px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    }
+
+    .footer-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      transition: all 0.3s;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-links a:hover {
+      color: white;
+      transform: translateX(3px);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(100, 150, 255, 0.1));
+      color: white;
+      transition: all 0.3s;
+    }
+
+    .social-links a:hover {
+      background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+      transform: translateY(-3px);
+    }
+
+    .social-links svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .back-to-top {
+      position: absolute;
+      right: 2rem;
+      bottom: 3.5rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 3px 10px var(--shadow-color);
+    }
+
+    .back-to-top:hover {
+      background: linear-gradient(145deg, var(--secondary-color), var(--primary-color));
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 1rem;
+      margin-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.75rem;
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .back-to-top {
+        right: 1rem;
+        bottom: 5rem;
+      }
+    }
+
+    /* 반응형 */
     @media (max-width: 900px) {
+      main {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .main-content,
+      .sidebar {
+        width: 100%;
+      }
+
       .carousel-card {
-        width: calc(33.333% - 2vw);
-        /* 원래 반응형 크기로 복원 */
+        width: 130px;
+        height: 170px;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .site-header {
+        padding: 0 1rem;
+      }
+
+      .nav-menu {
+        position: fixed;
+        top: var(--header-height);
+        right: -100%;
+        width: 70%;
+        height: calc(100vh - var(--header-height));
+        background: linear-gradient(135deg, var(--bg-color) 0%, var(--dark-color-alt) 100%);
+        flex-direction: column;
+        padding: 2rem;
+        box-shadow: -5px 0 15px var(--shadow-color);
+        transition: right 0.3s ease-in-out;
+      }
+
+      .nav-menu.active {
+        right: 0;
+      }
+
+      .nav-menu li {
+        margin: 1rem 0;
+      }
+
+      .nav-menu a {
+        color: var(--text-color);
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .hero {
+        padding: calc(3.5rem + var(--header-height)) 1rem 1.5rem;
+      }
+
+      .hero h2 {
+        font-size: 2.6rem;
+      }
+      
+      .hero p {
+        font-size: 1.2rem;
+      }
+      
+      .hero-content {
+        margin-bottom: 3rem;
+      }
+
+      .post-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+      
+      .content-box {
+        padding: 1.5rem 1rem;
+        border-radius: 12px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .back-to-top {
+        right: 1rem;
+        bottom: 5rem;
       }
     }
 
     @media (max-width: 600px) {
       .carousel-card {
-        width: calc(80% - 2vw);
-        margin: 0 2vw;
+        width: 100px;
+        height: 130px;
+        margin: 0 2px;
       }
 
       .carousel {
-        height: 60vw;
-        min-height: 180px;
+        height: 160px;
+        min-height: 140px;
       }
+
+      .carousel-container {
+        height: 170px;
+      }
+
+      .section-title {
+        font-size: 1.4rem;
+      }
+
+      .post-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .hero-content {
+        margin-bottom: 2.5rem;
+      }
+    }
+
+    /* 기본 제공 카드 스타일 */
+    .fallback-card {
+      display: none; /* 기본적으로는 숨김 */
+    }
+    
+    /* posts가 없을 경우 기본 카드 표시 */
+    .carousel-track:empty + .fallback-card {
+      display: block;
     }
   </style>
 
   <!-- 스크립트를 head에 넣어 빠르게 로드 -->
   <script>
-    // 즉시 실행 함수로 변수 스코프 제한
-    (function () {
-      // 페이지 로드 전에 필요한 변수 미리 선언
-      let track, carousel, cards = [], cardCount = 0;
+    // 캐러셀 초기화 및 동작 
+    (function() {
+      // 캐러셀 변수 선언
+      let carousel = null; // 캐러셀 요소
+      let track = null; // 캐러셀 트랙 요소
+      let cards = []; // 카드 요소 배열
+      let cardCount = 0; // 카드 개수
       let carouselWidth, carouselHeight;
       let currentIndex = 0; // 현재 활성화된 카드 인덱스
       let animationId = null; // 애니메이션 ID
@@ -171,38 +943,137 @@
 
       // DOM이 로드되자마자 즉시 실행
       function init() {
+        // 캐러셀 요소를 찾습니다
         carousel = document.querySelector('.carousel');
-        if (!carousel) return; // 캐러셀이 없는 페이지에서 오류 방지
+        if (!carousel) {
+          console.warn('캐러셀 요소를 찾을 수 없습니다.');
+          return; // 캐러셀이 없는 페이지에서 오류 방지
+        }
 
         track = document.querySelector('.carousel-track');
-        if (!track) return;
+        if (!track) {
+          console.warn('캐러셀 트랙 요소를 찾을 수 없습니다.');
+          return;
+        }
 
         // 원본 카드 저장
         const originalCards = Array.from(document.querySelectorAll('.carousel-card'));
-        cardCount = originalCards.length;
-        if (cardCount === 0) return;
+        const fallbackCards = Array.from(document.querySelectorAll('.fallback-card'));
+        
+        console.log('원본 카드 찾기:', originalCards.length - fallbackCards.length, '개 발견');
+        console.log('fallback 카드 찾기:', fallbackCards.length, '개 발견');
+        
+        // 원본 카드가 없고 fallback 카드만 있는 경우
+        if (originalCards.length === fallbackCards.length && fallbackCards.length > 0) {
+          console.log('원본 카드가 없어 fallback 카드를 사용합니다.');
+          fallbackCards.forEach(card => {
+            card.style.display = 'block';
+          });
+          cardCount = fallbackCards.length;
+        } 
+        // 원본 카드가 있는 경우
+        else if (originalCards.length > fallbackCards.length) {
+          console.log('원본 카드를 사용합니다.');
+          cardCount = originalCards.length - fallbackCards.length;
+          // fallback 카드는 숨깁니다
+          fallbackCards.forEach(card => {
+            card.style.display = 'none';
+          });
+        }
+        // 카드가 전혀 없는 경우
+        else {
+          console.warn('기본 카드를 생성합니다.');
+          
+          // 예시 데이터로 카드 3개 생성
+          const dummyData = [
+            { title: '테스트 카드 1', date: '2023-04-20', image: '/assets/thumbs/default.png' },
+            { title: '테스트 카드 2', date: '2023-04-21', image: '/assets/thumbs/default.png' },
+            { title: '테스트 카드 3', date: '2023-04-22', image: '/assets/thumbs/default.png' }
+          ];
+          
+          dummyData.forEach(item => {
+            const card = document.createElement('a');
+            card.className = 'carousel-card';
+            card.href = '#';
+            card.innerHTML = `
+              <img src="${item.image}" alt="thumbnail">
+              <div class="text">
+                <h3>${item.title}</h3>
+                <small>${item.date}</small>
+              </div>
+            `;
+            track.appendChild(card);
+          });
+          
+          cardCount = dummyData.length;
+        }
+        
+        if (cardCount === 0) {
+          console.error('카드를 생성할 수 없습니다.');
+          return;
+        }
+        
+        console.log('캐러셀 초기화: 카드 ' + cardCount + '개 발견');
 
         // 캐러셀 크기 계산
         carouselWidth = carousel.offsetWidth;
         carouselHeight = carousel.offsetHeight;
+        console.log('캐러셀 크기:', carouselWidth, 'x', carouselHeight);
 
-        // 타원 반경 계산 - 캐러셀 중앙을 기준으로 함
-        radiusX = carouselWidth * 0.4;
+        // 타원 반경 계산 - 브라우저 크기에 따라 동적 계산
+        // 기본값 설정 
+        radiusX = Math.min(carouselWidth * 0.45, 450);
         radiusY = carouselHeight * 0.1;
+        
+        // 브라우저 너비에 따라 카드 간 거리 조정
+        const windowWidth = window.innerWidth;
+        if (windowWidth <= 600) {
+          radiusX = Math.min(carouselWidth * 0.4, 350);
+        } else if (windowWidth <= 900) {
+          radiusX = Math.min(carouselWidth * 0.43, 400);
+        }
 
         // 트랙 내용 비우기
         track.innerHTML = '';
 
         // 중앙 기준점 설정을 위한 스타일 추가
         track.style.position = 'relative';
+        track.style.transformStyle = 'preserve-3d';
+        track.style.webkitTransformStyle = 'preserve-3d';
 
         // 카드 생성 및 배치
-        originalCards.forEach((card, i) => {
-          const clone = card.cloneNode(true);
-          clone.style.position = 'absolute';
-          track.appendChild(clone);
-          cards.push(clone);
-        });
+        cards = [];
+
+        // 원본 카드와 fallback 카드를 구분하여 처리
+        if (originalCards.length > fallbackCards.length) {
+          // 원본 카드만 복제 (fallback 제외)
+          originalCards.filter(card => !card.classList.contains('fallback-card')).forEach((card, i) => {
+            const clone = card.cloneNode(true);
+            clone.style.position = 'absolute';
+            track.appendChild(clone);
+            cards.push(clone);
+          });
+        } else if (fallbackCards.length > 0) {
+          // fallback 카드 사용
+          fallbackCards.forEach((card, i) => {
+            const clone = card.cloneNode(true);
+            clone.style.position = 'absolute';
+            clone.style.display = 'block';
+            track.appendChild(clone);
+            cards.push(clone);
+          });
+        } else {
+          // 이미 생성된 더미 카드 사용
+          const newCards = Array.from(track.querySelectorAll('.carousel-card'));
+          if (newCards.length > 0) {
+            newCards.forEach((card, i) => {
+              card.style.position = 'absolute';
+              cards.push(card);
+            });
+          }
+        }
+        
+        console.log('최종 카드 배열:', cards.length, '개');
 
         // 초기 위치에 카드 배치
         updateCardPositions();
@@ -210,6 +1081,7 @@
         // 각 카드에 클릭 이벤트 추가
         cards.forEach((card, i) => {
           card.addEventListener('click', function (e) {
+            console.log('카드 클릭:', i);
             // 만약 활성 카드가 아니면 해당 카드로 이동
             if (!card.classList.contains('active') && !isAnimating) {
               e.preventDefault();
@@ -222,8 +1094,19 @@
         const rightBtn = document.querySelector('.nav-btn.right');
         const leftBtn = document.querySelector('.nav-btn.left');
 
-        if (rightBtn) rightBtn.addEventListener('click', goNext);
-        if (leftBtn) leftBtn.addEventListener('click', goPrev);
+        if (rightBtn) {
+          rightBtn.addEventListener('click', function() {
+            console.log('다음 버튼 클릭');
+            goNext();
+          });
+        }
+        
+        if (leftBtn) {
+          leftBtn.addEventListener('click', function() {
+            console.log('이전 버튼 클릭');
+            goPrev();
+          });
+        }
 
         // 드래그 기능 구현
         let isDragging = false;
@@ -297,8 +1180,19 @@
         window.addEventListener('resize', function () {
           carouselWidth = carousel.offsetWidth;
           carouselHeight = carousel.offsetHeight;
-          radiusX = carouselWidth * 0.4;
+          
+          // 브라우저 너비에 따라 반지름 동적 조정
+          const windowWidth = window.innerWidth;
+          if (windowWidth <= 600) {
+            radiusX = Math.min(carouselWidth * 0.4, 350);
+          } else if (windowWidth <= 900) {
+            radiusX = Math.min(carouselWidth * 0.43, 400);
+          } else {
+            radiusX = Math.min(carouselWidth * 0.45, 450);
+          }
+          
           radiusY = carouselHeight * 0.1;
+          console.log('윈도우 리사이즈:', carouselWidth, 'x', carouselHeight, '반지름:', radiusX);
           updateCardPositions();
         });
 
@@ -308,33 +1202,53 @@
 
       // 카드 위치 계산 및 업데이트
       function updateCardPositions(offset = 0) {
-        if (!cards.length) return;
+        if (!cards || !cards.length || cardCount === 0) {
+          console.log('카드 또는 캐러셀이 없습니다');
+          return;
+        }
+        if (!carousel || !carouselWidth) {
+          console.log('캐러셀 크기가 계산되지 않았습니다');
+          return;
+        }
 
-        const angleStep = (2 * Math.PI) / cardCount;
+        console.log('카드 위치 업데이트:', currentIndex, '오프셋:', offset);
+        
+        // 카드 수에 따라 각도 간격 조정
+        // 카드가 적을수록 더 넓게 배치, 5개 이하일 경우 더 평평한 형태로 표시
+        let angleStep;
+        if (cardCount <= 3) {
+          angleStep = (2 * Math.PI) / (cardCount * 2.8); // 카드 간격 축소
+        } else if (cardCount <= 5) {
+          angleStep = (2 * Math.PI) / (cardCount * 2.5); // 카드 간격 축소
+        } else {
+          angleStep = (2 * Math.PI) / (cardCount * 2.0); // 카드 간격 축소
+        }
         
         cards.forEach((card, i) => {
           // 카드 인덱스와 현재 인덱스의 차이를 계산 (원형 거리 고려)
           let distance = i - (currentIndex + offset);
           
           // 최단 경로 계산 (원형)
-          if (distance > cardCount / 2) distance -= cardCount;
-          if (distance < -cardCount / 2) distance += cardCount;
+          while (distance > cardCount / 2) distance -= cardCount;
+          while (distance < -cardCount / 2) distance += cardCount;
           
           // 각도 계산
           const angle = distance * angleStep;
           
-          // 좌표 계산
+          // 좌표 계산 - 타원 궤도
           const x = radiusX * Math.sin(angle);
           const z = radiusX * Math.cos(angle);
           
           // 스케일 및 투명도 계산
-          const scale = map(z, -radiusX, radiusX, 0.7, 1.0);
-          const opacity = map(z, -radiusX, radiusX, 0.5, 1.0);
-          const blur = z < 0 ? 2 : 0;
+          // 5개 이상의 카드가 잘 보이도록 투명도와 블러 조정
+          const scale = map(z, -radiusX, radiusX, 0.8, 1.0);
+          const opacity = map(Math.abs(distance), 0, 3.0, 1.0, 0.5);
+          const blur = Math.abs(distance) > 2.5 ? 2 : 0;
           const zIndex = Math.round(map(z, -radiusX, radiusX, 1, 100));
           
           // 스타일 적용
           card.style.transform = `translate3d(${x}px, 0, ${z}px) scale(${scale})`;
+          card.style.webkitTransform = `translate3d(${x}px, 0, ${z}px) scale(${scale})`;
           card.style.opacity = opacity;
           card.style.filter = `blur(${blur}px)`;
           card.style.zIndex = zIndex;
@@ -346,11 +1260,13 @@
 
       // 특정 카드로 이동
       function goToCard(index) {
-        if (isAnimating) return;
+        if (isAnimating || !cards || !cards.length || cardCount === 0) return;
         isAnimating = true;
         
         // 유효한 인덱스로 정규화
         const targetIndex = ((index % cardCount) + cardCount) % cardCount;
+        
+        console.log('카드 이동:', currentIndex, '->', targetIndex);
         
         // 이동 애니메이션
         const startIndex = currentIndex;
@@ -395,12 +1311,14 @@
       
       // 다음 카드로 이동
       function goNext() {
-        goToCard(currentIndex + 1);
+        const nextIndex = (currentIndex + 1) % cardCount;
+        goToCard(nextIndex);
       }
       
       // 이전 카드로 이동
       function goPrev() {
-        goToCard(currentIndex - 1);
+        const prevIndex = (currentIndex - 1 + cardCount) % cardCount;
+        goToCard(prevIndex);
       }
       
       // 이징 함수
@@ -415,19 +1333,138 @@
 
       // 페이지 로드 후 약간의 지연을 두고 초기화
       if (document.readyState === 'complete') {
-        setTimeout(init, 10);
+        console.log('문서 로드 완료: init 호출');
+        setTimeout(init, 300);
       } else {
-        window.addEventListener('load', function () {
-          setTimeout(init, 10);
+        console.log('문서 로드 중: load 이벤트 기다림');
+        window.addEventListener('load', function() {
+          console.log('load 이벤트 발생: init 호출');
+          setTimeout(init, 300);
         });
       }
+      
+      // 문서가 완전히 로드될 때 캐러셀 초기화 확인
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOMContentLoaded 이벤트 발생');
+        
+        // 강제로 브라우저에 렌더링 요청
+        window.requestAnimationFrame(function() {
+          console.log('애니메이션 프레임 실행');
+          
+          // 이미 완료 상태라면 초기화
+          if (document.readyState === 'complete') {
+            console.log('문서 이미 완료됨: init 호출');
+            setTimeout(init, 300);
+          } else {
+            console.log('문서 로드 중, load 이벤트 대기');
+          }
+        });
+        
+        // 모바일 메뉴 토글
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (mobileMenuBtn) {
+          mobileMenuBtn.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            const spans = mobileMenuBtn.querySelectorAll('span');
+            
+            if (navMenu.classList.contains('active')) {
+              spans[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
+              spans[1].style.opacity = '0';
+              spans[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
+            } else {
+              spans[0].style.transform = 'none';
+              spans[1].style.opacity = '1';
+              spans[2].style.transform = 'none';
+            }
+          });
+        }
+
+        // 스크롤에 따른 헤더 변경 효과
+        const header = document.querySelector('.site-header');
+        const hero = document.querySelector('.hero');
+        let lastScrollTop = 0;
+        let heroBottom = 0;
+        
+        // 히어로 섹션의 높이를 계산하는 함수
+        function updateHeroBottom() {
+          if (hero) {
+            heroBottom = hero.offsetTop + hero.offsetHeight;
+          }
+        }
+        
+        // 초기 계산 실행
+        updateHeroBottom();
+        
+        // 창 크기가 변경될 때마다 히어로 섹션 높이 다시 계산
+        window.addEventListener('resize', updateHeroBottom);
+        
+        // 스크롤 이벤트에 따른 헤더 변화 처리
+        window.addEventListener('scroll', function() {
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          
+          // 스크롤 방향 감지 (위로 또는 아래로)
+          const scrollingDown = scrollTop > lastScrollTop;
+          
+          // 히어로 섹션 내에서 스크롤 중인 경우
+          if (scrollTop < heroBottom) {
+            // 어느 정도 스크롤됐을 때 헤더 축소
+            if (scrollTop > 100) {
+              header.classList.add('shrink');
+            } else {
+              header.classList.remove('shrink');
+            }
+            
+            // 완전히 보이게 설정
+            header.classList.remove('hidden');
+            header.classList.add('visible');
+          } 
+          // 히어로 섹션을 벗어난 경우
+          else {
+            // 아래로 스크롤 시 숨김
+            if (scrollingDown) {
+              header.classList.add('hidden');
+              header.classList.remove('visible');
+            } 
+            // 위로 스크롤 시 표시
+            else {
+              header.classList.remove('hidden');
+              header.classList.add('visible', 'shrink');
+            }
+          }
+          
+          lastScrollTop = scrollTop;
+        });
+      });
     })();
   </script>
 </head>
 
 <body>
+  <!-- 헤더 -->
+  <header class="site-header">
+    <a href="/" class="logo">NangManCat's Lab</a>
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="/">홈</a></li>
+        <li><a href="https://github.com/NangManCatDev">깃허브</a></li>
+        <li><a href="https://www.youtube.com/@NangManCat07">유튜브</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-menu-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- 히어로 섹션 -->
   <section class="hero">
-    <h2>Recent Posts</h2>
+    <div class="hero-content">
+      <h2>NangManCat's Lab</h2>
+      <p>취미로 운영하는 개인 개발 일기장입니다.</p>
+    </div>
 
     <div class="carousel-container">
       <button class="nav-btn left">&#10094;</button>
@@ -498,14 +1535,148 @@
             </div>
           </a>
           
+          
+          <!-- 기본 제공 카드 (site.posts가 없을 경우를 대비) -->
+          <a href="#" class="carousel-card fallback-card">
+            <img src="/assets/thumbs/default.png" alt="기본 썸네일">
+            <div class="text">
+              <h3>테스트 카드 1</h3>
+              <small>2023-04-20</small>
+            </div>
+          </a>
+          <a href="#" class="carousel-card fallback-card">
+            <img src="/assets/thumbs/default.png" alt="기본 썸네일">
+            <div class="text">
+              <h3>테스트 카드 2</h3>
+              <small>2023-04-21</small>
+            </div>
+          </a>
+          <a href="#" class="carousel-card fallback-card">
+            <img src="/assets/thumbs/default.png" alt="기본 썸네일">
+            <div class="text">
+              <h3>테스트 카드 3</h3>
+              <small>2023-04-22</small>
+            </div>
+          </a>
         </div>
       </div>
       <button class="nav-btn right">&#10095;</button>
     </div>
   </section>
 
+  <!-- 메인 콘텐츠 -->
   <main>
-    <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+    <!-- 메인 콘텐츠 영역 -->
+    <div class="main-content">
+      <!-- 최신 포스트 섹션 -->
+      <section class="content-section">
+        <div class="content-box" id="latest-posts">
+          <h2 class="section-title">최신 포스트</h2>
+          <div class="post-grid">
+            
+            <article class="post-card">
+              <div class="post-thumb">
+                <img src="/assets/thumbs/test.png" alt="test1">
+              </div>
+              <div class="post-content">
+                <h3 class="post-title">test1</h3>
+                <div class="post-meta">
+                  <span class="date">2025-05-06</span>
+                  
+                </div>
+                <p class="post-excerpt">test
+</p>
+                <a href="/2025/05/06/test1.html" class="read-more">계속 읽기 &rarr;</a>
+              </div>
+            </article>
+            
+            <article class="post-card">
+              <div class="post-thumb">
+                <img src="/assets/thumbs/test.png" alt="test2">
+              </div>
+              <div class="post-content">
+                <h3 class="post-title">test2</h3>
+                <div class="post-meta">
+                  <span class="date">2025-05-05</span>
+                  
+                </div>
+                <p class="post-excerpt">test
+</p>
+                <a href="/2025/05/05/test2.html" class="read-more">계속 읽기 &rarr;</a>
+              </div>
+            </article>
+            
+            <article class="post-card">
+              <div class="post-thumb">
+                <img src="/assets/thumbs/test.png" alt="test3">
+              </div>
+              <div class="post-content">
+                <h3 class="post-title">test3</h3>
+                <div class="post-meta">
+                  <span class="date">2025-05-04</span>
+                  
+                </div>
+                <p class="post-excerpt">test
+</p>
+                <a href="/2025/05/04/test3.html" class="read-more">계속 읽기 &rarr;</a>
+              </div>
+            </article>
+            
+            <article class="post-card">
+              <div class="post-thumb">
+                <img src="/assets/thumbs/test.png" alt="test4">
+              </div>
+              <div class="post-content">
+                <h3 class="post-title">test4</h3>
+                <div class="post-meta">
+                  <span class="date">2025-05-03</span>
+                  
+                </div>
+                <p class="post-excerpt">test
+</p>
+                <a href="/2025/05/03/test4.html" class="read-more">계속 읽기 &rarr;</a>
+              </div>
+            </article>
+            
+            <article class="post-card">
+              <div class="post-thumb">
+                <img src="/assets/thumbs/test.png" alt="test5">
+              </div>
+              <div class="post-content">
+                <h3 class="post-title">test5</h3>
+                <div class="post-meta">
+                  <span class="date">2025-05-02</span>
+                  
+                </div>
+                <p class="post-excerpt">test
+</p>
+                <a href="/2025/05/02/test5.html" class="read-more">계속 읽기 &rarr;</a>
+              </div>
+            </article>
+            
+            <article class="post-card">
+              <div class="post-thumb">
+                <img src="/assets/thumbs/test.png" alt="test6">
+              </div>
+              <div class="post-content">
+                <h3 class="post-title">test6</h3>
+                <div class="post-meta">
+                  <span class="date">2025-05-01</span>
+                  
+                </div>
+                <p class="post-excerpt">test
+</p>
+                <a href="/2025/05/01/test6.html" class="read-more">계속 읽기 &rarr;</a>
+              </div>
+            </article>
+            
+          </div>
+        </div>
+      </section>
+
+      <!-- 기존 콘텐츠 -->
+      <section class="content-section">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
     <h1 class="post-title p-name" itemprop="name headline">test1</h1>
@@ -520,8 +1691,160 @@
   </div><a class="u-url" href="/2025/05/06/test1.html" hidden></a>
 </article>
 
+      </section>
+    </div>
+
+    <!-- 사이드바 -->
+    <div class="sidebar">
+      <!-- 개발자 프로필 -->
+      <div class="profile-card">
+        <div class="profile-header">
+          <div class="profile-avatar">
+            <img src="/assets/images/profile.jpg" alt="프로필 이미지">
+          </div>
+          <h3 class="profile-name">NangManCat</h3>
+          <p class="profile-title">Developer</p>
+        </div>
+        <div class="profile-body">
+          <p class="profile-bio">낭만이 시키는대로 움직이는 개발자. <br> 게임개발과 AI를 주로 다루고 있습니다. <br> 이 블로그는 제 개발 일기장으로 쓰려고 개발했습니다.</p>
+          
+          <div class="profile-stats">
+            <div class="stat-item">
+              <div class="stat-count">8</div>
+              <div class="stat-label">포스트</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-count">0</div>
+              <div class="stat-label">카테고리</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-count">0</div>
+              <div class="stat-label">태그</div>
+            </div>
+          </div>
+          
+          <ul class="profile-links">
+            <li>
+              <a href="https://github.com/NangManCatDev" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a href="https://youtube.com/NangManCatDev" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                YouTube
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- 최근 활동 섹션 -->
+      <div class="recent-activity">
+        <div class="recent-activity-header">
+          <h3>최근 활동</h3>
+        </div>
+        <ul class="activity-list">
+          <li class="activity-item">
+            <a href="#" class="activity-link">작업중</a>
+            <div class="activity-meta">
+              <span class="activity-date">작업중</span>
+              <span class="activity-type">작업중</span>
+            </div>
+          </li>
+          <li class="activity-item">
+            <a href="#" class="activity-link">작업중</a>
+            <div class="activity-meta">
+              <span class="activity-date">작업중</span>
+              <span class="activity-type">작업중</span>
+            </div>
+          </li>
+          <li class="activity-item">
+            <a href="#" class="activity-link">작업중</a>
+            <div class="activity-meta">
+              <span class="activity-date">작업중</span>
+              <span class="activity-type">작업중</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
   </main>
 
+  <!-- 푸터 -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-logo">Nangman's Lab</div>
+        <p>취미로 운영하는 개인 개발 일기장입니다. 프로그래밍과 개발 과정에서 얻은 경험과 지식을 기록하고 공유합니다.</p>
+        <div class="social-links">
+          <a href="https://github.com/NangManCatDev" target="_blank" aria-label="GitHub">
+            <svg viewBox="0 0 24 24">
+              <path fill="currentColor" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
+            </svg>
+          </a>
+          <a href="https://www.youtube.com/@NangManCat07" target="_blank" aria-label="YouTube">
+            <svg viewBox="0 0 24 24">
+              <path fill="currentColor" d="M10,15L15.19,12L10,9V15M21.56,7.17C21.69,7.64 21.78,8.27 21.84,9.07C21.91,9.87 21.94,10.56 21.94,11.16L22,12C22,14.19 21.84,15.8 21.56,16.83C21.31,17.73 20.73,18.31 19.83,18.56C19.36,18.69 18.5,18.78 17.18,18.84C15.88,18.91 14.69,18.94 13.59,18.94L12,19C7.81,19 5.2,18.84 4.17,18.56C3.27,18.31 2.69,17.73 2.44,16.83C2.31,16.36 2.22,15.73 2.16,14.93C2.09,14.13 2.06,13.44 2.06,12.84L2,12C2,9.81 2.16,8.2 2.44,7.17C2.69,6.27 3.27,5.69 4.17,5.44C4.64,5.31 5.5,5.22 6.82,5.16C8.12,5.09 9.31,5.06 10.41,5.06L12,5C16.19,5 18.8,5.16 19.83,5.44C20.73,5.69 21.31,6.27 21.56,7.17Z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h3>바로가기</h3>
+        <ul class="footer-links">
+          <li><a href="/">홈</a></li>
+          <li><a href="/categories">카테고리</a></li>
+          <li><a href="/tags">태그</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>외부 링크</h3>
+        <ul class="footer-links">
+          <li><a href="https://github.com/NangManCatDev" target="_blank">
+            <svg style="width:16px;height:16px;margin-right:5px;vertical-align:text-bottom" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
+            </svg>
+            깃허브
+          </a></li>
+          <li><a href="https://www.youtube.com/@NangManCat07" target="_blank">
+            <svg style="width:16px;height:16px;margin-right:5px;vertical-align:text-bottom" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M10,15L15.19,12L10,9V15M21.56,7.17C21.69,7.64 21.78,8.27 21.84,9.07C21.91,9.87 21.94,10.56 21.94,11.16L22,12C22,14.19 21.84,15.8 21.56,16.83C21.31,17.73 20.73,18.31 19.83,18.56C19.36,18.69 18.5,18.78 17.18,18.84C15.88,18.91 14.69,18.94 13.59,18.94L12,19C7.81,19 5.2,18.84 4.17,18.56C3.27,18.31 2.69,17.73 2.44,16.83C2.31,16.36 2.22,15.73 2.16,14.93C2.09,14.13 2.06,13.44 2.06,12.84L2,12C2,9.81 2.16,8.2 2.44,7.17C2.69,6.27 3.27,5.69 4.17,5.44C4.64,5.31 5.5,5.22 6.82,5.16C8.12,5.09 9.31,5.06 10.41,5.06L12,5C16.19,5 18.8,5.16 19.83,5.44C20.73,5.69 21.31,6.27 21.56,7.17Z" />
+            </svg>
+            유튜브
+          </a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="back-to-top" id="backToTop">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <path fill="currentColor" d="M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z" />
+      </svg>
+    </div>
+    
+    <div class="copyright">
+      &copy; {{ site.time | date: '%Y' }} Nangman's Lab. All rights reserved.
+    </div>
+  </footer>
+  
+  <script>
+    // 맨 위로 버튼 기능
+    document.addEventListener('DOMContentLoaded', function() {
+      const backToTopBtn = document.getElementById('backToTop');
+      if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', function() {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>
