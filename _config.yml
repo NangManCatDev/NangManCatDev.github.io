@@ -2,6 +2,6 @@ title: Nangman Research Log
 markdown: kramdown
 theme: minima
 collections:
-  pages:
+  _pages:
     output: true
     permalink: /:name/
