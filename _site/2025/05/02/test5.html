@@ -176,6 +176,10 @@
       z-index: 10;
       height: 180px;
       padding: 0 20px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     .carousel {
@@ -192,6 +196,10 @@
       align-items: center;
       -webkit-perspective: 1500px;
       perspective: 1500px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     .carousel-track {
@@ -205,6 +213,10 @@
       align-items: center;
       -webkit-perspective: 1500px;
       perspective: 1500px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     .carousel-card {
@@ -235,6 +247,10 @@
       transform: translate3d(0, 0, 0);
       box-shadow: 0 8px 30px var(--shadow-color);
       border: 1px solid var(--border-color);
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     .carousel-card.active {
@@ -936,7 +952,7 @@
       let currentIndex = 0; // 현재 활성화된 카드 인덱스
       let animationId = null; // 애니메이션 ID
       let isAnimating = false; // 애니메이션 진행 상태
-      
+
       // 타원 회전을 위한 파라미터
       let radiusX; // 타원 장축 반경
       let radiusY; // 타원 단축 반경
@@ -1048,11 +1064,11 @@
         if (originalCards.length > fallbackCards.length) {
           // 원본 카드만 복제 (fallback 제외)
           originalCards.filter(card => !card.classList.contains('fallback-card')).forEach((card, i) => {
-            const clone = card.cloneNode(true);
-            clone.style.position = 'absolute';
-            track.appendChild(clone);
-            cards.push(clone);
-          });
+          const clone = card.cloneNode(true);
+          clone.style.position = 'absolute';
+          track.appendChild(clone);
+          cards.push(clone);
+        });
         } else if (fallbackCards.length > 0) {
           // fallback 카드 사용
           fallbackCards.forEach((card, i) => {
@@ -1108,73 +1124,7 @@
           });
         }
 
-        // 드래그 기능 구현
-        let isDragging = false;
-        let startX = 0;
-        let startIndex = 0;
-        let dragDistance = 0;
-
-        carousel.addEventListener('mousedown', function (e) {
-          if (isAnimating) return;
-          isDragging = true;
-          startX = e.clientX;
-          startIndex = currentIndex;
-          document.body.style.cursor = 'grabbing';
-        });
-
-        carousel.addEventListener('touchstart', function (e) {
-          if (isAnimating) return;
-          isDragging = true;
-          startX = e.touches[0].clientX;
-          startIndex = currentIndex;
-        });
-
-        document.addEventListener('mousemove', function (e) {
-          if (!isDragging) return;
-          dragDistance = e.clientX - startX;
-          const dragProgress = Math.min(Math.max(dragDistance / carouselWidth * 2, -1), 1);
-          
-          // 드래그 시 중간 상태 표시
-          updateCardPositions(dragProgress);
-        });
-
-        document.addEventListener('touchmove', function (e) {
-          if (!isDragging) return;
-          dragDistance = e.touches[0].clientX - startX;
-          const dragProgress = Math.min(Math.max(dragDistance / carouselWidth * 2, -1), 1);
-          
-          // 드래그 시 중간 상태 표시
-          updateCardPositions(dragProgress);
-        });
-
-        document.addEventListener('mouseup', function () {
-          if (!isDragging) return;
-          isDragging = false;
-          document.body.style.cursor = '';
-
-          // 드래그 거리에 따라 다음/이전 카드로 이동 또는 원래 위치로 복귀
-          if (dragDistance < -50) {
-            goNext();
-          } else if (dragDistance > 50) {
-            goPrev();
-          } else {
-            goToCard(currentIndex);
-          }
-        });
-
-        document.addEventListener('touchend', function () {
-          if (!isDragging) return;
-          isDragging = false;
-
-          // 드래그 거리에 따라 다음/이전 카드로 이동 또는 원래 위치로 복귀
-          if (dragDistance < -50) {
-            goNext();
-          } else if (dragDistance > 50) {
-            goPrev();
-          } else {
-            goToCard(currentIndex);
-          }
-        });
+        // 드래그 기능은 제거되었습니다 - 버튼으로만 제어
 
         // 창 크기 변경 시 다시 계산
         window.addEventListener('resize', function () {
@@ -1223,7 +1173,7 @@
         } else {
           angleStep = (2 * Math.PI) / (cardCount * 2.0); // 카드 간격 축소
         }
-        
+
         cards.forEach((card, i) => {
           // 카드 인덱스와 현재 인덱스의 차이를 계산 (원형 거리 고려)
           let distance = i - (currentIndex + offset);
@@ -1252,7 +1202,7 @@
           card.style.opacity = opacity;
           card.style.filter = `blur(${blur}px)`;
           card.style.zIndex = zIndex;
-          
+
           // 정면에 있는 카드 활성화 (거리가 0에 가장 가까운 카드)
           card.classList.toggle('active', Math.abs(distance) < 0.1);
         });
@@ -1263,6 +1213,8 @@
         if (isAnimating || !cards || !cards.length || cardCount === 0) return;
         isAnimating = true;
         
+        console.log('카드 이동 시작:', currentIndex, '->', index, '애니메이션 시작');
+        
         // 유효한 인덱스로 정규화
         const targetIndex = ((index % cardCount) + cardCount) % cardCount;
         
@@ -1271,7 +1223,7 @@
         // 이동 애니메이션
         const startIndex = currentIndex;
         const startTime = performance.now();
-        const duration = 400; // 애니메이션 시간 (ms)
+        const duration = 300; // 애니메이션 시간 (ms) - 약간 단축
         
         function animate(time) {
           const elapsed = time - startTime;
@@ -1298,9 +1250,12 @@
           } else {
             // 애니메이션 완료 시 현재 인덱스 업데이트
             currentIndex = targetIndex;
-            updateCardPositions();
+            updateCardPositions(0); // 명시적으로 오프셋 0으로 설정
+            
+            // 애니메이션 완료 플래그 설정 및 로깅
             isAnimating = false;
             animationId = null;
+            console.log('카드 이동 완료:', currentIndex, '애니메이션 종료, isAnimating =', isAnimating);
           }
         }
         
@@ -1308,16 +1263,18 @@
         cancelAnimationFrame(animationId);
         animationId = requestAnimationFrame(animate);
       }
-      
+
       // 다음 카드로 이동
       function goNext() {
         const nextIndex = (currentIndex + 1) % cardCount;
+        console.log('다음 카드 이동 요청:', currentIndex, '->', nextIndex, '애니메이션 상태:', isAnimating);
         goToCard(nextIndex);
       }
       
       // 이전 카드로 이동
       function goPrev() {
         const prevIndex = (currentIndex - 1 + cardCount) % cardCount;
+        console.log('이전 카드 이동 요청:', currentIndex, '->', prevIndex, '애니메이션 상태:', isAnimating);
         goToCard(prevIndex);
       }
       
@@ -1352,10 +1309,10 @@
           console.log('애니메이션 프레임 실행');
           
           // 이미 완료 상태라면 초기화
-          if (document.readyState === 'complete') {
+      if (document.readyState === 'complete') {
             console.log('문서 이미 완료됨: init 호출');
             setTimeout(init, 300);
-          } else {
+      } else {
             console.log('문서 로드 중, load 이벤트 대기');
           }
         });
@@ -1472,7 +1429,7 @@
         <div class="carousel-track">
           
           <a href="/2025/05/06/test1.html" class="carousel-card">
-            <img src="/assets/thumbs/test.png" alt="thumbnail">
+            <img src="/assets/thumbs/test.png" alt="thumbnail" draggable="false">
             <div class="text">
               <h3>test1</h3>
               <small>2025-05-06</small>
@@ -1480,7 +1437,7 @@
           </a>
           
           <a href="/2025/05/05/test2.html" class="carousel-card">
-            <img src="/assets/thumbs/test.png" alt="thumbnail">
+            <img src="/assets/thumbs/test.png" alt="thumbnail" draggable="false">
             <div class="text">
               <h3>test2</h3>
               <small>2025-05-05</small>
@@ -1488,7 +1445,7 @@
           </a>
           
           <a href="/2025/05/04/test3.html" class="carousel-card">
-            <img src="/assets/thumbs/test.png" alt="thumbnail">
+            <img src="/assets/thumbs/test.png" alt="thumbnail" draggable="false">
             <div class="text">
               <h3>test3</h3>
               <small>2025-05-04</small>
@@ -1496,7 +1453,7 @@
           </a>
           
           <a href="/2025/05/03/test4.html" class="carousel-card">
-            <img src="/assets/thumbs/test.png" alt="thumbnail">
+            <img src="/assets/thumbs/test.png" alt="thumbnail" draggable="false">
             <div class="text">
               <h3>test4</h3>
               <small>2025-05-03</small>
@@ -1504,7 +1461,7 @@
           </a>
           
           <a href="/2025/05/02/test5.html" class="carousel-card">
-            <img src="/assets/thumbs/test.png" alt="thumbnail">
+            <img src="/assets/thumbs/test.png" alt="thumbnail" draggable="false">
             <div class="text">
               <h3>test5</h3>
               <small>2025-05-02</small>
@@ -1512,7 +1469,7 @@
           </a>
           
           <a href="/2025/05/01/test6.html" class="carousel-card">
-            <img src="/assets/thumbs/test.png" alt="thumbnail">
+            <img src="/assets/thumbs/test.png" alt="thumbnail" draggable="false">
             <div class="text">
               <h3>test6</h3>
               <small>2025-05-01</small>
@@ -1520,7 +1477,7 @@
           </a>
           
           <a href="/2025/04/30/test7.html" class="carousel-card">
-            <img src="/assets/thumbs/test.png" alt="thumbnail">
+            <img src="/assets/thumbs/test.png" alt="thumbnail" draggable="false">
             <div class="text">
               <h3>test7</h3>
               <small>2025-04-30</small>
@@ -1528,7 +1485,7 @@
           </a>
           
           <a href="/2025/04/29/test8.html" class="carousel-card">
-            <img src="/assets/thumbs/test.png" alt="thumbnail">
+            <img src="/assets/thumbs/test.png" alt="thumbnail" draggable="false">
             <div class="text">
               <h3>test8</h3>
               <small>2025-04-29</small>
@@ -1538,21 +1495,21 @@
           
           <!-- 기본 제공 카드 (site.posts가 없을 경우를 대비) -->
           <a href="#" class="carousel-card fallback-card">
-            <img src="/assets/thumbs/default.png" alt="기본 썸네일">
+            <img src="/assets/thumbs/default.png" alt="기본 썸네일" draggable="false">
             <div class="text">
               <h3>테스트 카드 1</h3>
               <small>2023-04-20</small>
             </div>
           </a>
           <a href="#" class="carousel-card fallback-card">
-            <img src="/assets/thumbs/default.png" alt="기본 썸네일">
+            <img src="/assets/thumbs/default.png" alt="기본 썸네일" draggable="false">
             <div class="text">
               <h3>테스트 카드 2</h3>
               <small>2023-04-21</small>
             </div>
           </a>
           <a href="#" class="carousel-card fallback-card">
-            <img src="/assets/thumbs/default.png" alt="기본 썸네일">
+            <img src="/assets/thumbs/default.png" alt="기본 썸네일" draggable="false">
             <div class="text">
               <h3>테스트 카드 3</h3>
               <small>2023-04-22</small>
@@ -1676,7 +1633,7 @@
 
       <!-- 기존 콘텐츠 -->
       <section class="content-section">
-        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+    <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
     <h1 class="post-title p-name" itemprop="name headline">test5</h1>
