@@ -1,0 +1,23 @@
+# Jekyll 빌드 결과물
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+
+# 번들러 설정
+.bundle/
+Gemfile.lock
+
+# 로그 파일
+*.log
+
+# 운영체제 특정 파일
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+
+# IDE/개발 환경 설정
+.idea/
+.vscode/

@@ -1,0 +1,38 @@
+# 모든 텍스트 파일에 대해 줄 끝 정규화 설정
+* text=auto eol=lf
+
+# 문서 파일
+*.md text
+*.txt text
+*.html text
+*.css text
+*.scss text
+*.js text
+*.json text
+*.yml text
+*.yaml text
+*.xml text
+
+# 스크립트 파일
+*.sh text eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# 그래픽 파일
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg text
+
+# 폰트 파일
+*.eot binary
+*.ttf binary
+*.woff binary
+*.woff2 binary
+
+# 기타 바이너리 파일
+*.pdf binary
+*.zip binary
+*.gz binary
