@@ -1,0 +1,182 @@
+---
+layout: default
+title: 태그 목록
+permalink: /tags/
+---
+
+<section class="content-section">
+  <div class="content-box">
+    <h2 class="section-title">태그 목록</h2>
+
+    {% comment %}
+    Jekyll 태그를 수집하고 각 태그별 포스트 수를 계산합니다.
+    {% endcomment %}
+    
+    {% assign tags = "" | split: "" %}
+    {% for post in site.posts %}
+      {% if post.tag %}
+        {% for tag in post.tag %}
+          {% assign clean_tag = tag | strip %}
+          {% assign tags = tags | push: clean_tag %}
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+    
+    {% assign unique_tags = tags | uniq | sort %}
+    
+    <div class="tag-cloud">
+      {% for tag in unique_tags %}
+        {% assign tag_slug = tag | downcase | replace: ' ', '-' %}
+        {% assign tag_posts = site.posts | where_exp: "post", "post.tag contains tag" %}
+        {% assign tag_count = tag_posts | size %}
+        <a href="#{{ tag_slug }}" class="tag tag-{{ tag.size | modulo: 6 | plus: 1 }}" data-count="{{ tag_count }}">
+          {{ tag }}
+          <span class="tag-count">({{ tag_count }})</span>
+        </a>
+      {% endfor %}
+    </div>
+    
+    <div class="tags-container">
+      {% for tag in unique_tags %}
+        {% assign tag_slug = tag | downcase | replace: ' ', '-' %}
+        {% assign tag_posts = site.posts | where_exp: "post", "post.tag contains tag" %}
+        <div class="tag-item" id="{{ tag_slug }}">
+          <h3 class="tag-name">
+            <svg class="tag-icon" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M5.5,9A1.5,1.5 0 0,0 7,7.5A1.5,1.5 0 0,0 5.5,6A1.5,1.5 0 0,0 4,7.5A1.5,1.5 0 0,0 5.5,9M17.41,11.58C17.77,11.94 18,12.44 18,13C18,13.55 17.78,14.05 17.41,14.41L12.41,19.41C12.05,19.77 11.55,20 11,20C10.45,20 9.95,19.78 9.58,19.41L2.59,12.42C2.22,12.05 2,11.55 2,11V6C2,4.89 2.89,4 4,4H9C9.55,4 10.05,4.22 10.41,4.58L17.41,11.58M13.54,5.71L14.54,4.71L21.41,11.58C21.78,11.94 22,12.45 22,13C22,13.55 21.78,14.05 21.42,14.41L16.04,19.79L15.04,18.79L20.75,13L13.54,5.71Z" />
+            </svg>
+            {{ tag }} 
+            <span class="tag-count">({{ tag_posts.size }})</span>
+          </h3>
+          
+          <ul class="tag-posts">
+            {% for post in tag_posts %}
+              <li class="tag-post-item">
+                <a href="{{ site.baseurl }}{{ post.url }}" class="tag-post-link">
+                  <span class="tag-post-title">{{ post.title }}</span>
+                  <span class="tag-post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    background: rgba(30, 40, 60, 0.2);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+  
+  .tag-cloud .tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  
+  .tag-count {
+    font-size: 0.8rem;
+    margin-left: 0.3rem;
+    opacity: 0.8;
+  }
+  
+  .tags-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .tag-item {
+    background: rgba(30, 40, 60, 0.2);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .tag-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tag-name {
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+  }
+  
+  .tag-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.5rem;
+  }
+  
+  .tag-posts {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .tag-post-item {
+    margin-bottom: 0.5rem;
+  }
+  
+  .tag-post-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .tag-post-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 4px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  
+  .tag-post-link:hover {
+    background: rgba(100, 100, 150, 0.1);
+    color: var(--secondary-color);
+  }
+  
+  .tag-post-title {
+    flex: 1;
+  }
+  
+  .tag-post-date {
+    color: var(--text-light);
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 768px) {
+    .tag-post-link {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .tag-post-date {
+      margin-top: 0.25rem;
+    }
+  }
+</style> 

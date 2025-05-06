@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}NangManCat's Lab</title>
+  <link rel="stylesheet" href="{{ "/assets/css/styles.css" | relative_url }}">
+  <style>
+    :root {
+      --primary-color: #6c77dd;
+      --secondary-color: #7895cb;
+      --accent-color: #a0bfe0;
+      --light-color: #c5dff8;
+      --dark-color: #121620;
+      --dark-color-alt: #162032;
+      --text-color: #e0e6f0;
+      --text-light: #a0aabf;
+      --bg-color: #0f1319;
+      --bg-gradient: linear-gradient(135deg, #0f1319 0%, #16202f 100%);
+      --card-bg: #1a212e;
+      --card-bg-gradient: linear-gradient(135deg, #191f2a 0%, #1e2534 100%);
+      --header-bg: rgba(15, 19, 25, 0.95);
+      --border-color: #2a3548;
+      --shadow-color: rgba(0, 0, 0, 0.4);
+      --hover-color: #232e42;
+      --header-height: 70px;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      color: var(--text-color);
+      background: var(--bg-gradient);
+      line-height: 1.6;
+    }
+    
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    a:hover {
+      color: var(--light-color);
+    }
+    
+    /* 헤더 및 네비게이션 */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(to right, rgba(15, 19, 25, 0.95), rgba(20, 30, 45, 0.95));
+      box-shadow: 0 2px 10px var(--shadow-color);
+      z-index: 1000;
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      padding: 0 2rem;
+      transition: all 0.3s ease-in-out;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+    
+    .nav-menu {
+      margin-left: auto;
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-menu li {
+      margin-left: 1.5rem;
+    }
+    
+    .nav-menu a {
+      color: var(--text-color);
+      font-weight: 500;
+      position: relative;
+    }
+    
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary-color);
+      transition: width 0.3s;
+    }
+    
+    .nav-menu a:hover::after {
+      width: 100%;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      cursor: pointer;
+      margin-left: auto;
+    }
+    
+    .mobile-menu-btn span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px 0;
+      background-color: var(--primary-color);
+      transition: all 0.3s;
+    }
+    
+    /* 헤더 검색 */
+    .header-search {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      max-width: 500px;
+      margin: 0 2rem;
+    }
+    
+    .header-search .search-form {
+      display: flex;
+      width: 100%;
+      position: relative;
+    }
+    
+    .header-search .search-input {
+      flex: 1;
+      background: rgba(30, 40, 60, 0.5);
+      border: 1px solid var(--border-color);
+      padding: 0.6rem 1rem;
+      color: var(--text-color);
+      font-size: 0.95rem;
+      outline: none;
+      border-radius: 8px 0 0 8px;
+      width: 100%;
+      transition: all 0.3s;
+    }
+    
+    .header-search .search-input:focus {
+      background: rgba(30, 40, 60, 0.7);
+      box-shadow: 0 0 0 2px rgba(100, 120, 200, 0.3);
+    }
+    
+    .header-search .search-submit {
+      background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+      border: none;
+      color: white;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      border-radius: 0 8px 8px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .header-search .search-submit svg {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .header-search .search-submit:hover {
+      background: linear-gradient(145deg, var(--secondary-color), var(--primary-color));
+    }
+    
+    /* 메인 콘텐츠 영역 */
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      margin-top: calc(var(--header-height) + 2rem);
+    }
+    
+    /* 검색 결과 스타일 */
+    .search-container {
+      margin-bottom: 3rem;
+    }
+    
+    .search-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .search-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+    
+    .search-info {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+    
+    .search-form-large {
+      display: flex;
+      max-width: 700px;
+      margin-bottom: 2rem;
+    }
+    
+    .search-input-large {
+      flex: 1;
+      background: rgba(30, 40, 60, 0.3);
+      border: 1px solid var(--border-color);
+      padding: 1rem 1.5rem;
+      font-size: 1.1rem;
+      color: var(--text-color);
+      border-radius: 8px 0 0 8px;
+      outline: none;
+      transition: all 0.3s;
+    }
+    
+    .search-input-large:focus {
+      background: rgba(30, 40, 60, 0.5);
+      box-shadow: 0 0 0 3px rgba(100, 120, 200, 0.3);
+    }
+    
+    .search-submit-large {
+      background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 0 8px 8px 0;
+      color: white;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .search-submit-large:hover {
+      background: linear-gradient(145deg, var(--secondary-color), var(--primary-color));
+    }
+    
+    .search-results {
+      margin-top: 2rem;
+    }
+    
+    .search-result-item {
+      background: var(--card-bg-gradient);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+    
+    .search-result-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .search-result-link {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    
+    .result-header {
+      padding: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .result-category {
+      display: inline-block;
+      background: rgba(100, 120, 200, 0.2);
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .result-category:hover {
+      background: rgba(100, 120, 200, 0.3);
+    }
+    
+    .result-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+    
+    .result-date {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+    
+    .result-content {
+      padding: 1rem;
+      display: flex;
+    }
+    
+    .result-excerpt {
+      flex: 1;
+      font-size: 1rem;
+      color: var(--text-light);
+      margin-right: 1.5rem;
+      line-height: 1.6;
+    }
+    
+    .result-thumb {
+      width: 120px;
+      height: 120px;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    
+    .result-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .result-meta {
+      padding: 0.8rem 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      background: rgba(0, 0, 0, 0.1);
+    }
+    
+    .result-tags {
+      display: flex;
+      flex-wrap: wrap;
+      margin-right: auto;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .result-tag {
+      display: inline-block;
+      margin-right: 0.5rem;
+      margin-bottom: 0.3rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      color: white;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    
+    .no-results {
+      background: var(--card-bg-gradient);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    
+    .no-results-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--text-light);
+    }
+    
+    .no-results-text {
+      font-size: 1.5rem;
+      color: var(--text-color);
+      margin-bottom: 1rem;
+    }
+    
+    .no-results-msg {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+    
+    .back-link {
+      display: inline-block;
+      background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    
+    .back-link:hover {
+      background: linear-gradient(145deg, var(--secondary-color), var(--primary-color));
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      color: white;
+    }
+    
+    /* 반응형 스타일 */
+    @media (max-width: 768px) {
+      .site-header {
+        padding: 0 1rem;
+        flex-wrap: wrap;
+      }
+      
+      .logo {
+        flex: 1;
+      }
+      
+      .header-search {
+        order: 3;
+        max-width: 100%;
+        margin: 0.5rem 0;
+        width: 100%;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+        order: 2;
+      }
+      
+      .nav-menu {
+        position: fixed;
+        top: var(--header-height);
+        right: -100%;
+        width: 70%;
+        height: calc(100vh - var(--header-height));
+        background: linear-gradient(135deg, var(--bg-color) 0%, var(--dark-color-alt) 100%);
+        flex-direction: column;
+        padding: 2rem;
+        box-shadow: -5px 0 15px var(--shadow-color);
+        transition: right 0.3s ease-in-out;
+      }
+      
+      .nav-menu.active {
+        right: 0;
+      }
+      
+      .nav-menu li {
+        margin: 1rem 0;
+      }
+      
+      .main-content {
+        padding: 0 1rem;
+      }
+      
+      .search-title {
+        font-size: 1.8rem;
+      }
+      
+      .search-info {
+        font-size: 1rem;
+      }
+      
+      .search-form-large {
+        flex-direction: column;
+      }
+      
+      .search-input-large {
+        border-radius: 8px;
+        margin-bottom: 1rem;
+      }
+      
+      .search-submit-large {
+        border-radius: 8px;
+        width: 100%;
+      }
+      
+      .result-content {
+        flex-direction: column;
+      }
+      
+      .result-excerpt {
+        margin-right: 0;
+        margin-bottom: 1rem;
+      }
+      
+      .result-thumb {
+        width: 100%;
+        height: 180px;
+      }
+      
+      .result-meta {
+        flex-wrap: wrap;
+      }
+      
+      .result-tags {
+        margin-bottom: 0.5rem;
+        width: 100%;
+      }
+    }
+    
+    /* 태그 색상 */
+    .tag-1 {
+      background-color: #6366f1;
+      color: white;
+    }
+    .tag-1:hover {
+      background-color: #4f46e5;
+    }
+    
+    .tag-2 {
+      background-color: #ef4444;
+      color: white;
+    }
+    .tag-2:hover {
+      background-color: #dc2626;
+    }
+    
+    .tag-3 {
+      background-color: #22c55e;
+      color: white;
+    }
+    .tag-3:hover {
+      background-color: #16a34a;
+    }
+    
+    .tag-4 {
+      background-color: #f97316;
+      color: white;
+    }
+    .tag-4:hover {
+      background-color: #ea580c;
+    }
+    
+    .tag-5 {
+      background-color: #14b8a6;
+      color: white;
+    }
+    .tag-5:hover {
+      background-color: #0d9488;
+    }
+    
+    .tag-6 {
+      background-color: #8b5cf6;
+      color: white;
+    }
+    .tag-6:hover {
+      background-color: #7c3aed;
+    }
+    
+    /* 푸터 */
+    .site-footer {
+      background: linear-gradient(to bottom, var(--dark-color) 0%, #0d121e 100%);
+      color: white;
+      padding: 2rem 0 1rem;
+      margin-top: 3rem;
+      border-top: 1px solid var(--border-color);
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .footer-section {
+      flex: 1;
+      padding: 0 1rem;
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 1.5rem;
+      margin-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 768px) {
+      .footer-content {
+        flex-direction: column;
+      }
+      
+      .footer-section {
+        margin-bottom: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 헤더 -->
+  <header class="site-header">
+    <a href="/" class="logo">NangManCat's Lab</a>
+    
+    <!-- 헤더 중앙에 검색 기능 배치 -->
+    <div class="header-search">
+      <form action="/search" method="get" class="search-form">
+        <input type="text" name="q" id="search-input-header" class="search-input" placeholder="검색어를 입력하세요..." aria-label="검색어">
+        <button type="submit" class="search-submit" aria-label="검색 실행">
+          <svg viewBox="0 0 24 24">
+            <path fill="currentColor" d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
+          </svg>
+        </button>
+      </form>
+    </div>
+
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="/">홈</a></li>
+        <li><a href="/categories">카테고리</a></li>
+        <li><a href="/tags">태그</a></li>
+        <li><a href="https://github.com/NangManCatDev">깃허브</a></li>
+        <li><a href="https://www.youtube.com/@NangManCat07">유튜브</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-menu-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- 메인 콘텐츠 영역 -->
+  <main class="main-content">
+    <!-- 검색 영역 -->
+    <div class="search-container">
+      <div class="search-header">
+        <h1 class="search-title">검색 결과</h1>
+        <p class="search-info" id="search-results-info">검색어에 맞는 결과를 찾고 있습니다...</p>
+
+        <form action="/search" method="get" class="search-form-large">
+          <input type="text" name="q" id="search-input-large" class="search-input-large" placeholder="검색어를 입력하세요..." aria-label="검색어" autofocus>
+          <button type="submit" class="search-submit-large">검색</button>
+        </form>
+      </div>
+
+      <div id="search-results" class="search-results">
+        <!-- 검색 결과가 이곳에 동적으로 삽입됩니다 -->
+      </div>
+    </div>
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>NangManCat's Lab</h3>
+        <p>취미로 운영하는 개인 개발 일기장입니다. 프로그래밍과 개발 과정에서 얻은 경험과 지식을 기록하고 공유합니다.</p>
+      </div>
+      <div class="footer-section">
+        <h3>링크</h3>
+        <ul>
+          <li><a href="/">홈</a></li>
+          <li><a href="/categories">카테고리</a></li>
+          <li><a href="/tags">태그</a></li>
+          <li><a href="https://github.com/NangManCatDev">GitHub</a></li>
+          <li><a href="https://www.youtube.com/@NangManCat07">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; {{ site.time | date: '%Y' }} NangManCat's Lab. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- 모바일 메뉴 스크립트 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      const navMenu = document.querySelector('.nav-menu');
+      
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function() {
+          navMenu.classList.toggle('active');
+          const spans = mobileMenuBtn.querySelectorAll('span');
+          
+          if (navMenu.classList.contains('active')) {
+            spans[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
+            spans[1].style.opacity = '0';
+            spans[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
+          } else {
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+          }
+        });
+      }
+      
+      // 검색 결과 표시 스크립트
+      const urlParams = new URLSearchParams(window.location.search);
+      const query = urlParams.get('q');
+      const searchInput = document.getElementById('search-input-large');
+      const searchResultsInfo = document.getElementById('search-results-info');
+      const searchResults = document.getElementById('search-results');
+      
+      if (searchInput && query) {
+        searchInput.value = query;
+      }
+      
+      if (query) {
+        // 검색 데이터 가져오기
+        fetch('/search-data.json')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('검색 데이터를 불러올 수 없습니다.');
+            }
+            return response.json();
+          })
+          .then(data => {
+            // 검색어와 일치하는 결과 필터링
+            const results = data.filter(post => {
+              const titleMatch = post.title.toLowerCase().includes(query.toLowerCase());
+              const contentMatch = post.content.toLowerCase().includes(query.toLowerCase());
+              const categoryMatch = post.categories && post.categories.some(category => 
+                category.toLowerCase().includes(query.toLowerCase()));
+              const tagMatch = post.tag && post.tag.some(tag => 
+                tag.toLowerCase().includes(query.toLowerCase()));
+              
+              return titleMatch || contentMatch || categoryMatch || tagMatch;
+            });
+            
+            // 검색 결과 표시
+            searchResultsInfo.textContent = `"${query}" 검색 결과: ${results.length}개의 포스트를 찾았습니다.`;
+            
+            if (results.length === 0) {
+              searchResults.innerHTML = `
+                <div class="no-results">
+                  <div class="no-results-icon">🔍</div>
+                  <h2 class="no-results-text">검색 결과가 없습니다</h2>
+                  <p class="no-results-msg">다른 검색어로 다시 시도해보세요.</p>
+                  <a href="/" class="back-link">홈으로 돌아가기</a>
+                </div>
+              `;
+              return;
+            }
+            
+            // 결과 HTML 생성
+            let resultsHTML = '';
+            
+            results.forEach(post => {
+              // 태그 HTML 생성
+              let tagsHTML = '';
+              if (post.tag && post.tag.length > 0) {
+                tagsHTML = '<div class="result-tags">';
+                post.tag.forEach((tag, index) => {
+                  const tagClass = `tag-${(tag.length % 6) + 1}`;
+                  tagsHTML += `<a href="/tags#${tag.toLowerCase().replace(/\s+/g, '-')}" class="result-tag ${tagClass}">${tag}</a>`;
+                });
+                tagsHTML += '</div>';
+              }
+              
+              // 카테고리 HTML 생성
+              let categoryHTML = '';
+              if (post.categories && post.categories.length > 0) {
+                categoryHTML = `<a href="/categories#${post.categories[0].toLowerCase().replace(/\s+/g, '-')}" class="result-category">${post.categories[0]}</a>`;
+              } else {
+                categoryHTML = '<span class="result-category">일반</span>';
+              }
+              
+              // 결과 아이템 HTML
+              resultsHTML += `
+                <article class="search-result-item">
+                  <a href="${post.url}" class="search-result-link"></a>
+                  
+                  <div class="result-header">
+                    ${categoryHTML}
+                    <h2 class="result-title">${post.title}</h2>
+                    <div class="result-date">${new Date(post.date).toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+                  </div>
+                  
+                  <div class="result-content">
+                    <div class="result-excerpt">${post.excerpt}</div>
+                    <div class="result-thumb">
+                      <img src="${post.thumbnail || '/assets/thumbs/default.png'}" alt="${post.title}" loading="lazy">
+                    </div>
+                  </div>
+                  
+                  <div class="result-meta">
+                    ${tagsHTML}
+                    <div class="result-stats">
+                      <span class="result-views"><svg viewBox="0 0 24 24" width="16" height="16" style="vertical-align: middle; margin-right: 4px;"><path fill="currentColor" d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z" /></svg>${post.views || "0"}</span>
+                    </div>
+                  </div>
+                </article>
+              `;
+            });
+            
+            searchResults.innerHTML = resultsHTML;
+          })
+          .catch(error => {
+            console.error('검색 오류:', error);
+            searchResultsInfo.textContent = '검색 중 오류가 발생했습니다.';
+            searchResults.innerHTML = `
+              <div class="no-results">
+                <div class="no-results-icon">⚠️</div>
+                <h2 class="no-results-text">오류가 발생했습니다</h2>
+                <p class="no-results-msg">${error.message}</p>
+                <a href="/" class="back-link">홈으로 돌아가기</a>
+              </div>
+            `;
+          });
+      } else {
+        searchResultsInfo.textContent = '검색어를 입력하세요.';
+        searchResults.innerHTML = `
+          <div class="no-results">
+            <div class="no-results-icon">🔍</div>
+            <h2 class="no-results-text">검색어를 입력해주세요</h2>
+            <p class="no-results-msg">원하는 내용을 검색해보세요.</p>
+          </div>
+        `;
+      }
+    });
+  </script>
+</body>
+</html> 

@@ -1,0 +1,20 @@
+---
+layout: null
+---
+[
+  {% for post in site.posts %}
+    {
+      "title": {{ post.title | jsonify }},
+      "categories": {% if post.categories %}[{% for category in post.categories %}"{{ category | strip | xml_escape }}"{% unless forloop.last %},{% endunless %}{% endfor %}]{% else %}null{% endif %},
+      "tag": {% if post.tag %}[{% for tag in post.tag %}"{{ tag | strip | xml_escape }}"{% unless forloop.last %},{% endunless %}{% endfor %}]{% else %}null{% endif %},
+      "url": "{{ site.baseurl }}{{ post.url }}",
+      "date": "{{ post.date }}",
+      "excerpt": {{ post.excerpt | strip_html | truncatewords: 30 | jsonify }},
+      "content": {{ post.content | strip_html | jsonify }},
+      "thumbnail": "{{ post.thumbnail | default: '/assets/thumbs/default.png' }}",
+      "views": "{{ post.views | default: 0 }}",
+      "comments": "{{ post.comments | default: 0 }}",
+      "likes": "{{ post.likes | default: 0 }}"
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+] 

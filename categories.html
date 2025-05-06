@@ -1,0 +1,134 @@
+---
+layout: default
+title: 카테고리 목록
+permalink: /categories/
+---
+
+<section class="content-section">
+  <div class="content-box">
+    <h2 class="section-title">카테고리 목록</h2>
+
+    {% assign categories_list = site.categories | sort %}
+    
+    <div class="categories-container">
+      {% for category in categories_list %}
+        {% assign category_name = category | first %}
+        {% assign posts_count = category | last | size %}
+        <div class="category-item" id="{{ category_name | downcase | replace: ' ', '-' }}">
+          <h3 class="category-name">
+            <svg class="category-icon" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z" />
+            </svg>
+            {{ category_name }} 
+            <span class="category-count">({{ posts_count }})</span>
+          </h3>
+          
+          <ul class="category-posts">
+            {% for post in site.categories[category_name] %}
+              <li class="category-post-item">
+                <a href="{{ site.baseurl }}{{ post.url }}" class="category-post-link">
+                  <span class="category-post-title">{{ post.title }}</span>
+                  <span class="category-post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .categories-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .category-item {
+    background: rgba(30, 40, 60, 0.2);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .category-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .category-name {
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+  }
+  
+  .category-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 0.5rem;
+  }
+  
+  .category-count {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-left: 0.5rem;
+  }
+  
+  .category-posts {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .category-post-item {
+    margin-bottom: 0.5rem;
+  }
+  
+  .category-post-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .category-post-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 4px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  
+  .category-post-link:hover {
+    background: rgba(100, 100, 150, 0.1);
+    color: var(--secondary-color);
+  }
+  
+  .category-post-title {
+    flex: 1;
+  }
+  
+  .category-post-date {
+    color: var(--text-light);
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 768px) {
+    .category-post-link {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .category-post-date {
+      margin-top: 0.25rem;
+    }
+  }
+</style> 

@@ -68,6 +68,7 @@
       align-items: center;
       padding: 0 2rem;
       transition: all 0.3s ease-in-out;
+      justify-content: space-between;
     }
 
     /* 스크롤에 따른 헤더 상태 변화 */
@@ -90,43 +91,130 @@
       font-size: 1.5rem;
       font-weight: 700;
       color: var(--primary-color);
+      flex: 0 0 auto;
+      padding-right: 1rem;
+      min-width: 160px;
+    }
+
+    /* 검색바 스타일 개선 */
+    .header-search {
+      flex: 0 1 500px;
+      margin: 0 1rem;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+    
+    .header-search .search-form {
+      display: flex;
+      width: 100%;
+      position: relative;
+      height: 38px;
+    }
+    
+    .header-search .search-input {
+      flex: 1;
+      background: rgba(30, 40, 60, 0.6);
+      border: 1px solid var(--border-color);
+      padding: 0.5rem 1rem;
+      color: var(--text-color);
+      font-size: 0.95rem;
+      outline: none;
+      border-radius: 8px 0 0 8px;
+      width: 100%;
+      transition: all 0.3s;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+    }
+    
+    .header-search .search-input:focus {
+      background: rgba(30, 40, 60, 0.8);
+      box-shadow: 0 0 0 2px rgba(100, 120, 200, 0.3);
+      border-color: var(--primary-color);
+    }
+    
+    .header-search .search-submit {
+      background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+      border: none;
+      color: white;
+      padding: 0 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      border-radius: 0 8px 8px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .header-search .search-submit:hover {
+      background: linear-gradient(145deg, var(--secondary-color), var(--primary-color));
+      transform: translateY(-1px);
+      box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 내비게이션 메뉴 스타일 개선 */
+    .site-nav {
+      flex: 0 0 auto;
+      margin-left: 1rem;
     }
 
     .nav-menu {
-      margin-left: auto;
       display: flex;
       list-style: none;
+      margin: 0;
+      padding: 0;
+      height: 100%;
     }
 
     .nav-menu li {
-      margin-left: 1.5rem;
+      margin-left: 0.5rem;
+      height: 100%;
+      display: flex;
+      align-items: center;
     }
 
     .nav-menu a {
       color: var(--text-color);
       font-weight: 500;
       position: relative;
+      padding: 0.5rem 0.8rem;
+      border-radius: 6px;
+      transition: all 0.3s;
+    }
+
+    .nav-menu a:hover {
+      background: rgba(108, 119, 221, 0.15);
+      color: var(--light-color);
     }
 
     .nav-menu a::after {
       content: '';
       position: absolute;
-      bottom: -5px;
-      left: 0;
+      bottom: 0;
+      left: 50%;
       width: 0;
       height: 2px;
       background-color: var(--primary-color);
-      transition: width 0.3s;
+      transition: all 0.3s;
+      transform: translateX(-50%);
     }
 
     .nav-menu a:hover::after {
-      width: 100%;
+      width: 80%;
     }
 
     .mobile-menu-btn {
       display: none;
       cursor: pointer;
-      margin-left: auto;
+      margin-left: 1rem;
+      background: transparent;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 4px;
+    }
+
+    .mobile-menu-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
     }
 
     .mobile-menu-btn span {
@@ -136,6 +224,85 @@
       margin: 5px 0;
       background-color: var(--primary-color);
       transition: all 0.3s;
+      border-radius: 3px;
+    }
+
+    /* 모바일 반응형 스타일 개선 */
+    @media (max-width: 1024px) {
+      .header-search {
+        flex: 0 1 350px;
+      }
+      
+      .nav-menu li {
+        margin-left: 0.3rem;
+      }
+      
+      .nav-menu a {
+        padding: 0.5rem 0.6rem;
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .site-header {
+        flex-wrap: wrap;
+        height: auto;
+        min-height: var(--header-height);
+        padding: 0.8rem 1.5rem;
+      }
+      
+      .logo {
+        flex: 1;
+        font-size: 1.3rem;
+      }
+      
+      .header-search {
+        order: 3;
+        flex: 1 0 100%;
+        margin: 0.8rem 0 0.3rem;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+        order: 2;
+      }
+      
+      .site-nav {
+        width: 100%;
+        order: 4;
+        margin: 0;
+      }
+      
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 0.5rem 0;
+      }
+      
+      .nav-menu.active {
+        display: flex;
+      }
+      
+      .nav-menu li {
+        margin: 0;
+        width: 100%;
+      }
+      
+      .nav-menu a {
+        display: block;
+        padding: 0.8rem 1.2rem;
+        width: 100%;
+        border-radius: 0;
+      }
+      
+      .nav-menu a::after {
+        display: none;
+      }
+      
+      .nav-menu a:hover {
+        background: rgba(108, 119, 221, 0.2);
+      }
     }
 
     /* 히어로 섹션 */
@@ -510,7 +677,7 @@
         grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
       }
     }
-    
+
     @media (max-width: 900px) {
       main {
         grid-template-columns: 1fr;
@@ -602,7 +769,7 @@
         bottom: 5rem;
       }
     }
-    
+
     @media (max-width: 600px) {
       .carousel-card {
         width: 100px;
@@ -861,81 +1028,151 @@
 
     /* 포스트 그리드 */
     .post-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
     }
 
+    /* 포스트 카드 링크 오버레이 */
+    .post-link-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    
     .post-card {
       background: linear-gradient(145deg, var(--dark-color) 0%, var(--dark-color-alt) 100%);
-      border-radius: 12px;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 5px 15px var(--shadow-color);
+      box-shadow: 0 3px 10px var(--shadow-color);
       transition: transform 0.3s, box-shadow 0.3s;
       border: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1.2rem;
+      position: relative;
+    }
+
+    /* 포스트 그리드 내 페이지네이션 스타일 */
+    .post-grid .pagination {
+      margin-top: 2rem;
     }
 
     .post-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px var(--shadow-color);
-      background: linear-gradient(145deg, #1a2233 0%, #222e45 100%);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px var(--shadow-color);
     }
-
-    .post-thumb {
-      height: 180px;
-      overflow: hidden;
-    }
-
-    .post-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s;
-    }
-
-    .post-card:hover .post-thumb img {
-      transform: scale(1.05);
-    }
-
-    .post-content {
-      padding: 1.2rem;
-    }
-
-    .post-title {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-      color: var(--text-color);
-    }
-
-    .post-meta {
+    
+    /* 카테고리 표시 영역 */
+    .post-category-bar {
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      background-color: rgba(15, 25, 40, 0.4);
       display: flex;
       align-items: center;
-      margin-bottom: 0.8rem;
-      font-size: 0.9rem;
-      color: var(--text-light);
     }
-
-    .post-meta .date {
+    
+    .post-category {
+      display: inline-block;
+      background-color: rgba(108, 119, 221, 0.2);
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.8rem;
+      transition: all 0.3s;
+      color: var(--text-color);
+      text-decoration: none;
+    }
+    
+    .post-category:hover {
+      background-color: rgba(108, 119, 221, 0.4);
+      color: var(--light-color);
+      transform: translateY(-1px);
+    }
+    
+    .tag {
+      display: inline-block;
+      margin-right: 0.4rem;
+      margin-bottom: 0.2rem;
+      background-color: rgba(108, 119, 221, 0.2);
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      font-size: 0.75rem;
+      transition: all 0.3s;
+      color: var(--text-color);
+      text-decoration: none;
+    }
+    
+    .tag:hover {
+      background-color: rgba(108, 119, 221, 0.4);
+      color: var(--light-color);
+      transform: translateY(-1px);
+    }
+    
+    .post-date {
       margin-right: 1rem;
     }
-
-    .post-excerpt {
-      font-size: 0.95rem;
-      color: var(--text-light);
-      margin-bottom: 1rem;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    
+    .post-views, .post-comments, .post-likes {
+      display: flex;
+      align-items: center;
+      margin-right: 1rem;
+    }
+    
+    .post-icon {
+      width: 14px;
+      height: 14px;
+      margin-right: 0.3rem;
+      opacity: 0.7;
+    }
+    
+    .post-stats {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
     }
 
-    .read-more {
-      display: inline-block;
-      color: var(--primary-color);
-      font-weight: 500;
-      font-size: 0.9rem;
+    /* 반응형 조정 */
+    @media (max-width: 768px) {
+      .post-main {
+        flex-direction: column;
+      }
+      
+      .post-text-content {
+        padding-right: 0;
+        margin-bottom: 1rem;
+      }
+      
+      .post-thumb {
+        width: 100%;
+        flex: 0 0 160px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .post-title {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .post-excerpt {
+        font-size: 0.85rem;
+        -webkit-line-clamp: 2;
+      }
+      
+      .post-meta-bar {
+        flex-wrap: wrap;
+      }
+      
+      .post-stats {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 0.5rem;
+      }
     }
 
     /* 푸터 */
@@ -1108,6 +1345,253 @@
     .carousel-track:empty + .fallback-card {
       display: block;
     }
+
+    /* 메인 콘텐츠 영역 */
+    .post-main {
+      display: flex;
+      padding: 1rem;
+    }
+    
+    /* 텍스트 영역 */
+    .post-text-content {
+      flex: 1;
+      padding-right: 1rem;
+    }
+
+    .post-title {
+      font-size: 1.15rem;
+      margin-bottom: 0.7rem;
+      font-weight: 600;
+      color: var(--text-color);
+    }
+    
+    .post-excerpt {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.5;
+    }
+
+    /* 썸네일 영역 - 오른쪽으로 이동 */
+    .post-thumb {
+      flex: 0 0 120px;
+      height: 120px;
+      overflow: hidden;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+    }
+
+    .post-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .post-card:hover .post-thumb img {
+      transform: scale(1.05);
+    }
+    
+    /* 포스트 메타데이터 영역 */
+    .post-meta-bar {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+      color: var(--text-light);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      background-color: rgba(15, 25, 40, 0.2);
+      flex-wrap: wrap;
+    }
+    
+    .post-tags {
+      display: flex;
+      align-items: center;
+      margin-right: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .post-date {
+      margin-right: 1rem;
+    }
+
+    /* 태그별 색상 정의 */
+    .tag-1 {
+      background-color: #6366f1;
+      color: white;
+    }
+    .tag-1:hover {
+      background-color: #4f46e5;
+    }
+    
+    .tag-2 {
+      background-color: #ef4444;
+      color: white;
+    }
+    .tag-2:hover {
+      background-color: #dc2626;
+    }
+    
+    .tag-3 {
+      background-color: #22c55e;
+      color: white;
+    }
+    .tag-3:hover {
+      background-color: #16a34a;
+    }
+    
+    .tag-4 {
+      background-color: #f97316;
+      color: white;
+    }
+    .tag-4:hover {
+      background-color: #ea580c;
+    }
+    
+    .tag-5 {
+      background-color: #14b8a6;
+      color: white;
+    }
+    .tag-5:hover {
+      background-color: #0d9488;
+    }
+    
+    .tag-6 {
+      background-color: #8b5cf6;
+      color: white;
+    }
+    .tag-6:hover {
+      background-color: #7c3aed;
+    }
+
+    /* 헤더 검색 기능 관련 스타일 */
+    .header-search {
+      flex: 0 1 500px;
+      margin: 0 1rem;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+    
+    .header-search .search-form {
+      display: flex;
+      width: 100%;
+      position: relative;
+      height: 38px;
+    }
+    
+    .header-search .search-input {
+      flex: 1;
+      background: rgba(30, 40, 60, 0.6);
+      border: 1px solid var(--border-color);
+      padding: 0.5rem 1rem;
+      color: var(--text-color);
+      font-size: 0.95rem;
+      outline: none;
+      border-radius: 8px 0 0 8px;
+      width: 100%;
+      transition: all 0.3s;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;
+    }
+    
+    .header-search .search-input:focus {
+      background: rgba(30, 40, 60, 0.8);
+      box-shadow: 0 0 0 2px rgba(100, 120, 200, 0.3);
+      border-color: var(--primary-color);
+    }
+    
+    .header-search .search-submit {
+      background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+      border: none;
+      color: white;
+      padding: 0 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      border-radius: 0 8px 8px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .header-search .search-submit:hover {
+      background: linear-gradient(145deg, var(--secondary-color), var(--primary-color));
+      transform: translateY(-1px);
+      box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    }
+    
+    @media (max-width: 1024px) {
+      .header-search {
+        flex: 0 1 350px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .site-header {
+        flex-wrap: wrap;
+        height: auto;
+        min-height: var(--header-height);
+        padding: 0.8rem 1.5rem;
+      }
+      
+      .logo {
+        flex: 1;
+        font-size: 1.3rem;
+      }
+      
+      .header-search {
+        order: 3;
+        flex: 1 0 100%;
+        margin: 0.8rem 0 0.3rem;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+        order: 2;
+      }
+      
+      .site-nav {
+        width: 100%;
+        order: 4;
+        margin: 0;
+      }
+      
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 0.5rem 0;
+      }
+      
+      .nav-menu.active {
+        display: flex;
+      }
+      
+      .nav-menu li {
+        margin: 0;
+        width: 100%;
+      }
+      
+      .nav-menu a {
+        display: block;
+        padding: 0.8rem 1.2rem;
+        width: 100%;
+        border-radius: 0;
+      }
+      
+      .nav-menu a::after {
+        display: none;
+      }
+      
+      .nav-menu a:hover {
+        background: rgba(108, 119, 221, 0.2);
+      }
+    }
   </style>
 
   <!-- 스크립트를 head에 넣어 빠르게 로드 -->
@@ -1216,11 +1700,11 @@
         if (originalCards.length > fallbackCards.length) {
           // 원본 카드만 복제 (fallback 제외)
           originalCards.filter(card => !card.classList.contains('fallback-card')).forEach((card, i) => {
-            const clone = card.cloneNode(true);
-            clone.style.position = 'absolute';
-            track.appendChild(clone);
-            cards.push(clone);
-          });
+          const clone = card.cloneNode(true);
+          clone.style.position = 'absolute';
+          track.appendChild(clone);
+          cards.push(clone);
+        });
         } else if (fallbackCards.length > 0) {
           // fallback 카드 사용
           fallbackCards.forEach((card, i) => {
@@ -1240,7 +1724,7 @@
             });
           }
         }
-        
+
         // 초기 위치에 카드 배치
         updateCardPositions();
 
@@ -1251,9 +1735,9 @@
           
           const index = cards.indexOf(card);
           if (index !== -1 && !card.classList.contains('active') && !isAnimating) {
-            e.preventDefault();
+              e.preventDefault();
             goToCard(index);
-          }
+            }
         });
 
         // 캐러셀 버튼 이벤트 연결
@@ -1442,92 +1926,6 @@
           setTimeout(init, 100);
         });
       }
-      
-      // 모바일 메뉴 토글
-      document.addEventListener('DOMContentLoaded', function() {
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        if (mobileMenuBtn) {
-          mobileMenuBtn.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            const spans = mobileMenuBtn.querySelectorAll('span');
-            
-            if (navMenu.classList.contains('active')) {
-              spans[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
-              spans[1].style.opacity = '0';
-              spans[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
-            } else {
-              spans[0].style.transform = 'none';
-              spans[1].style.opacity = '1';
-              spans[2].style.transform = 'none';
-            }
-          });
-        }
-
-        // 스크롤에 따른 헤더 변경 효과
-        const header = document.querySelector('.site-header');
-        const hero = document.querySelector('.hero');
-        let lastScrollTop = 0;
-        let heroBottom = 0;
-        
-        // 히어로 섹션의 높이를 계산하는 함수
-        function updateHeroBottom() {
-          if (hero) {
-            heroBottom = hero.offsetTop + hero.offsetHeight;
-          }
-        }
-        
-        // 초기 계산 실행
-        updateHeroBottom();
-        
-        // 창 크기가 변경될 때마다 히어로 섹션 높이 다시 계산
-        window.addEventListener('resize', updateHeroBottom);
-        
-        // 스크롤 이벤트에 따른 헤더 변화 처리 - 성능 최적화
-        let ticking = false;
-        window.addEventListener('scroll', function() {
-          if (!ticking) {
-            window.requestAnimationFrame(function() {
-              const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-              
-              // 스크롤 방향 감지 (위로 또는 아래로)
-              const scrollingDown = scrollTop > lastScrollTop;
-              
-              // 히어로 섹션 내에서 스크롤 중인 경우
-              if (scrollTop < heroBottom) {
-                // 어느 정도 스크롤됐을 때 헤더 축소
-                if (scrollTop > 100) {
-                  header.classList.add('shrink');
-                } else {
-                  header.classList.remove('shrink');
-                }
-                
-                // 완전히 보이게 설정
-                header.classList.remove('hidden');
-                header.classList.add('visible');
-              } 
-              // 히어로 섹션을 벗어난 경우
-              else {
-                // 아래로 스크롤 시 숨김
-                if (scrollingDown) {
-                  header.classList.add('hidden');
-                  header.classList.remove('visible');
-                } 
-                // 위로 스크롤 시 표시
-                else {
-                  header.classList.remove('hidden');
-                  header.classList.add('visible', 'shrink');
-                }
-              }
-              
-              lastScrollTop = scrollTop;
-              ticking = false;
-            });
-            ticking = true;
-          }
-        });
-      });
     })();
   </script>
 </head>
@@ -1536,18 +1934,33 @@
   <!-- 헤더 -->
   <header class="site-header">
     <a href="/" class="logo">NangManCat's Lab</a>
-    <nav>
+    
+    <!-- 헤더 중앙에 검색 기능 배치 -->
+    <div class="header-search">
+      <form action="/search" method="get" class="search-form">
+        <input type="text" name="q" id="search-input-header" class="search-input" placeholder="검색어를 입력하세요..." aria-label="검색어">
+        <button type="submit" class="search-submit" aria-label="검색 실행">
+          <svg viewBox="0 0 24 24" width="22" height="22">
+            <path fill="currentColor" d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
+          </svg>
+        </button>
+      </form>
+    </div>
+
+    <nav class="site-nav">
       <ul class="nav-menu">
         <li><a href="/">홈</a></li>
+        <li><a href="/categories">카테고리</a></li>
+        <li><a href="/tags">태그</a></li>
         <li><a href="https://github.com/NangManCatDev">깃허브</a></li>
         <li><a href="https://www.youtube.com/@NangManCat07">유튜브</a></li>
       </ul>
     </nav>
-    <div class="mobile-menu-btn">
+    <button class="mobile-menu-btn" aria-label="모바일 메뉴">
       <span></span>
       <span></span>
       <span></span>
-    </div>
+    </button>
   </header>
 
   <!-- 히어로 섹션 -->
@@ -1688,79 +2101,173 @@
             {% if paginator.posts %}
               {% for post in paginator.posts %}
               <article class="post-card">
-                <div class="post-thumb">
-                  <img src="{{ post.thumbnail | default: '/assets/thumbs/default.png' }}" alt="{{ post.title }}" loading="lazy">
+                <div class="post-category-bar">
+                  {% if post.categories %}
+                    <svg class="post-icon" viewBox="0 0 24 24">
+                      <path fill="currentColor" d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z" />
+                    </svg>
+                    <a href="/categories#{{ post.categories | first | slugify }}" class="post-category">{{ post.categories | first }}</a>
+                  {% else %}
+                    <svg class="post-icon" viewBox="0 0 24 24">
+                      <path fill="currentColor" d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z" />
+                    </svg>
+                    <span class="post-category">일반 글</span>
+                  {% endif %}
                 </div>
-                <div class="post-content">
-                  <h3 class="post-title">{{ post.title }}</h3>
-                  <div class="post-meta">
-                    <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
-                    {% if post.category %}
-                    <span class="category">{{ post.category }}</span>
-                    {% endif %}
+                <div class="post-main">
+                  <div class="post-text-content">
+                    <h3 class="post-title">{{ post.title }}</h3>
+                    <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
                   </div>
-                  <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
-                  <a href="{{ post.url }}" class="read-more">계속 읽기 &rarr;</a>
+                  <div class="post-thumb">
+                    <img src="{{ post.thumbnail | default: '/assets/thumbs/default.png' }}" alt="{{ post.title }}" loading="lazy">
+                  </div>
                 </div>
+                <div class="post-meta-bar">
+                  {% if post.tags and post.tags.size > 0 %}
+                  <div class="post-tags">
+                    <svg class="post-icon" viewBox="0 0 24 24">
+                      <path fill="currentColor" d="M5.5,9A1.5,1.5 0 0,0 7,7.5A1.5,1.5 0 0,0 5.5,6A1.5,1.5 0 0,0 4,7.5A1.5,1.5 0 0,0 5.5,9M17.41,11.58C17.77,11.94 18,12.44 18,13C18,13.55 17.78,14.05 17.41,14.41L12.41,19.41C12.05,19.77 11.55,20 11,20C10.45,20 9.95,19.78 9.58,19.41L2.59,12.42C2.22,12.05 2,11.55 2,11V6C2,4.89 2.89,4 4,4H9C9.55,4 10.05,4.22 10.41,4.58L17.41,11.58M13.54,5.71L14.54,4.71L21.41,11.58C21.78,11.94 22,12.45 22,13C22,13.55 21.78,14.05 21.42,14.41L16.04,19.79L15.04,18.79L20.75,13L13.54,5.71Z" />
+                    </svg>
+                    {% for tag in post.tags %}
+                      <a href="/tags#{{ tag | slugify }}" class="tag">{{ tag }}</a>
+                    {% endfor %}
+                  </div>
+                  {% endif %}
+                  <span class="post-date">
+                    <svg class="post-icon" viewBox="0 0 24 24">
+                      <path fill="currentColor" d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1" />
+                    </svg>
+                    {{ post.date | date: "%Y.%m.%d" }}
+                  </span>
+                  <div class="post-stats">
+                    <div class="post-views">
+                      <svg class="post-icon" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z" />
+                      </svg>
+                      <span>{{ post.views | default: "0" }}</span>
+                    </div>
+                    <div class="post-comments">
+                      <svg class="post-icon" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9Z" />
+                      </svg>
+                      <span>{{ post.comments | default: "0" }}</span>
+                    </div>
+                    <div class="post-likes">
+                      <svg class="post-icon" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M23,10C23,8.89 22.1,8 21,8H14.68L15.64,3.43C15.66,3.33 15.67,3.22 15.67,3.11C15.67,2.7 15.5,2.32 15.23,2.05L14.17,1L7.59,7.58C7.22,7.95 7,8.45 7,9V19A2,2 0 0,0 9,21H18C18.83,21 19.54,20.5 19.84,19.78L22.86,12.73C22.95,12.5 23,12.26 23,12V10M1,21H5V9H1V21Z" />
+                      </svg>
+                      <span>{{ post.likes | default: "0" }}</span>
+                    </div>
+                  </div>
+                </div>
+                <a href="{{ post.url }}" class="post-link-overlay"></a>
               </article>
               {% endfor %}
             {% else %}
               {% for post in site.posts limit:6 %}
               <article class="post-card">
-                <div class="post-thumb">
-                  <img src="{{ post.thumbnail | default: '/assets/thumbs/default.png' }}" alt="{{ post.title }}" loading="lazy">
+                <div class="post-category-bar">
+                  {% if post.categories %}
+                    <svg class="post-icon" viewBox="0 0 24 24">
+                      <path fill="currentColor" d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z" />
+                    </svg>
+                    <a href="/categories#{{ post.categories | first | slugify }}" class="post-category">{{ post.categories | first }}</a>
+                  {% else %}
+                    <svg class="post-icon" viewBox="0 0 24 24">
+                      <path fill="currentColor" d="M10,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V8C22,6.89 21.1,6 20,6H12L10,4Z" />
+                    </svg>
+                    <span class="post-category">일반 글</span>
+                  {% endif %}
                 </div>
-                <div class="post-content">
-                  <h3 class="post-title">{{ post.title }}</h3>
-                  <div class="post-meta">
-                    <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
-                    {% if post.category %}
-                    <span class="category">{{ post.category }}</span>
-                    {% endif %}
+                <div class="post-main">
+                  <div class="post-text-content">
+                    <h3 class="post-title">{{ post.title }}</h3>
+                    <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
                   </div>
-                  <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
-                  <a href="{{ post.url }}" class="read-more">계속 읽기 &rarr;</a>
+                  <div class="post-thumb">
+                    <img src="{{ post.thumbnail | default: '/assets/thumbs/default.png' }}" alt="{{ post.title }}" loading="lazy">
+                  </div>
                 </div>
+                <div class="post-meta-bar">
+                  {% if post.tags and post.tags.size > 0 %}
+                  <div class="post-tags">
+                    <svg class="post-icon" viewBox="0 0 24 24">
+                      <path fill="currentColor" d="M5.5,9A1.5,1.5 0 0,0 7,7.5A1.5,1.5 0 0,0 5.5,6A1.5,1.5 0 0,0 4,7.5A1.5,1.5 0 0,0 5.5,9M17.41,11.58C17.77,11.94 18,12.44 18,13C18,13.55 17.78,14.05 17.41,14.41L12.41,19.41C12.05,19.77 11.55,20 11,20C10.45,20 9.95,19.78 9.58,19.41L2.59,12.42C2.22,12.05 2,11.55 2,11V6C2,4.89 2.89,4 4,4H9C9.55,4 10.05,4.22 10.41,4.58L17.41,11.58M13.54,5.71L14.54,4.71L21.41,11.58C21.78,11.94 22,12.45 22,13C22,13.55 21.78,14.05 21.42,14.41L16.04,19.79L15.04,18.79L20.75,13L13.54,5.71Z" />
+                    </svg>
+                    {% for tag in post.tags %}
+                      <a href="/tags#{{ tag | slugify }}" class="tag">{{ tag }}</a>
+                    {% endfor %}
+                  </div>
+                  {% endif %}
+                  <span class="post-date">
+                    <svg class="post-icon" viewBox="0 0 24 24">
+                      <path fill="currentColor" d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1" />
+                    </svg>
+                    {{ post.date | date: "%Y.%m.%d" }}
+                  </span>
+                  <div class="post-stats">
+                    <div class="post-views">
+                      <svg class="post-icon" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z" />
+                      </svg>
+                      <span>{{ post.views | default: "0" }}</span>
+                    </div>
+                    <div class="post-comments">
+                      <svg class="post-icon" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M9,22A1,1 0 0,1 8,21V18H4A2,2 0 0,1 2,16V4C2,2.89 2.9,2 4,2H20A2,2 0 0,1 22,4V16A2,2 0 0,1 20,18H13.9L10.2,21.71C10,21.9 9.75,22 9.5,22V22H9Z" />
+                      </svg>
+                      <span>{{ post.comments | default: "0" }}</span>
+                    </div>
+                    <div class="post-likes">
+                      <svg class="post-icon" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M23,10C23,8.89 22.1,8 21,8H14.68L15.64,3.43C15.66,3.33 15.67,3.22 15.67,3.11C15.67,2.7 15.5,2.32 15.23,2.05L14.17,1L7.59,7.58C7.22,7.95 7,8.45 7,9V19A2,2 0 0,0 9,21H18C18.83,21 19.54,20.5 19.84,19.78L22.86,12.73C22.95,12.5 23,12.26 23,12V10M1,21H5V9H1V21Z" />
+                      </svg>
+                      <span>{{ post.likes | default: "0" }}</span>
+                    </div>
+                  </div>
+                </div>
+                <a href="{{ post.url }}" class="post-link-overlay"></a>
               </article>
               {% endfor %}
             {% endif %}
-          </div>
-          
-          <!-- 페이지네이션 -->
-          {% if paginator.total_pages > 1 %}
-          <div class="pagination">
-            {% if paginator.previous_page %}
-              <a href="{{ paginator.previous_page_path | relative_url }}" class="prev">&laquo; 이전</a>
-            {% else %}
-              <span class="prev disabled">&laquo; 이전</span>
-            {% endif %}
             
-            {% for i in (1..paginator.total_pages) %}
-              {% if i == paginator.page %}
-                <span class="active">{{ i }}</span>
+            <!-- 페이지네이션 -->
+            {% if paginator.total_pages > 1 %}
+            <div class="pagination">
+              {% if paginator.previous_page %}
+                <a href="{{ paginator.previous_page_path | relative_url }}" class="prev">&laquo; 이전</a>
               {% else %}
-                {% if i == 1 %}
-                  <a href="{{ '/' | relative_url }}">{{ i }}</a>
-                {% else %}
-                  <a href="{{ site.paginate_path | relative_url | replace: ':num', i }}">{{ i }}</a>
-                {% endif %}
+                <span class="prev disabled">&laquo; 이전</span>
               {% endif %}
-            {% endfor %}
-            
-            {% if paginator.next_page %}
-              <a href="{{ paginator.next_page_path | relative_url }}" class="next">다음 &raquo;</a>
-            {% else %}
-              <span class="next disabled">다음 &raquo;</span>
+              
+              {% for i in (1..paginator.total_pages) %}
+                {% if i == paginator.page %}
+                  <span class="active">{{ i }}</span>
+                {% else %}
+                  {% if i == 1 %}
+                    <a href="{{ '/' | relative_url }}">{{ i }}</a>
+                  {% else %}
+                    <a href="{{ site.paginate_path | relative_url | replace: ':num', i }}">{{ i }}</a>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+              
+              {% if paginator.next_page %}
+                <a href="{{ paginator.next_page_path | relative_url }}" class="next">다음 &raquo;</a>
+              {% else %}
+                <span class="next disabled">다음 &raquo;</span>
+              {% endif %}
+            </div>
             {% endif %}
           </div>
-          {% endif %}
         </div>
       </section>
 
       <!-- 기존 콘텐츠 (포스트 목록과 페이지네이션이 아닌 경우에만 표시) -->
       {% if paginator.posts.size == 0 or paginator.posts == nil %}
       <section class="content-section">
-        {{ content }}
+    {{ content }}
       </section>
       {% endif %}
     </div>
@@ -1863,6 +2370,119 @@
           });
         });
       }
+      
+      // 모바일 메뉴 토글 기능 개선
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      const navMenu = document.querySelector('.nav-menu');
+      
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function() {
+          navMenu.classList.toggle('active');
+          const spans = mobileMenuBtn.querySelectorAll('span');
+          
+          if (navMenu.classList.contains('active')) {
+            spans[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
+            spans[1].style.opacity = '0';
+            spans[2].style.transform = 'rotate(-45deg) translate(5px, -6px)';
+            mobileMenuBtn.setAttribute('aria-expanded', 'true');
+          } else {
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+        
+        // 메뉴 아이템 클릭 시 모바일 메뉴 닫기
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            if (window.innerWidth <= 768) {
+              navMenu.classList.remove('active');
+              const spans = mobileMenuBtn.querySelectorAll('span');
+              spans[0].style.transform = 'none';
+              spans[1].style.opacity = '1';
+              spans[2].style.transform = 'none';
+              mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            }
+          });
+        });
+        
+        // 윈도우 리사이즈 시 모바일 메뉴 처리
+        window.addEventListener('resize', function() {
+          if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            const spans = mobileMenuBtn.querySelectorAll('span');
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+      
+      // 스크롤에 따른 헤더 변경 효과
+      const header = document.querySelector('.site-header');
+      const hero = document.querySelector('.hero');
+      let lastScrollTop = 0;
+      let heroBottom = 0;
+      
+      // 히어로 섹션의 높이를 계산하는 함수
+      function updateHeroBottom() {
+        if (hero) {
+          heroBottom = hero.offsetTop + hero.offsetHeight;
+        }
+      }
+      
+      // 초기 계산 실행
+      updateHeroBottom();
+      
+      // 창 크기가 변경될 때마다 히어로 섹션 높이 다시 계산
+      window.addEventListener('resize', updateHeroBottom);
+      
+      // 스크롤 이벤트에 따른 헤더 변화 처리 - 성능 최적화
+      let ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // 스크롤 방향 감지 (위로 또는 아래로)
+            const scrollingDown = scrollTop > lastScrollTop;
+            
+            // 히어로 섹션 내에서 스크롤 중인 경우
+            if (scrollTop < heroBottom) {
+              // 어느 정도 스크롤됐을 때 헤더 축소
+              if (scrollTop > 100) {
+                header.classList.add('shrink');
+              } else {
+                header.classList.remove('shrink');
+              }
+              
+              // 완전히 보이게 설정
+              header.classList.remove('hidden');
+              header.classList.add('visible');
+            } 
+            // 히어로 섹션을 벗어난 경우
+            else {
+              // 아래로 스크롤 시 숨김
+              if (scrollingDown && scrollTop > lastScrollTop + 10) {
+                header.classList.add('hidden');
+                header.classList.remove('visible');
+              } 
+              // 위로 스크롤 시 표시
+              else if (!scrollingDown && lastScrollTop - scrollTop > 10) {
+                header.classList.remove('hidden');
+                header.classList.add('visible', 'shrink');
+              }
+            }
+            
+            lastScrollTop = scrollTop;
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
     });
   </script>
 </body>
