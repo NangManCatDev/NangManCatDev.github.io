@@ -1,1 +1,758 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-06T09:18:03+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Nangman Research Log</title><entry><title type="html">test1</title><link href="http://localhost:4000/2025/05/06/test1.html" rel="alternate" type="text/html" title="test1" /><published>2025-05-06T00:00:00+09:00</published><updated>2025-05-06T00:00:00+09:00</updated><id>http://localhost:4000/2025/05/06/test1</id><content type="html" xml:base="http://localhost:4000/2025/05/06/test1.html"><![CDATA[<p>test</p>]]></content><author><name></name></author><summary type="html"><![CDATA[test]]></summary></entry><entry><title type="html">test2</title><link href="http://localhost:4000/2025/05/05/test2.html" rel="alternate" type="text/html" title="test2" /><published>2025-05-05T00:00:00+09:00</published><updated>2025-05-05T00:00:00+09:00</updated><id>http://localhost:4000/2025/05/05/test2</id><content type="html" xml:base="http://localhost:4000/2025/05/05/test2.html"><![CDATA[<p>test</p>]]></content><author><name></name></author><summary type="html"><![CDATA[test]]></summary></entry><entry><title type="html">test3</title><link href="http://localhost:4000/2025/05/04/test3.html" rel="alternate" type="text/html" title="test3" /><published>2025-05-04T00:00:00+09:00</published><updated>2025-05-04T00:00:00+09:00</updated><id>http://localhost:4000/2025/05/04/test3</id><content type="html" xml:base="http://localhost:4000/2025/05/04/test3.html"><![CDATA[<p>test</p>]]></content><author><name></name></author><summary type="html"><![CDATA[test]]></summary></entry><entry><title type="html">test4</title><link href="http://localhost:4000/2025/05/03/test4.html" rel="alternate" type="text/html" title="test4" /><published>2025-05-03T00:00:00+09:00</published><updated>2025-05-03T00:00:00+09:00</updated><id>http://localhost:4000/2025/05/03/test4</id><content type="html" xml:base="http://localhost:4000/2025/05/03/test4.html"><![CDATA[<p>test</p>]]></content><author><name></name></author><summary type="html"><![CDATA[test]]></summary></entry><entry><title type="html">test5</title><link href="http://localhost:4000/2025/05/02/test5.html" rel="alternate" type="text/html" title="test5" /><published>2025-05-02T00:00:00+09:00</published><updated>2025-05-02T00:00:00+09:00</updated><id>http://localhost:4000/2025/05/02/test5</id><content type="html" xml:base="http://localhost:4000/2025/05/02/test5.html"><![CDATA[<p>test</p>]]></content><author><name></name></author><summary type="html"><![CDATA[test]]></summary></entry><entry><title type="html">test6</title><link href="http://localhost:4000/2025/05/01/test6.html" rel="alternate" type="text/html" title="test6" /><published>2025-05-01T00:00:00+09:00</published><updated>2025-05-01T00:00:00+09:00</updated><id>http://localhost:4000/2025/05/01/test6</id><content type="html" xml:base="http://localhost:4000/2025/05/01/test6.html"><![CDATA[<p>test</p>]]></content><author><name></name></author><summary type="html"><![CDATA[test]]></summary></entry><entry><title type="html">test7</title><link href="http://localhost:4000/2025/04/30/test7.html" rel="alternate" type="text/html" title="test7" /><published>2025-04-30T00:00:00+09:00</published><updated>2025-04-30T00:00:00+09:00</updated><id>http://localhost:4000/2025/04/30/test7</id><content type="html" xml:base="http://localhost:4000/2025/04/30/test7.html"><![CDATA[<p>test</p>]]></content><author><name></name></author><summary type="html"><![CDATA[test]]></summary></entry><entry><title type="html">test8</title><link href="http://localhost:4000/2025/04/29/test8.html" rel="alternate" type="text/html" title="test8" /><published>2025-04-29T00:00:00+09:00</published><updated>2025-04-29T00:00:00+09:00</updated><id>http://localhost:4000/2025/04/29/test8</id><content type="html" xml:base="http://localhost:4000/2025/04/29/test8.html"><![CDATA[<p>test</p>]]></content><author><name></name></author><summary type="html"><![CDATA[test]]></summary></entry></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-06T10:28:56+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Nangman Research Log</title><entry><title type="html">test1</title><link href="http://localhost:4000/2025/05/05/test01.html" rel="alternate" type="text/html" title="test1" /><published>2025-05-05T00:00:00+09:00</published><updated>2025-05-05T00:00:00+09:00</updated><id>http://localhost:4000/2025/05/05/test01</id><content type="html" xml:base="http://localhost:4000/2025/05/05/test01.html"><![CDATA[<p>test</p>]]></content><author><name></name></author><summary type="html"><![CDATA[test]]></summary></entry><entry><title type="html">마크다운 포맷팅 가이드</title><link href="http://localhost:4000/2025/05/05/test02.html" rel="alternate" type="text/html" title="마크다운 포맷팅 가이드" /><published>2025-05-05T00:00:00+09:00</published><updated>2025-05-05T00:00:00+09:00</updated><id>http://localhost:4000/2025/05/05/test02</id><content type="html" xml:base="http://localhost:4000/2025/05/05/test02.html"><![CDATA[<blockquote>
+  <p>해당 글은 AI로 작성된 테스트글입니다.</p>
+</blockquote>
+
+<h1 id="마크다운-완벽-가이드">마크다운 완벽 가이드</h1>
+
+<p>이 문서는 마크다운의 기본 구문과 포맷팅 방법을 자세히 설명합니다. 마크다운은 텍스트 기반의 마크업 언어로, 웹에서 쉽게 작성하고 읽을 수 있는 문서를 만들기 위해 설계되었습니다.</p>
+
+<h2 id="마크다운-소개">마크다운 소개</h2>
+
+<p>마크다운은 2004년 존 그루버(John Gruber)가 만든 경량 마크업 언어입니다. 일반 텍스트 편집기에서 작성된 텍스트 파일을 변환하여 HTML과 같은 형식으로 출력할 수 있습니다.</p>
+
+<h3 id="마크다운의-철학">마크다운의 철학</h3>
+
+<p>마크다운은 ‘읽기 쉽고, 쓰기 쉬운’ 순수 텍스트 포맷을 지향합니다.</p>
+
+<h4 id="가독성-우선">가독성 우선</h4>
+
+<p>마크다운의 주요 목표는 가독성을 높이는 것입니다. 마크다운으로 작성된 문서는 태그나 포맷팅 지시자로 가득 차 있지 않아 읽기 쉽습니다.</p>
+
+<h4 id="휴대성-고려">휴대성 고려</h4>
+
+<p>텍스트 파일로 저장되기 때문에 모든 컴퓨터 시스템에서 읽고 편집할 수 있습니다.</p>
+
+<h3 id="마크다운의-장점">마크다운의 장점</h3>
+
+<p>마크다운은 다음과 같은 장점이 있습니다:</p>
+
+<h4 id="간결한-문법">간결한 문법</h4>
+
+<p>최소한의 문법으로 문서를 작성할 수 있습니다.</p>
+
+<h4 id="뛰어난-호환성">뛰어난 호환성</h4>
+
+<p>텍스트 파일이므로 모든 운영체제에서 호환됩니다.</p>
+
+<h4 id="변환-용이성">변환 용이성</h4>
+
+<p>HTML, PDF 등 다양한 형식으로 쉽게 변환할 수 있습니다.</p>
+
+<h4 id="높은-가독성">높은 가독성</h4>
+
+<p>마크업이 적어 읽기 쉽습니다.</p>
+
+<h3 id="마크다운의-제한사항">마크다운의 제한사항</h3>
+
+<p>물론 마크다운에도 제한사항이 있습니다:</p>
+
+<h4 id="표준화-문제">표준화 문제</h4>
+
+<p>표준화된 명세가 없어 구현에 따라 다른 결과를 보일 수 있습니다.</p>
+
+<h4 id="복잡한-구조-제한">복잡한 구조 제한</h4>
+
+<p>복잡한 문서 구조나 스타일링에는 한계가 있습니다.</p>
+
+<h4 id="html-의존성">HTML 의존성</h4>
+
+<p>고급 서식 기능은 HTML을 함께 사용해야 하는 경우가 있습니다.</p>
+
+<h2 id="기본-문법">기본 문법</h2>
+
+<p>마크다운의 기본 문법을 알아보겠습니다.</p>
+
+<h3 id="헤더-사용법">헤더 사용법</h3>
+
+<p>헤더는 <code class="language-plaintext highlighter-rouge">#</code> 기호를 사용하여 표시합니다. <code class="language-plaintext highlighter-rouge">#</code>의 개수에 따라 헤더의 수준이 달라집니다:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># 헤더 1</span>
+<span class="gu">## 헤더 2</span>
+<span class="gu">### 헤더 3</span>
+<span class="gu">#### 헤더 4</span>
+<span class="gu">##### 헤더 5</span>
+<span class="gu">###### 헤더 6</span>
+</code></pre></div></div>
+
+<h4 id="헤더-작성-요령">헤더 작성 요령</h4>
+
+<p>효과적인 헤더 작성을 위한 팁입니다:</p>
+
+<h5 id="일관성-유지">일관성 유지</h5>
+
+<p>문서 전체에 걸쳐 헤더 레벨을 일관되게 사용하세요.</p>
+
+<h5 id="간결하게-작성">간결하게 작성</h5>
+
+<p>헤더는 간결하고 명확하게 작성하세요.</p>
+
+<h5 id="계층-구조-고려">계층 구조 고려</h5>
+
+<p>논리적인 계층 구조를 따라 헤더를 배치하세요.</p>
+
+<h3 id="텍스트-강조">텍스트 강조</h3>
+
+<p>텍스트를 강조하는 여러 방법이 있습니다:</p>
+
+<h4 id="이탤릭체">이탤릭체</h4>
+
+<p><em>이탤릭체</em>는 <code class="language-plaintext highlighter-rouge">*별표*</code> 또는 <code class="language-plaintext highlighter-rouge">_언더스코어_</code>로 감싸서 표시합니다.</p>
+
+<h4 id="볼드체">볼드체</h4>
+
+<p><strong>굵은 글씨</strong>는 <code class="language-plaintext highlighter-rouge">**두 개의 별표**</code> 또는 <code class="language-plaintext highlighter-rouge">__두 개의 언더스코어__</code>로 감싸서 표시합니다.</p>
+
+<h4 id="취소선">취소선</h4>
+
+<p><del>취소선</del>은 <code class="language-plaintext highlighter-rouge">~~물결표 두 개~~</code>로 감싸서 표시합니다.</p>
+
+<h4 id="밑줄">밑줄</h4>
+
+<p><u>밑줄</u>은 HTML의 <code class="language-plaintext highlighter-rouge">&lt;u&gt;</code> 태그를 사용해야 합니다.</p>
+
+<h3 id="목록-작성법">목록 작성법</h3>
+
+<p>마크다운에서는 다양한 종류의 목록을 만들 수 있습니다.</p>
+
+<h4 id="순서가-있는-목록">순서가 있는 목록</h4>
+
+<p>순서가 있는 목록은 숫자와 점을 사용합니다:</p>
+
+<ol>
+  <li>첫 번째 항목</li>
+  <li>두 번째 항목</li>
+  <li>세 번째 항목</li>
+</ol>
+
+<h5 id="중첩된-순서-목록">중첩된 순서 목록</h5>
+
+<p>순서 목록은 중첩하여 사용할 수 있습니다:</p>
+
+<ol>
+  <li>첫 번째 항목
+    <ol>
+      <li>하위 항목 1.1</li>
+      <li>하위 항목 1.2</li>
+    </ol>
+  </li>
+  <li>두 번째 항목</li>
+</ol>
+
+<h4 id="순서가-없는-목록">순서가 없는 목록</h4>
+
+<p>순서가 없는 목록은 <code class="language-plaintext highlighter-rouge">-</code>, <code class="language-plaintext highlighter-rouge">*</code>, <code class="language-plaintext highlighter-rouge">+</code> 를 사용합니다:</p>
+
+<ul>
+  <li>항목 1</li>
+  <li>항목 2
+    <ul>
+      <li>하위 항목 A</li>
+      <li>하위 항목 B</li>
+    </ul>
+  </li>
+  <li>항목 3</li>
+</ul>
+
+<h5 id="혼합-목록-사용">혼합 목록 사용</h5>
+
+<p>순서 목록과 비순서 목록을 혼합하여 사용할 수 있습니다:</p>
+
+<ol>
+  <li>첫 번째 항목
+    <ul>
+      <li>하위 항목 A</li>
+      <li>하위 항목 B</li>
+    </ul>
+  </li>
+  <li>두 번째 항목</li>
+</ol>
+
+<h3 id="링크-삽입">링크 삽입</h3>
+
+<p>마크다운에서 링크를 삽입하는 방법입니다.</p>
+
+<h4 id="인라인-링크">인라인 링크</h4>
+
+<p>링크는 <code class="language-plaintext highlighter-rouge">[텍스트](URL)</code> 형식으로 작성합니다:</p>
+
+<p><a href="https://github.com">GitHub</a></p>
+
+<h4 id="url-직접-표시">URL 직접 표시</h4>
+
+<p>URL을 직접 표시할 수도 있습니다:</p>
+
+<p><a href="https://github.com">https://github.com</a></p>
+
+<h4 id="참조-링크">참조 링크</h4>
+
+<p>참조 링크를 사용하면 문서의 가독성을 높일 수 있습니다:</p>
+
+<p><a href="https://github.com">GitHub</a></p>
+
+<h3 id="이미지-삽입">이미지 삽입</h3>
+
+<p>이미지는 링크와 유사하지만 앞에 느낌표가 붙습니다.</p>
+
+<h4 id="기본-이미지-삽입">기본 이미지 삽입</h4>
+
+<p>이미지는 링크 앞에 느낌표를 붙여 <code class="language-plaintext highlighter-rouge">![대체 텍스트](이미지 URL)</code> 형식으로 작성합니다:</p>
+
+<p><img src="https://markdown-here.com/img/icon256.png" alt="마크다운 로고" /></p>
+
+<h4 id="이미지-크기-조정">이미지 크기 조정</h4>
+
+<p>HTML을 사용하여 이미지 크기를 조정할 수 있습니다:</p>
+
+<p><img src="https://markdown-here.com/img/icon256.png" width="100" alt="마크다운 로고" /></p>
+
+<h2 id="고급-문법">고급 문법</h2>
+
+<p>기본 문법을 넘어 좀 더 고급 기능을 살펴보겠습니다.</p>
+
+<h3 id="표-만들기">표 만들기</h3>
+
+<p>표는 파이프(<code class="language-plaintext highlighter-rouge">|</code>)와 하이픈(<code class="language-plaintext highlighter-rouge">-</code>)을 사용하여 작성합니다.</p>
+
+<h4 id="기본-표-작성">기본 표 작성</h4>
+
+<p>기본적인 표 작성 방법입니다:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>이름</th>
+      <th>나이</th>
+      <th>직업</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>홍길동</td>
+      <td>30</td>
+      <td>개발자</td>
+    </tr>
+    <tr>
+      <td>김철수</td>
+      <td>28</td>
+      <td>디자이너</td>
+    </tr>
+    <tr>
+      <td>이영희</td>
+      <td>32</td>
+      <td>매니저</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="정렬-지정">정렬 지정</h4>
+
+<p>콜론을 사용하여 정렬을 지정할 수 있습니다:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">왼쪽 정렬</th>
+      <th style="text-align: center">가운데 정렬</th>
+      <th style="text-align: right">오른쪽 정렬</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">내용</td>
+      <td style="text-align: center">내용</td>
+      <td style="text-align: right">내용</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="코드-블록">코드 블록</h3>
+
+<p>코드 블록은 백틱(<code class="language-plaintext highlighter-rouge"> </code>`` `) 세 개로 시작하고 끝냅니다.</p>
+
+<h4 id="언어-지정-코드-블록">언어 지정 코드 블록</h4>
+
+<p>언어를 지정하면 구문 강조가 적용됩니다:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">hello_world</span><span class="p">():</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Hello, World!</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">helloWorld</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Hello, World!</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="인라인-코드">인라인 코드</h4>
+
+<p>인라인 코드는 백틱 한 개로 감싸서 표시합니다: <code class="language-plaintext highlighter-rouge">var example = true</code></p>
+
+<h3 id="인용문">인용문</h3>
+
+<p>인용문은 <code class="language-plaintext highlighter-rouge">&gt;</code> 기호를 사용합니다.</p>
+
+<h4 id="기본-인용문">기본 인용문</h4>
+
+<p>기본적인 인용문 사용법입니다:</p>
+
+<blockquote>
+  <p>이것은 인용문입니다.</p>
+
+  <p>여러 줄에 걸쳐 작성할 수도 있습니다.</p>
+</blockquote>
+
+<h4 id="중첩-인용문">중첩 인용문</h4>
+
+<p>인용문은 중첩할 수 있습니다:</p>
+
+<blockquote>
+  <p>이것은 바깥쪽 인용문입니다.</p>
+
+  <blockquote>
+    <p>이것은 중첩된 인용문입니다.</p>
+
+    <p>더 깊게 중첩할 수도 있습니다.</p>
+
+    <blockquote>
+      <p>세 번째 레벨의 인용문입니다.</p>
+    </blockquote>
+  </blockquote>
+</blockquote>
+
+<h3 id="수평선">수평선</h3>
+
+<p>수평선은 하이픈(<code class="language-plaintext highlighter-rouge">-</code>), 별표(<code class="language-plaintext highlighter-rouge">*</code>), 언더스코어(<code class="language-plaintext highlighter-rouge">_</code>) 세 개 이상을 연속해서 사용합니다:</p>
+
+<hr />
+
+<h3 id="체크박스">체크박스</h3>
+
+<p>체크박스는 대괄호를 사용합니다:</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />완료된 항목</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />미완료 항목</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />또 다른 미완료 항목</li>
+</ul>
+
+<h4 id="중첩된-체크박스">중첩된 체크박스</h4>
+
+<p>체크박스도 중첩이 가능합니다:</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />주 작업
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />하위 작업 1</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />하위 작업 2</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />하위 작업 3</li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />다음 주 작업</li>
+</ul>
+
+<h2 id="마크다운-확장-문법">마크다운 확장 문법</h2>
+
+<p>많은 마크다운 프로세서는 기본 마크다운을 확장하는 추가 기능을 제공합니다.</p>
+
+<h3 id="각주-사용법">각주 사용법</h3>
+
+<p>각주는 다음과 같이 사용할 수 있습니다<sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup>:</p>
+
+<h4 id="각주-작성-요령">각주 작성 요령</h4>
+
+<p>각주 작성 시 몇 가지 고려할 점이 있습니다:</p>
+
+<h5 id="간결하게-유지">간결하게 유지</h5>
+
+<p>각주는 보충 정보를 제공하는 용도이므로 간결하게 유지하세요.</p>
+
+<h5 id="일관된-번호-체계">일관된 번호 체계</h5>
+
+<p>문서 전체에서 일관된 각주 번호 체계를 유지하세요.</p>
+
+<h3 id="정의-목록">정의 목록</h3>
+
+<p>일부 마크다운 프로세서는 정의 목록을 지원합니다:</p>
+
+<dl>
+  <dt>마크다운</dt>
+  <dd>경량 마크업 언어</dd>
+  <dt>HTML</dt>
+  <dd>웹 페이지를 만드는 데 사용되는 마크업 언어</dd>
+</dl>
+
+<h4 id="정의-목록-활용-방법">정의 목록 활용 방법</h4>
+
+<p>정의 목록은 용어 설명에 유용합니다:</p>
+
+<h5 id="용어집-만들기">용어집 만들기</h5>
+
+<p>프로젝트의 용어집을 만들 때 활용할 수 있습니다.</p>
+
+<h5 id="faq-작성">FAQ 작성</h5>
+
+<p>질문과 답변 형식의 FAQ를 작성할 때 유용합니다.</p>
+
+<h3 id="수학-수식">수학 수식</h3>
+
+<p>일부 마크다운 프로세서는 LaTeX 문법을 사용한 수학 수식을 지원합니다:</p>
+
+\[E = mc^2\]
+
+<h4 id="인라인-수식">인라인 수식</h4>
+
+<p>인라인 수식은 <code class="language-plaintext highlighter-rouge">$</code> 기호로 감싸서 표시합니다: $a^2 + b^2 = c^2$</p>
+
+<h4 id="블록-수식">블록 수식</h4>
+
+<p>블록 수식은 <code class="language-plaintext highlighter-rouge">$$</code> 기호로 감싸서 표시합니다:</p>
+
+\[\frac{n!}{k!(n-k)!} = \binom{n}{k}\]
+
+<h2 id="실전-예제">실전 예제</h2>
+
+<p>이제 마크다운을 활용한 몇 가지 실전 예제를 살펴보겠습니다.</p>
+
+<h3 id="블로그-포스트-작성">블로그 포스트 작성</h3>
+
+<p>마크다운은 블로그 포스트 작성에 적합합니다.</p>
+
+<h4 id="레시피-포스트-예시">레시피 포스트 예시</h4>
+
+<p>요리 레시피를 마크다운으로 작성한 예시입니다:</p>
+
+<h5 id="재료-목록">재료 목록</h5>
+
+<ul>
+  <li>스파게티 면 200g</li>
+  <li>토마토 소스 1컵</li>
+  <li>다진 마늘 2쪽</li>
+  <li>올리브 오일 2큰술</li>
+  <li>소금, 후추 약간</li>
+</ul>
+
+<h5 id="조리-방법">조리 방법</h5>
+
+<ol>
+  <li>물을 끓인 후 소금을 약간 넣고 스파게티를 삶습니다.</li>
+  <li>팬에 올리브 오일을 두르고 다진 마늘을 볶습니다.</li>
+  <li>마늘 향이 올라오면 토마토 소스를 넣고 끓입니다.</li>
+  <li>삶은 스파게티를 소스에 넣고 잘 섞습니다.</li>
+  <li>소금과 후추로 간을 맞추고 완성!</li>
+</ol>
+
+<h4 id="여행-포스트-예시">여행 포스트 예시</h4>
+
+<p>여행 경험을 마크다운으로 작성한 예시입니다:</p>
+
+<h5 id="방문-장소">방문 장소</h5>
+
+<ol>
+  <li>서울
+    <ul>
+      <li>경복궁</li>
+      <li>남산타워</li>
+      <li>명동</li>
+    </ul>
+  </li>
+  <li>부산
+    <ul>
+      <li>해운대</li>
+      <li>감천문화마을</li>
+      <li>자갈치시장</li>
+    </ul>
+  </li>
+</ol>
+
+<h5 id="여행-팁">여행 팁</h5>
+
+<ul>
+  <li>대중교통 이용하기</li>
+  <li>현지 음식 맛보기</li>
+  <li>관광지보다 현지인 추천 장소 방문하기</li>
+</ul>
+
+<h3 id="기술-문서-작성">기술 문서 작성</h3>
+
+<p>마크다운은 기술 문서 작성에도 많이 사용됩니다.</p>
+
+<h4 id="api-문서-예시">API 문서 예시</h4>
+
+<p>API 문서를 마크다운으로 작성한 예시입니다:</p>
+
+<h5 id="인증-방법">인증 방법</h5>
+
+<p>모든 API 요청은 인증이 필요합니다. 인증은 Bearer 토큰을 사용합니다.</p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">Authorization: Bearer YOUR_TOKEN
+</span></code></pre></div></div>
+
+<h5 id="엔드포인트-설명">엔드포인트 설명</h5>
+
+<h6 id="get-users">GET /users</h6>
+
+<p>사용자 목록을 가져옵니다.</p>
+
+<h6 id="매개변수">매개변수</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th>이름</th>
+      <th>유형</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>page</td>
+      <td>integer</td>
+      <td>페이지 번호 (기본값: 1)</td>
+    </tr>
+    <tr>
+      <td>limit</td>
+      <td>integer</td>
+      <td>페이지당 항목 수 (기본값: 10)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h6 id="응답-형식">응답 형식</h6>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"홍길동"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hong@example.com"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h6 id="post-users">POST /users</h6>
+
+<p>새 사용자를 생성합니다.</p>
+
+<h6 id="요청-본문">요청 본문</h6>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"홍길동"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hong@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password123"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h6 id="응답-코드">응답 코드</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th>코드</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>201</td>
+      <td>사용자 생성 성공</td>
+    </tr>
+    <tr>
+      <td>400</td>
+      <td>잘못된 요청</td>
+    </tr>
+    <tr>
+      <td>409</td>
+      <td>이메일 중복</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="마크다운-편집기">마크다운 편집기</h2>
+
+<p>마크다운을 작성하고 편집할 수 있는 많은 도구가 있습니다.</p>
+
+<h3 id="온라인-편집기">온라인 편집기</h3>
+
+<p>웹에서 사용할 수 있는 마크다운 편집기는 다음과 같습니다:</p>
+
+<h4 id="stackedit">StackEdit</h4>
+
+<p>브라우저에서 사용할 수 있는 강력한 마크다운 편집기입니다.</p>
+
+<h5 id="주요-기능">주요 기능</h5>
+
+<ul>
+  <li>실시간 미리보기</li>
+  <li>구글 드라이브/Dropbox 연동</li>
+  <li>오프라인 작업 지원</li>
+</ul>
+
+<h4 id="dillinger">Dillinger</h4>
+
+<p>클라우드 지원이 있는 마크다운 편집기입니다.</p>
+
+<h5 id="주요-기능-1">주요 기능</h5>
+
+<ul>
+  <li>HTML/PDF 내보내기</li>
+  <li>깔끔한 인터페이스</li>
+  <li>여러 클라우드 서비스 연동</li>
+</ul>
+
+<h4 id="hackmd">HackMD</h4>
+
+<p>실시간 협업 기능이 있는 마크다운 노트입니다.</p>
+
+<h5 id="주요-기능-2">주요 기능</h5>
+
+<ul>
+  <li>실시간 다중 사용자 편집</li>
+  <li>버전 관리 기능</li>
+  <li>다양한 내보내기 옵션</li>
+</ul>
+
+<h3 id="데스크톱-편집기">데스크톱 편집기</h3>
+
+<p>데스크톱에서 사용할 수 있는 마크다운 편집기는 다음과 같습니다:</p>
+
+<h4 id="visual-studio-code">Visual Studio Code</h4>
+
+<p>다양한 마크다운 플러그인을 지원하는 코드 편집기입니다.</p>
+
+<h5 id="추천-플러그인">추천 플러그인</h5>
+
+<ul>
+  <li>Markdown All in One</li>
+  <li>Markdown Preview Enhanced</li>
+  <li>markdownlint</li>
+</ul>
+
+<h4 id="typora">Typora</h4>
+
+<p>실시간 미리보기 기능이 있는 마크다운 편집기입니다.</p>
+
+<h5 id="주요-기능-3">주요 기능</h5>
+
+<ul>
+  <li>실시간 렌더링</li>
+  <li>다양한 내보내기 옵션</li>
+  <li>이미지 드래그 앤 드롭 지원</li>
+</ul>
+
+<h3 id="모바일-앱">모바일 앱</h3>
+
+<p>모바일에서 사용할 수 있는 마크다운 앱은 다음과 같습니다:</p>
+
+<h4 id="ia-writer">iA Writer</h4>
+
+<p>iOS 및 Android용 미니멀한 마크다운 편집기입니다.</p>
+
+<h5 id="주요-기능-4">주요 기능</h5>
+
+<ul>
+  <li>포커스 모드</li>
+  <li>구문 강조</li>
+  <li>클라우드 동기화</li>
+</ul>
+
+<h4 id="joplin">Joplin</h4>
+
+<p>마크다운을 지원하는 오픈 소스 노트 앱입니다.</p>
+
+<h5 id="주요-기능-5">주요 기능</h5>
+
+<ul>
+  <li>종단간 암호화</li>
+  <li>동기화 기능</li>
+  <li>첨부 파일 지원</li>
+</ul>
+
+<h4 id="obsidian">Obsidian</h4>
+
+<p>마크다운 기반의 지식 베이스 앱입니다.</p>
+
+<h5 id="주요-기능-6">주요 기능</h5>
+
+<ul>
+  <li>노트 간 링크</li>
+  <li>그래프 뷰</li>
+  <li>플러그인 생태계</li>
+</ul>
+
+<h2 id="결론">결론</h2>
+
+<p>마크다운은 간결하면서도 강력한 문서 작성 도구입니다. 기본 문법만 익혀도 다양한 문서를 효과적으로 작성할 수 있습니다.</p>
+
+<h3 id="마크다운의-미래">마크다운의 미래</h3>
+
+<p>마크다운은 계속해서 발전하고 있으며, 다양한 확장 문법이 개발되고 있습니다.</p>
+
+<h4 id="표준화-노력">표준화 노력</h4>
+
+<p>CommonMark와 같은 표준화 노력을 통해 마크다운의 일관성이 향상되고 있습니다.</p>
+
+<h4 id="새로운-도구의-등장">새로운 도구의 등장</h4>
+
+<p>마크다운을 지원하는 다양한 새로운 도구들이 계속해서 개발되고 있습니다.</p>
+
+<h3 id="추가-학습-자료">추가 학습 자료</h3>
+
+<p>마크다운에 대해 더 알아보려면 다음 자료를 참고하세요:</p>
+
+<h4 id="온라인-튜토리얼">온라인 튜토리얼</h4>
+
+<ul>
+  <li><a href="https://www.markdownguide.org/">마크다운 가이드</a></li>
+  <li><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">GitHub 마크다운 치트 시트</a></li>
+  <li><a href="https://www.markdowntutorial.com/">마크다운 튜토리얼</a></li>
+</ul>
+
+<h4 id="유용한-도구">유용한 도구</h4>
+
+<ul>
+  <li><a href="https://github.com/markdownlint/markdownlint">Markdown Lint</a></li>
+  <li><a href="https://pandoc.org/">Pandoc</a></li>
+  <li><a href="https://github.com/yzane/vscode-markdown-pdf">Markdown PDF</a></li>
+</ul>
+
+<h3 id="자주-묻는-질문">자주 묻는 질문</h3>
+
+<p>마크다운 사용 시 자주 묻는 질문들입니다.</p>
+
+<h4 id="마크다운과-html-함께-사용">마크다운과 HTML 함께 사용</h4>
+
+<h5 id="html-태그-사용-가능-여부">HTML 태그 사용 가능 여부</h5>
+
+<p>네, 대부분의 마크다운 프로세서는 마크다운 내에서 HTML을 사용하는 것을 허용합니다.</p>
+
+<h5 id="주의사항">주의사항</h5>
+
+<p>HTML 태그 사용 시 마크다운 포맷팅이 무시될 수 있으니 주의하세요.</p>
+
+<h4 id="마크다운-표-관련-질문">마크다운 표 관련 질문</h4>
+
+<h5 id="표-정렬-방법">표 정렬 방법</h5>
+
+<p>기본 마크다운에서는 표 정렬을 콜론(<code class="language-plaintext highlighter-rouge">:</code>)을 사용하여 지정할 수 있습니다.</p>
+
+<h5 id="표-내-줄바꿈-방법">표 내 줄바꿈 방법</h5>
+
+<p>대부분의 마크다운에서 <code class="language-plaintext highlighter-rouge">&lt;br&gt;</code> 태그를 사용하여 표 내에서 줄바꿈을 할 수 있습니다.</p>
+
+<h2 id="마치며">마치며</h2>
+
+<p>이 가이드가 마크다운을 이해하고 활용하는 데 도움이 되었기를 바랍니다. 마크다운의 간결함과 유연성은 문서 작성의 효율성을 크게 높여줍니다.</p>
+
+<hr />
+
+<p><em>이 문서는 마크다운으로 작성되었습니다. 마크다운의 이점을 직접 경험해 보세요!</em></p>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p>이것은 각주의 내용입니다. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name></name></author><summary type="html"><![CDATA[해당 글은 AI로 작성된 테스트글입니다.]]></summary></entry><entry><title type="html">test3</title><link href="http://localhost:4000/2025/05/05/test03.html" rel="alternate" type="text/html" title="test3" /><published>2025-05-05T00:00:00+09:00</published><updated>2025-05-05T00:00:00+09:00</updated><id>http://localhost:4000/2025/05/05/test03</id><content type="html" xml:base="http://localhost:4000/2025/05/05/test03.html"><![CDATA[<p>test</p>]]></content><author><name></name></author><summary type="html"><![CDATA[test]]></summary></entry><entry><title type="html">test4</title><link href="http://localhost:4000/2025/05/05/test04.html" rel="alternate" type="text/html" title="test4" /><published>2025-05-05T00:00:00+09:00</published><updated>2025-05-05T00:00:00+09:00</updated><id>http://localhost:4000/2025/05/05/test04</id><content type="html" xml:base="http://localhost:4000/2025/05/05/test04.html"><![CDATA[<p>test</p>]]></content><author><name></name></author><summary type="html"><![CDATA[test]]></summary></entry><entry><title type="html">test5</title><link href="http://localhost:4000/2025/05/05/test05.html" rel="alternate" type="text/html" title="test5" /><published>2025-05-05T00:00:00+09:00</published><updated>2025-05-05T00:00:00+09:00</updated><id>http://localhost:4000/2025/05/05/test05</id><content type="html" xml:base="http://localhost:4000/2025/05/05/test05.html"><![CDATA[<p>test</p>]]></content><author><name></name></author><summary type="html"><![CDATA[test]]></summary></entry><entry><title type="html">test6</title><link href="http://localhost:4000/2025/05/05/test06.html" rel="alternate" type="text/html" title="test6" /><published>2025-05-05T00:00:00+09:00</published><updated>2025-05-05T00:00:00+09:00</updated><id>http://localhost:4000/2025/05/05/test06</id><content type="html" xml:base="http://localhost:4000/2025/05/05/test06.html"><![CDATA[<p>test</p>]]></content><author><name></name></author><summary type="html"><![CDATA[test]]></summary></entry><entry><title type="html">test7</title><link href="http://localhost:4000/2025/05/05/test07.html" rel="alternate" type="text/html" title="test7" /><published>2025-05-05T00:00:00+09:00</published><updated>2025-05-05T00:00:00+09:00</updated><id>http://localhost:4000/2025/05/05/test07</id><content type="html" xml:base="http://localhost:4000/2025/05/05/test07.html"><![CDATA[<p>test</p>]]></content><author><name></name></author><summary type="html"><![CDATA[test]]></summary></entry><entry><title type="html">test8</title><link href="http://localhost:4000/2025/05/05/test08.html" rel="alternate" type="text/html" title="test8" /><published>2025-05-05T00:00:00+09:00</published><updated>2025-05-05T00:00:00+09:00</updated><id>http://localhost:4000/2025/05/05/test08</id><content type="html" xml:base="http://localhost:4000/2025/05/05/test08.html"><![CDATA[<p>test</p>]]></content><author><name></name></author><summary type="html"><![CDATA[test]]></summary></entry><entry><title type="html">test9</title><link href="http://localhost:4000/2025/05/05/test09.html" rel="alternate" type="text/html" title="test9" /><published>2025-05-05T00:00:00+09:00</published><updated>2025-05-05T00:00:00+09:00</updated><id>http://localhost:4000/2025/05/05/test09</id><content type="html" xml:base="http://localhost:4000/2025/05/05/test09.html"><![CDATA[<p>test</p>]]></content><author><name></name></author><summary type="html"><![CDATA[test]]></summary></entry></feed>
