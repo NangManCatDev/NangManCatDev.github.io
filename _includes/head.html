@@ -1,0 +1,41 @@
+<meta charset="UTF-8" />
+<title>{{ page.title }} | NangManCat's Lab</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<!-- 기본 스타일시트 -->
+<link rel="stylesheet" href="/assets/css/default.css">
+
+<!-- 레이아웃별 스타일시트 -->
+{% if page.layout == 'post' %}
+<link rel="stylesheet" href="/assets/css/post.css">
+{% endif %}
+
+<!-- 헤더와 푸터 스타일시트 -->
+<link rel="stylesheet" href="/assets/css/header.css">
+<link rel="stylesheet" href="/assets/css/footer.css">
+
+<!-- SEO 메타태그 -->
+<meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+<meta name="author" content="NangManCat">
+<meta name="keywords" content="{% if page.tags %}{{ page.tags | join: ', ' }}{% else %}개발, 프로그래밍, 블로그{% endif %}">
+
+<!-- 오픈그래프 태그 -->
+<meta property="og:title" content="{{ page.title | default: site.title }}">
+<meta property="og:description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+<meta property="og:image" content="{{ page.thumbnail | default: '/assets/thumbs/default.png' | absolute_url }}">
+<meta property="og:url" content="{{ page.url | replace:'index.html','' | absolute_url }}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="NangManCat's Lab">
+
+<!-- 트위터 카드 -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page.title | default: site.title }}">
+<meta name="twitter:description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+<meta name="twitter:image" content="{{ page.thumbnail | default: '/assets/thumbs/default.png' | absolute_url }}">
+
+<!-- 파비콘 -->
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">

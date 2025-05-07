@@ -84,7 +84,9 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll
+  jekyll-feed
   jekyll-paginate
+  jekyll-seo-tag
   minima (~> 2.5)
 
 BUNDLED WITH

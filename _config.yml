@@ -7,13 +7,15 @@ collections:
     permalink: /:name/
 
 # 페이지네이션 설정
-paginate: 6
+paginate: 5
 paginate_path: "/page/:num/"
 pagination_dir: page
 
 # 플러그인 설정
 plugins:
   - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-feed
 
 # GitHub Pages와 호환성 설정
 safe: true
