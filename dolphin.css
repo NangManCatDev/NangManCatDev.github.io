@@ -1,0 +1,103 @@
+.dolphin-file-manager {
+    background-color: #2a2a2a;
+    border-radius: 5px;
+    padding: 15px;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+.file-list {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.file-list th {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #444;
+    color: #fff;
+}
+
+.file-item {
+    cursor: pointer;
+}
+
+.file-item:hover {
+    background-color: #3a3a3a;
+}
+
+.file-item td {
+    padding: 8px;
+    border-bottom: 1px solid #333;
+    color: #33ff00;
+}
+
+.file-name {
+    display: flex;
+    align-items: center;
+}
+
+.file-icon {
+    margin-right: 8px;
+    color: #33ff00;
+}
+
+.file-viewer {
+    background-color: #1e1e1e;
+    border: 1px solid #444;
+    padding: 15px;
+    margin-top: 15px;
+    display: none;
+    position: relative;
+}
+
+.file-content {
+    color: #eee;
+    white-space: pre-wrap;
+    font-family: 'Courier New', monospace;
+    line-height: 1.5;
+}
+
+.close-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: #444;
+    color: #fff;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.signature {
+    font-style: italic;
+    text-align: right;
+    margin-top: 20px;
+}
+
+/* 파일 상태 표시자 */
+.status-icons {
+    display: flex;
+    margin-top: 10px;
+    justify-content: flex-end;
+}
+
+.status-icon {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+
+.status-red {
+    background-color: #ff5f57;
+}
+
+.status-yellow {
+    background-color: #ffbd2e;
+}
+
+.status-green {
+    background-color: #28ca41;
+} 

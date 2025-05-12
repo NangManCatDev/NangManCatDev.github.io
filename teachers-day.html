@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI소프트웨어학과 교수님께 감사드립니다</title>
+    <link rel="stylesheet" href="/terminal.css">
+    <link rel="stylesheet" href="/dolphin.css">
+    <style>
+        /* 기본 스타일 백업 */
+        body {
+            background-color: #000;
+            color: #33ff00;
+            font-family: 'Courier New', monospace;
+            padding: 10px;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .terminal {
+            max-width: 95%;
+            width: 800px;
+            margin: 0 auto;
+            background-color: #0c0c0c;
+            border: 2px solid #33ff00;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(51, 255, 0, 0.4);
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto; /* 전체 터미널에만 스크롤 적용 */
+        }
+        .command {
+            margin-bottom: 3px;
+        }
+        .prompt {
+            color: #33ff00;
+            font-weight: bold;
+        }
+        .output {
+            color: #cccccc;
+            margin: 5px 0 10px 0;
+            white-space: pre-wrap;
+            /* 개별 스크롤 제거 */
+            max-height: none;
+            overflow-y: visible;
+        }
+        .command-input {
+            color: #ffffff;
+        }
+        .dolphin-file-manager {
+            background-color: #2a2a2a;
+            border-radius: 5px;
+            padding: 15px;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            /* 개별 스크롤 제거 */
+            max-height: none;
+            overflow-y: visible;
+            font-size: 0.95em;
+            margin-bottom: 5px;
+        }
+        .file-list {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .file-list th {
+            text-align: left;
+            padding: 5px;
+            border-bottom: 1px solid #444;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            background-color: #2a2a2a;
+            z-index: 10;
+        }
+        .file-item {
+            cursor: pointer;
+        }
+        .file-item:hover {
+            background-color: #3a3a3a;
+        }
+        .file-item td {
+            padding: 5px;
+            border-bottom: 1px solid #333;
+            color: #33ff00;
+        }
+        .file-name {
+            display: flex;
+            align-items: center;
+        }
+        .file-icon {
+            margin-right: 8px;
+            color: #33ff00;
+        }
+        .file-viewer {
+            background-color: #1e1e1e;
+            border: 1px solid #444;
+            padding: 15px;
+            margin-top: 10px;
+            display: none;
+            position: relative;
+            /* 개별 스크롤 제거 */
+            max-height: none;
+            overflow-y: visible;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+        }
+        .file-content {
+            color: #eee;
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            line-height: 1.5;
+            padding: 5px;
+        }
+        .close-btn {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background: #444;
+            color: #fff;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 20;
+        }
+        
+        /* 터미널 타이핑 애니메이션 효과 */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1em;
+            background-color: #33ff00;
+            animation: blink 1s infinite;
+            color: transparent;
+            margin-left: 2px;
+            vertical-align: text-bottom;
+        }
+        
+        .typed-text {
+            color: #ffffff;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        /* 코드 블록 - 개별 스크롤 제거 */
+        #output-1, #output-2, #output-6, #output-8 {
+            max-height: none;
+            overflow-y: visible;
+        }
+        
+        /* 감사 메시지 스타일 */
+        .thanks-message {
+            color: #33ff00;
+            text-align: center;
+            font-size: 1.2em;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px dashed #33ff00;
+            border-radius: 5px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(51, 255, 0, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(51, 255, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(51, 255, 0, 0); }
+        }
+        
+        /* 스크롤바 스타일링 - 전체 터미널만 적용 */
+        .terminal::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .terminal::-webkit-scrollbar-track {
+            background: #0c0c0c;
+        }
+        .terminal::-webkit-scrollbar-thumb {
+            background: #33ff00;
+            border-radius: 4px;
+        }
+        .terminal::-webkit-scrollbar-thumb:hover {
+            background: #5fff2f;
+        }
+        
+        /* 모바일 반응형 */
+        @media (max-width: 768px) {
+            .terminal {
+                width: 95%;
+                padding: 10px;
+                height: 85vh;
+            }
+            .file-item td {
+                padding: 3px;
+                font-size: 0.9em;
+            }
+            body {
+                padding: 5px;
+            }
+        }
+        
+        /* 구분선 추가 */
+        .command:not(:first-child) {
+            border-top: 1px solid rgba(51, 255, 0, 0.1);
+            padding-top: 8px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div class="command">
+            <span class="prompt">user@ai-webdev:~$</span>
+            <span class="command-input"> cd ~/gratitude</span>
+        </div>
+        <div class="command">
+            <span class="prompt">user@ai-webdev:~/gratitude$</span>
+            <span class="command-input"> ls -la</span>
+        </div>
+        <div class="output">
+total 16
+drwxr-xr-x  4 user user 4096 May 15 09:22 .
+drwxr-xr-x 20 user user 4096 May 15 09:20 ..
+-rw-r--r--  1 user user  542 May 15 09:21 gratitude.js
+drwxr-xr-x  2 user user 4096 May 15 09:22 professors
+        </div>
+        <div class="command">
+            <span class="prompt">user@ai-webdev:~/gratitude$</span>
+            <span class="command-input"> cat gratitude.js</span>
+        </div>
+        <div class="output" id="output-1">
+function expressGratitude() {
+    const professors = [
+        "김성익 교수님",
+        "김문정 교수님",
+        "정선미 교수님",
+        "김재홍 교수님",
+        "박충식 교수님",
+        "최제영 교수님"
+    ];
+    
+    console.log("교수님들께 감사의 마음을 전합니다.");
+    professors.forEach(prof => {
+        console.log(`- ${prof}`);
+    });
+    
+    return "AI소프트웨어학과 교수님들께 감사드립니다.";
+}
+
+// Call the function
+expressGratitude();
+        </div>
+        <div class="command">
+            <span class="prompt">user@ai-webdev:~/gratitude$</span>
+            <span class="command-input"> node gratitude.js</span>
+        </div>
+        <div class="output" id="output-2">
+교수님들께 감사의 마음을 전합니다.
+- 김성익 교수님
+- 김문정 교수님
+- 정선미 교수님
+- 김재홍 교수님
+- 박충식 교수님
+- 최제영 교수님
+AI소프트웨어학과 교수님들께 감사드립니다.
+        </div>
+        <div class="command">
+            <span class="prompt">user@ai-webdev:~/gratitude$</span>
+            <span class="command-input"> ls -l ~/professors/</span>
+        </div>
+        <div class="output" id="output-6">
+            <div class="dolphin-file-manager">
+                <table class="file-list">
+                    <thead>
+                        <tr>
+                            <th>이름</th>
+                            <th>크기</th>
+                            <th>종류</th>
+                            <th>수정한 날짜</th>
+                            <th>권한</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="file-item" data-professor="김성익">
+                            <td class="file-name">
+                                <span class="file-icon">📄</span>
+                                김성익_교수님.txt
+                            </td>
+                            <td>2.4 KB</td>
+                            <td>텍스트 파일</td>
+                            <td>2023-05-15</td>
+                            <td>-rw-r--r--</td>
+                        </tr>
+                        <tr class="file-item" data-professor="김문정">
+                            <td class="file-name">
+                                <span class="file-icon">📄</span>
+                                김문정_교수님.txt
+                            </td>
+                            <td>2.2 KB</td>
+                            <td>텍스트 파일</td>
+                            <td>2023-05-15</td>
+                            <td>-rw-r--r--</td>
+                        </tr>
+                        <tr class="file-item" data-professor="정선미">
+                            <td class="file-name">
+                                <span class="file-icon">📄</span>
+                                정선미_교수님.txt
+                            </td>
+                            <td>2.3 KB</td>
+                            <td>텍스트 파일</td>
+                            <td>2023-05-15</td>
+                            <td>-rw-r--r--</td>
+                        </tr>
+                        <tr class="file-item" data-professor="김재홍">
+                            <td class="file-name">
+                                <span class="file-icon">📄</span>
+                                김재홍_교수님.txt
+                            </td>
+                            <td>2.1 KB</td>
+                            <td>텍스트 파일</td>
+                            <td>2023-05-15</td>
+                            <td>-rw-r--r--</td>
+                        </tr>
+                        <tr class="file-item" data-professor="박충식">
+                            <td class="file-name">
+                                <span class="file-icon">📄</span>
+                                박충식_교수님.txt
+                            </td>
+                            <td>2.5 KB</td>
+                            <td>텍스트 파일</td>
+                            <td>2023-05-15</td>
+                            <td>-rw-r--r--</td>
+                        </tr>
+                        <tr class="file-item" data-professor="최제영">
+                            <td class="file-name">
+                                <span class="file-icon">📄</span>
+                                최제영_교수님.txt
+                            </td>
+                            <td>2.3 KB</td>
+                            <td>텍스트 파일</td>
+                            <td>2023-05-15</td>
+                            <td>-rw-r--r--</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="file-viewer">
+                    <button class="close-btn">✖</button>
+                    <div class="file-content"></div>
+                </div>
+            </div>
+        </div>
+        <div class="command">
+            <span class="prompt">user@ai-webdev:~/gratitude$</span>
+            <span class="command-input"> echo "감사의 마음"</span>
+        </div>
+        <div class="output" id="output-8">
+            <div class="thanks-message">감사의 마음이 성공적으로 전달되었습니다!</div>
+        </div>
+    </div>
+
+    <script src="/gratitude.js"></script>
+    <script>
+        // 애니메이션 설정
+        const ANIMATION_CONFIG = {
+            enabled: true,          // 애니메이션 활성화 여부
+            typingSpeed: 30,        // 타이핑 속도 (ms) - 더 빠르게 수정
+            commandDelay: 300,      // 명령어 간 지연 시간 (ms) - 더 짧게 수정
+            outputDelay: 200,       // 명령어 실행 후 출력까지 지연 시간 (ms) - 더 짧게 수정
+            initialDelay: 500       // 초기 지연 시간 (ms) - 더 짧게 수정
+        };
+        
+        // 백업 스크립트 - 외부 파일이 로드되지 않을 경우를 대비
+        document.addEventListener('DOMContentLoaded', function() {
+            // 유용한 단축키 안내 추가
+            const terminal = document.querySelector('.terminal');
+            const keyboardHelpDiv = document.createElement('div');
+            keyboardHelpDiv.className = 'keyboard-help';
+            keyboardHelpDiv.innerHTML = '<div style="position: fixed; bottom: 10px; right: 10px; background-color: rgba(20, 20, 20, 0.7); padding: 5px 10px; border-radius: 5px; color: #33ff00; font-size: 12px; z-index: 1000;">단축키: <kbd>ESC</kbd> - 애니메이션 건너뛰기, <kbd>Space</kbd> - 다음 명령어</div>';
+            document.body.appendChild(keyboardHelpDiv);
+            
+            // 스크롤 자동 조정 여부를 제어하는 변수
+            let autoScrollEnabled = true;
+            
+            // 스크롤 자동 조정 - 새 명령어가 보이면 전체 터미널에서 해당 위치로 스크롤
+            const autoScroll = function() {
+                if (!autoScrollEnabled) return; // 자동 스크롤이 비활성화되었으면 실행하지 않음
+                
+                const commands = document.querySelectorAll('.command');
+                const visibleCommands = Array.from(commands).filter(cmd => cmd.style.display !== 'none');
+                if (visibleCommands.length > 0) {
+                    const lastCommand = visibleCommands[visibleCommands.length - 1];
+                    lastCommand.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            };
+            
+            // 1초마다 스크롤 자동 조정
+            const scrollInterval = setInterval(autoScroll, 1000);
+            
+            // 스크롤 자동 조정 비활성화 함수
+            const disableAutoScroll = function() {
+                console.log("자동 스크롤 비활성화");
+                autoScrollEnabled = false;
+                clearInterval(scrollInterval);
+            };
+            
+            // 파일 클릭 시 스크롤 조정
+            const adjustScrollToFileViewer = function() {
+                const fileViewer = document.querySelector('.file-viewer');
+                if (fileViewer && fileViewer.style.display === 'block') {
+                    fileViewer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            };
+            
+            // 스페이스 키로 다음 명령어 실행
+            document.addEventListener('keydown', function(e) {
+                if (e.key === ' ' && ANIMATION_CONFIG.enabled) {
+                    e.preventDefault(); // 스페이스 키의 기본 스크롤 동작 방지
+                    speedUpAnimation();
+                }
+            });
+            
+            // 스크롤 맨 위로
+            const scrollToTop = function() {
+                terminal.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            };
+            
+            // 스크롤 맨 아래로
+            const scrollToBottom = function() {
+                terminal.scrollTo({
+                    top: terminal.scrollHeight,
+                    behavior: 'smooth'
+                });
+            };
+            
+            // 애니메이션 완료 후 추가 스크롤 처리
+            const onAnimationComplete = function() {
+                // 애니메이션이 끝나면 자동 스크롤 중지
+                disableAutoScroll();
+                
+                // 전체 흐름을 보기 위해 잠시 후 맨 위로 스크롤
+                setTimeout(() => {
+                    scrollToTop();
+                    
+                    // 이후 사용자가 자유롭게 스크롤할 수 있게 안내 메시지 표시
+                    const scrollHint = document.createElement('div');
+                    scrollHint.className = 'scroll-hint';
+                    scrollHint.innerHTML = '<div style="position: fixed; bottom: 50px; left: 50%; transform: translateX(-50%); background-color: rgba(20, 20, 20, 0.7); padding: 5px 10px; border-radius: 5px; color: #33ff00; font-size: 12px; animation: fadeInOut 2s infinite;">이제 자유롭게 스크롤하여 내용을 확인하세요</div>';
+                    document.body.appendChild(scrollHint);
+                    
+                    // 5초 후 힌트 제거
+                    setTimeout(() => {
+                        if (scrollHint.parentNode) {
+                            scrollHint.parentNode.removeChild(scrollHint);
+                        }
+                    }, 5000);
+                }, 2000);
+            };
+            
+            // 애니메이션 속도 높이기
+            function speedUpAnimation() {
+                // 모든 인터벌 취소하고 모든 명령어와 출력 표시
+                const commands = document.querySelectorAll('.command');
+                const outputs = document.querySelectorAll('.output');
+                
+                // 모든 타이머 취소
+                skipAnimation();
+                
+                // 다음 명령어 바로 표시
+                typeCommand(commands, commands.length - 1);
+            }
+            
+            // 기존 코드
+            initBackupDolphinFileManager();
+            setTimeout(initBackupDolphinFileManager, 2000);
+            
+            // 타이핑 애니메이션 초기화
+            if (ANIMATION_CONFIG.enabled) {
+                initTypingAnimation();
+            } else {
+                // 애니메이션 비활성화 시 모든 콘텐츠 바로 표시
+                document.querySelectorAll('.command, .output').forEach(el => {
+                    el.style.display = 'block';
+                });
+            }
+            
+            // ESC 키를 누르면 애니메이션 스킵
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    skipAnimation();
+                    onAnimationComplete();
+                }
+            });
+        });
+        
+        // 애니메이션 스킵 기능
+        function skipAnimation() {
+            // 진행 중인 모든 타이머 취소
+            const highestId = window.setTimeout(() => {}, 0);
+            for (let i = 0; i < highestId; i++) {
+                window.clearTimeout(i);
+            }
+            
+            // 모든 타이핑 인터벌 취소
+            clearAllIntervals();
+            
+            // 모든 콘텐츠 표시
+            document.querySelectorAll('.command, .output').forEach(el => {
+                el.style.display = 'block';
+            });
+            
+            // 명령어 입력 요소 원래대로 복원
+            document.querySelectorAll('.command-input').forEach(input => {
+                input.innerHTML = input.getAttribute('data-original-text') || input.innerText;
+            });
+        }
+        
+        // 모든 인터벌 취소
+        function clearAllIntervals() {
+            const highestId = window.setInterval(() => {}, 0);
+            for (let i = 0; i < highestId; i++) {
+                window.clearInterval(i);
+            }
+        }
+        
+        // 터미널 타이핑 애니메이션 효과
+        function initTypingAnimation() {
+            const commands = document.querySelectorAll('.command');
+            
+            // 모든 명령어의 원본 텍스트 저장
+            commands.forEach(cmd => {
+                const commandInput = cmd.querySelector('.command-input');
+                if (commandInput) {
+                    commandInput.setAttribute('data-original-text', commandInput.innerText.trim());
+                }
+            });
+            
+            // 처음에는 모든 명령어와 출력 숨기기
+            commands.forEach((cmd, index) => {
+                if (index > 0) { // 첫 번째 명령어는 바로 표시
+                    cmd.style.display = 'none';
+                }
+                const nextOutput = cmd.nextElementSibling;
+                if (nextOutput && nextOutput.classList.contains('output')) {
+                    nextOutput.style.display = 'none';
+                }
+            });
+            
+            // 첫 번째 명령어에 커서 효과 추가
+            const firstCommand = commands[0].querySelector('.command-input');
+            firstCommand.innerHTML = '<span class="typed-text"></span><span class="cursor">█</span>';
+            
+            // 첫 번째 명령어 타이핑 시작
+            setTimeout(() => {
+                typeCommand(commands, 0);
+            }, ANIMATION_CONFIG.initialDelay);
+        }
+        
+        function typeCommand(commands, index) {
+            if (index >= commands.length) {
+                // 모든 명령어 타이핑이 완료되면 onAllAnimationsComplete 호출
+                onAllAnimationsComplete();
+                return;
+            }
+            
+            const cmd = commands[index];
+            cmd.style.display = 'block';
+            
+            const commandInput = cmd.querySelector('.command-input');
+            const originalText = commandInput.getAttribute('data-original-text') || commandInput.innerText.trim();
+            
+            // 타이핑 효과를 위한 요소 설정
+            commandInput.innerHTML = '<span class="typed-text"></span><span class="cursor">█</span>';
+            const typedTextElement = commandInput.querySelector('.typed-text');
+            
+            // 한 글자씩 타이핑
+            let charIndex = 0;
+            const typingInterval = setInterval(() => {
+                if (charIndex < originalText.length) {
+                    typedTextElement.textContent += originalText.charAt(charIndex);
+                    charIndex++;
+                } else {
+                    clearInterval(typingInterval);
+                    
+                    // 타이핑 완료 후 출력 표시
+                    setTimeout(() => {
+                        // 커서 제거하고 원래 텍스트로
+                        commandInput.innerHTML = originalText;
+                        
+                        // 현재 명령어에 해당하는 출력 표시
+                        const output = cmd.nextElementSibling;
+                        if (output && output.classList.contains('output')) {
+                            output.style.display = 'block';
+                        }
+                        
+                        // 다음 명령어 타이핑
+                        setTimeout(() => {
+                            if (index < commands.length - 1) {
+                                typeCommand(commands, index + 1);
+                            }
+                        }, ANIMATION_CONFIG.commandDelay);
+                    }, ANIMATION_CONFIG.outputDelay);
+                }
+            }, ANIMATION_CONFIG.typingSpeed);
+        }
+
+        function initBackupDolphinFileManager() {
+            console.log("Initializing Backup Dolphin File Manager...");
+            const fileItems = document.querySelectorAll('.file-item');
+            const fileViewer = document.querySelector('.file-viewer');
+            const fileContent = document.querySelector('.file-content');
+            const closeBtn = document.querySelector('.close-btn');
+            
+            if (!fileItems.length || !fileViewer || !fileContent || !closeBtn) {
+                console.log("Required elements not found, skipping initialization");
+                return;
+            }
+            
+            fileItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const professor = this.getAttribute('data-professor');
+                    console.log("Clicked on professor:", professor);
+                    showBackupProfessorMessage(professor, fileViewer, fileContent);
+                    
+                    // 파일을 클릭하면 파일 뷰어로 스크롤
+                    setTimeout(() => {
+                        fileViewer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 100);
+                });
+            });
+            
+            closeBtn.addEventListener('click', function() {
+                fileViewer.style.display = 'none';
+                
+                // 닫기 버튼을 누르면 파일 목록으로 스크롤 복귀
+                const fileList = document.querySelector('.file-list');
+                if (fileList) {
+                    fileList.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            });
+            
+            console.log("Backup initialization complete. File items found:", fileItems.length);
+        }
+
+        function showBackupProfessorMessage(professor, fileViewer, fileContent) {
+            console.log("Showing backup message for professor:", professor);
+            let message = "";
+            
+            switch(professor) {
+                case "김성익":
+                    message = "김성익 교수님께,\n\n데이터베이스와 빅데이터 분석에 대한 교수님의 열정적인 가르침에 깊은 감사를 드립니다. 교수님의 실무 중심 강의는 실제 현장에서 어떻게 데이터를 다루는지 이해하는 데 큰 도움이 되었습니다.\n\nAI소프트웨어학과 제자 드림";
+                    break;
+                case "김문정":
+                    message = "김문정 교수님께,\n\n알고리즘과 프로그래밍 기초에 대한 명확하고 체계적인 강의에 진심으로 감사드립니다.\n\nAI소프트웨어학과 제자 드림";
+                    break;
+                case "정선미":
+                    message = "정선미 교수님께,\n\n인공지능과 머신러닝에 대한 심도 있는 강의에 깊은 감사를 드립니다.\n\nAI소프트웨어학과 제자 드림";
+                    break;
+                case "김재홍":
+                    message = "김재홍 교수님께,\n\n웹 개발과 프론트엔드 기술에 대한 실용적인 강의에 감사드립니다.\n\nAI소프트웨어학과 제자 드림";
+                    break;
+                case "박충식":
+                    message = "박충식 교수님께,\n\n소프트웨어 공학과 시스템 설계에 대한 체계적인 강의에 감사드립니다.\n\nAI소프트웨어학과 제자 드림";
+                    break;
+                case "최제영":
+                    message = "최제영 교수님께,\n\n컴퓨터 네트워크와 보안 시스템에 관한 깊이 있는 강의에 진심으로 감사드립니다.\n\nAI소프트웨어학과 제자 드림";
+                    break;
+                default:
+                    message = "교수님께 감사의 마음을 전합니다.";
+            }
+            
+            fileContent.textContent = message;
+            fileViewer.style.display = 'block';
+            
+            // 파일 내용 표시 후 애니메이션 효과 추가
+            fileViewer.style.opacity = '0';
+            fileViewer.style.transition = 'opacity 0.3s ease-in-out';
+            
+            setTimeout(() => {
+                fileViewer.style.opacity = '1';
+            }, 50);
+        }
+
+        // 애니메이션이 모두 완료된 후 호출될 함수
+        function onAllAnimationsComplete() {
+            // 시스템이 모든 명령어 타이핑을 완료했을 때 호출됨
+            console.log("모든 애니메이션 완료");
+            
+            // 자동 스크롤 중지 (페이지 로딩 문맥에서 이 함수를 호출해야 함)
+            const disableScroll = function() {
+                const scrollIntervalFound = window.scrollInterval;
+                if (typeof scrollIntervalFound !== 'undefined') {
+                    clearInterval(scrollIntervalFound);
+                }
+                
+                // DOM에서 직접 찾아서 중지
+                const intervals = window.setInterval(function(){}, 100000);
+                for(let i = 0; i <= intervals; i++) {
+                    window.clearInterval(i);
+                }
+                
+                // 모든 명령어가 표시되었는지 확인
+                document.querySelectorAll('.command, .output').forEach(el => {
+                    el.style.display = 'block';
+                });
+            };
+            
+            // 스크롤 관련 타이머도 모두 정리
+            disableScroll();
+            
+            // 마지막 명령어로 스크롤 한 번 더 실행 후 스크롤 관련 기능 종료
+            const commands = document.querySelectorAll('.command');
+            const lastCommand = commands[commands.length - 1];
+            
+            if (lastCommand) {
+                setTimeout(() => {
+                    lastCommand.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    // 사용자가 이제 자유롭게 스크롤할 수 있다는 것을 알림
+                    const event = new CustomEvent('animations-completed');
+                    document.dispatchEvent(event);
+                    
+                    // 명령어들 사이에 구분선 추가하여 더 잘 보이게 함
+                    commands.forEach((cmd, index) => {
+                        if (index > 0) {
+                            cmd.style.borderTop = '1px solid rgba(51, 255, 0, 0.2)';
+                            cmd.style.paddingTop = '10px';
+                            cmd.style.marginTop = '5px';
+                        }
+                    });
+                }, 500);
+            }
+        }
+    </script>
+</body>
+</html> 
