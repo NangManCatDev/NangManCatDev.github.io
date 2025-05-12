@@ -256,7 +256,53 @@
           card.style.filter = `blur(${blurs[i]}px)`;
           card.style.zIndex = zIndexes[i];
           card.classList.toggle('active', actives[i]);
+          
+          // 제목 길이에 따른 폰트 크기 조절
+          adjustTitleFontSize(card);
         });
+      }
+
+      // 제목 길이에 따른 폰트 크기 조절 함수
+      function adjustTitleFontSize(card) {
+        const title = card.querySelector('h3');
+        if (!title) return;
+        
+        const textLength = title.textContent.trim().length;
+        
+        // 텍스트 길이에 따라 폰트 크기 동적 조절 (더 작게 조정)
+        if (textLength > 30) {
+          // 30자를 초과하는 제목은 가장 작은 폰트 크기 적용
+          title.style.fontSize = '0.6rem';
+          title.style.letterSpacing = '-0.05em';
+          title.style.lineHeight = '1.2';
+        } else if (textLength > 20) {
+          // 20-30자는 작은 폰트 크기 적용
+          title.style.fontSize = '0.65rem';
+          title.style.letterSpacing = '-0.04em';
+          title.style.lineHeight = '1.2';
+        } else if (textLength > 15) {
+          // 15-20자는 중간 크기
+          title.style.fontSize = '0.7rem';
+          title.style.letterSpacing = '-0.03em';
+          title.style.lineHeight = '1.2';
+        } else if (textLength > 10) {
+          // 10-15자는 약간 큰 중간 크기
+          title.style.fontSize = '0.75rem';
+          title.style.letterSpacing = '-0.02em';
+          title.style.lineHeight = '1.2';
+        } else {
+          // 10자 이하는 기본 크기
+          title.style.fontSize = '0.85rem';
+          title.style.letterSpacing = '-0.01em';
+          title.style.lineHeight = '1.2';
+        }
+        
+        // 활성 카드는 약간 크게 표시
+        if (card.classList.contains('active')) {
+          const currentSize = parseFloat(title.style.fontSize) || 0.85;
+          const newSize = currentSize * 1.05;
+          title.style.fontSize = newSize + 'rem';
+        }
       }
 
       // 특정 카드로 이동 - 최적화됨
@@ -343,6 +389,55 @@
         });
       }
     })();
+
+    // 시간 업데이트 함수
+    function updateTime() {
+      const now = new Date();
+      document.getElementById('hours').textContent = now.getHours().toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = now.getMinutes().toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = now.getSeconds().toString().padStart(2, '0');
+      
+      // 날짜 업데이트
+      const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+      document.getElementById('current-date').textContent = months[now.getMonth()] + ' ' + now.getDate();
+    }
+    
+    // 초기 시간 설정 및 1초마다 업데이트
+    updateTime();
+    setInterval(updateTime, 1000);
+    
+    // ASCII 아트 랜덤 업데이트 효과
+    function updateRandomChars() {
+      const chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+-=[]{}|;':,./<>?";
+      const charElements = document.querySelectorAll('.char');
+      
+      charElements.forEach(element => {
+        if (Math.random() < 0.05) { // 5% 확률로 문자 변경
+          element.textContent = chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+      });
+    }
+    
+    // 200ms마다 랜덤 문자 업데이트
+    setInterval(updateRandomChars, 200);
+    
+    // CPU 사용량과 네트워크 그래프 애니메이션 효과
+    function updateGraphs() {
+      // CPU 사용량 랜덤 업데이트
+      const cpuUsage = Math.floor(Math.random() * 40) + 30; // 30~70% 범위
+      document.getElementById('cpu-usage').textContent = cpuUsage + '%';
+      document.querySelector('.graph-fill').style.width = cpuUsage + '%';
+      
+      // 네트워크 그래프 랜덤 업데이트
+      const networkGraphs = document.querySelectorAll('.traffic-graph .graph-fill');
+      networkGraphs.forEach(graph => {
+        const height = Math.floor(Math.random() * 80) + 10; // 10~90% 범위
+        graph.style.height = height + '%';
+      });
+    }
+    
+    // 2초마다 그래프 데이터 업데이트
+    setInterval(updateGraphs, 2000);
   </script>
 </head>
 
