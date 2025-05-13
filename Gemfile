@@ -6,6 +6,10 @@ gem "jekyll"
 
 gem "minima", "~> 2.5"
 
+# Ruby 3.4+ 호환성을 위한 gem 추가
+gem 'erb'
+gem 'logger'
+
 # 플러그인
 group :jekyll_plugins do
   gem "jekyll-paginate"
