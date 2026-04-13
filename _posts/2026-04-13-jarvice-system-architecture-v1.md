@@ -1,16 +1,13 @@
 ---
 layout: post
 title: "Project JARVIS — 부품 구매 리스트"
-date: 2026-04-14
+date: 2026-04-13
 thumbnail: /assets/thumbs/miku-hatsune-miku.gif
 categories: [dev-diary, project]
 tags: [raspberrypi]
 ---
 
-
-# =========================================
 # AI 인터랙션 시스템 부품 리스트 (구매 링크 포함)
-# =========================================
 
 ## 1. 메인 보드
 
@@ -134,8 +131,3 @@ https://www.aliexpress.com/wholesale?SearchText=raspberry+pi+5+power+supply
 
 ### 방열판 + 팬
 https://www.aliexpress.com/wholesale?SearchText=raspberry+pi+5+cooling+fan
-
-
-------------------------------------------
-
-# END OF DOCUMENT
