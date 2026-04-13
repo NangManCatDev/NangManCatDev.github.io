@@ -16,7 +16,7 @@ tag: paper_review
 ## 1. 핵심 기여 (Key Contributions)
 ```
 # 주요 기여 사항 요약
-contributions = [
+contributions = [`
     "WordNet 기반 D-Concept 데이터셋 구축 (추상/구체 개념 이원화)",
     "BERT → GPT 임베딩 → ChatGPT까지 6개 모델 체계적 비교",
     "모델 규모 확대 시 추상 개념 격차 지속 현상 최초 발견"
