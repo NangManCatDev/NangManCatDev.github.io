@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Project JARVIS — 부품 구매 리스트"
-date: 2026-04-13
+date: 2026-04-14
 thumbnail: /assets/thumbs/miku-hatsune-miku.gif
 categories: [dev-diary, project]
 tags: [raspberrypi]
